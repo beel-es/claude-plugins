@@ -13,13 +13,23 @@ BeeL is a SaaS invoicing platform for Spanish autonomous workers (autónomos) wi
 
 ## Machine-Readable References
 
-Before writing any code, fetch the relevant documentation:
+Always use the most targeted fetch possible — the full docs file is 300KB+:
 
-- **Index of all doc pages**: `https://docs.beel.es/llms.txt`
-- **Full documentation (single file)**: `https://docs.beel.es/llms-full.txt`
-- **OpenAPI spec**: `https://docs.beel.es/api/openapi`
+1. **Start here — index of all doc pages**: `https://docs.beel.es/llms.txt`
+   - Lists every page with a short description
+   - Find the relevant page URL, then fetch only that page
 
-Use `llms.txt` to discover available pages, then fetch individual `.mdx` URLs for details on specific endpoints or topics. Use `llms-full.txt` when you need comprehensive context in a single request.
+2. **Fetch a specific page** by appending `.mdx` to any docs URL, e.g.:
+   - `https://docs.beel.es/docs/invoices/createInvoice.mdx`
+   - `https://docs.beel.es/docs/guides/idempotency.mdx`
+
+3. **OpenAPI spec** (complete schema + all endpoints): `https://docs.beel.es/api/openapi`
+   - Use when you need request/response schemas for a specific endpoint
+   - Prefer this over `llms-full.txt` when you need structured endpoint data
+
+4. **Full documentation** (single file, ~300KB): `https://docs.beel.es/llms-full.txt`
+   - **Last resort only** — use only when multiple unrelated sections are needed simultaneously
+   - Never fetch this just to find one endpoint or answer one question
 
 ## Base URL
 
@@ -207,8 +217,6 @@ Spanish tax authority compliance system. When enabled:
 
 - **Endpoints quick-reference**: `endpoints.md` (this skill folder)
 - **Code examples**: `examples.md` (this skill folder)
-- **All doc pages**: `https://docs.beel.es/llms.txt`
-- **Full docs (single file)**: `https://docs.beel.es/llms-full.txt`
+- **Doc page index** (start here): `https://docs.beel.es/llms.txt`
 - **OpenAPI spec**: `https://docs.beel.es/api/openapi`
-- **Auth guide**: `https://docs.beel.es/docs/auth`
-- **Idempotency guide**: `https://docs.beel.es/docs/guides/idempotency`
+- **Full docs** (last resort): `https://docs.beel.es/llms-full.txt`
