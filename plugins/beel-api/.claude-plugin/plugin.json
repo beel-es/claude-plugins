@@ -1,0 +1,12 @@
+{
+  "name": "beel-api",
+  "description": "BeeL invoicing API integration guide. Activates automatically when working with the BeeL API.",
+  "version": "1.0.0",
+  "author": {
+    "name": "BeeL",
+    "email": "hola@beel.es"
+  },
+  "homepage": "https://docs.beel.es/docs/claude-code",
+  "repository": "https://github.com/beel-es/claude-plugins",
+  "license": "MIT"
+}
