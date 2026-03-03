@@ -1,35 +1,64 @@
-# BeeL REST API Guide
+# BeeL REST API - Integration Guide
 
-> Direct REST API integration. Use when you need full control, idempotency guarantees, or are working in non-Node.js environments.
+> Direct REST API integration. Works with any HTTP client in any language.
 
-## Base URL
+## How to Find API Documentation
+
+**Always fetch live documentation from docs.beel.es:**
+
+### Step 1: Start with the index
+
+```bash
+curl https://docs.beel.es/llms.txt
+```
+
+This lists all available pages. Find the page you need (e.g., "Create invoice").
+
+### Step 2: Fetch specific page
+
+Append `.mdx` to any docs URL:
+
+```bash
+curl https://docs.beel.es/docs/invoices/createInvoice.mdx
+curl https://docs.beel.es/docs/guides/idempotency.mdx
+```
+
+### Step 3: Get schemas from OpenAPI spec
+
+```bash
+curl https://docs.beel.es/api/openapi
+```
+
+Use this for request/response schemas, validation rules, and endpoint details.
+
+---
+
+## Base URL & Authentication
+
+**Base URL:** `https://app.beel.es/api/v1`
+
+**Authentication header:**
 
 ```
-https://app.beel.es/api/v1
-```
-
-The same base URL serves both environments — the API key prefix determines the environment.
-
-## Authentication
-
-Include your API key in every request via the `X-API-Key` header:
-
-```
-X-API-Key: beel_sk_live_*    # Production
 X-API-Key: beel_sk_test_*    # Sandbox
+X-API-Key: beel_sk_live_*    # Production
 ```
 
-Keys are obtained from **Settings > API Keys** in the BeeL dashboard. Each key is bound to a specific business profile.
+Get API keys from **Settings > API Keys** in the BeeL dashboard.
 
-**Never** include the API key in source code. Always use environment variables:
+**Never hardcode keys** - use environment variables:
 
 ```bash
 export BEEL_API_KEY="beel_sk_test_..."
 ```
 
-## Idempotency (Required for POST)
+---
 
-All POST requests **must** include an `X-Idempotency-Key` header to prevent duplicate resource creation on retries.
+## Idempotency (Critical for POST/PUT)
+
+All POST and PUT requests **MUST** include an `X-Idempotency-Key` header to prevent duplicate resource creation on retries.
+
+### Header
 
 ```
 X-Idempotency-Key: <UUID v4 or unique string>
@@ -38,20 +67,14 @@ X-Idempotency-Key: <UUID v4 or unique string>
 ### Rules
 
 - Use UUID v4 or a composite unique string (e.g., `invoice-order-${orderId}`)
-- Keys expire after **24 hours** — the same key can be safely reused after that
+- Keys expire after **24 hours**
 - Max length: 255 characters
 - On duplicate detection: returns the original response with `X-Idempotency-Replay: true` header
 - Applies to POST and PUT requests only
 
-```javascript
-import { v4 as uuidv4 } from 'uuid';
-const idempotencyKey = uuidv4();
-// or: `invoice-order-${orderId}-${timestamp}`
-```
+### Why it matters
 
-### Why idempotency matters
-
-Without idempotency, retrying a failed request can create duplicate resources:
+Without idempotency, retrying a failed request creates duplicates:
 
 ```javascript
 // ❌ BAD: No idempotency key
@@ -62,14 +85,14 @@ try {
     body: JSON.stringify(invoiceData),
   });
 } catch (error) {
-  // Network timeout — was the invoice created or not?
-  // Retrying will create a duplicate invoice
+  // Network timeout — was the invoice created?
+  // Retrying creates a DUPLICATE invoice
 }
 ```
 
 ```javascript
 // ✅ GOOD: With idempotency key
-const idempotencyKey = uuidv4();
+const idempotencyKey = crypto.randomUUID(); // Generate ONCE
 
 for (let attempt = 1; attempt <= 3; attempt++) {
   try {
@@ -77,14 +100,14 @@ for (let attempt = 1; attempt <= 3; attempt++) {
       method: 'POST',
       headers: {
         'X-API-Key': API_KEY,
-        'X-Idempotency-Key': idempotencyKey,
+        'X-Idempotency-Key': idempotencyKey, // REUSE same key on retry
       },
       body: JSON.stringify(invoiceData),
     });
     break; // Success
   } catch (error) {
     if (attempt === 3) throw error;
-    await new Promise(r => setTimeout(r, 300 * attempt));
+    await sleep(300 * attempt);
   }
 }
 ```
@@ -92,55 +115,63 @@ for (let attempt = 1; attempt <= 3; attempt++) {
 ### Detect idempotency replay
 
 ```javascript
-const res = await fetch('https://app.beel.es/api/v1/invoices', { ... });
 const isReplay = res.headers.get('X-Idempotency-Replay') === 'true';
 // true = response is cached from a previous identical request
 ```
 
-## Response Format
+**For full idempotency docs, always fetch:**
 
-All successful responses follow this envelope format:
-
-```json
-{
-  "success": true,
-  "data": { ... },
-  "meta": {
-    "timestamp": "2025-01-15T10:30:00Z",
-    "request_id": "req_abc123"
-  }
-}
+```
+https://docs.beel.es/docs/guides/idempotency.mdx
 ```
 
-Paginated lists include additional `meta` fields: `total`, `page`, `per_page`, `total_pages`.
+---
 
-## Error Format
+## Generate Typed Clients from OpenAPI
 
-```json
-{
-  "success": false,
-  "error": {
-    "code": "VALIDATION_ERROR",
-    "message": "Human-readable message",
-    "details": { "field": "error description" }
-  },
-  "meta": { "timestamp": "...", "request_id": "..." }
-}
+Instead of writing types manually, generate them from the live OpenAPI spec.
+
+### TypeScript - openapi-typescript + openapi-fetch
+
+```bash
+npx openapi-typescript https://docs.beel.es/api/openapi -o src/beel-api.d.ts
+npm install openapi-fetch
 ```
 
-## HTTP Status Codes
+```typescript
+import createClient from 'openapi-fetch';
+import type { paths } from './beel-api.d.ts';
 
-| Code | Meaning |
-|------|---------|
-| `200` | OK — successful GET or idempotent replay |
-| `201` | Created — resource successfully created |
-| `401` | Unauthorized — invalid or missing API key |
-| `404` | Not Found |
-| `409` | Conflict — idempotency conflict or duplicate |
-| `422` | Unprocessable Entity — validation error |
-| `500` | Internal Server Error |
+const beel = createClient<paths>({
+  baseUrl: 'https://app.beel.es/api/v1',
+  headers: { 'X-API-Key': process.env.BEEL_API_KEY! },
+});
 
-## Common Implementation Patterns
+// Fully typed requests and responses
+const { data, error } = await beel.POST('/invoices', {
+  headers: { 'X-Idempotency-Key': crypto.randomUUID() },
+  body: { ... }, // TypeScript validates this
+});
+```
+
+**Re-generate when the API updates:**
+
+```bash
+npx openapi-typescript https://docs.beel.es/api/openapi -o src/beel-api.d.ts
+```
+
+### Python - openapi-python-client
+
+```bash
+pip install openapi-python-client
+openapi-python-client generate --url https://docs.beel.es/api/openapi
+```
+
+This generates a fully-typed Python client with models for all requests and responses.
+
+---
+
+## Common Patterns
 
 ### POST with idempotency (TypeScript)
 
@@ -163,43 +194,6 @@ async function beelPost<T>(path: string, body: T): Promise<unknown> {
   
   return json.data;
 }
-
-// Usage
-const invoice = await beelPost('/invoices', {
-  type: 'STANDARD',
-  issue_date: '2025-01-27',
-  // ...
-});
-```
-
-### Safe retry — same idempotency key across retries
-
-```typescript
-async function beelPostWithRetry<T>(path: string, body: T, retries = 3) {
-  const idempotencyKey = crypto.randomUUID(); // generate once, reuse on retry
-
-  for (let i = 1; i <= retries; i++) {
-    try {
-      const res = await fetch(`https://app.beel.es/api/v1${path}`, {
-        method: 'POST',
-        headers: {
-          'X-API-Key': process.env.BEEL_API_KEY!,
-          'X-Idempotency-Key': idempotencyKey,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      });
-      
-      const json = await res.json();
-      if (!json.success) throw new Error(json.error.code);
-      
-      return json.data;
-    } catch (err) {
-      if (i === retries) throw err;
-      await new Promise(r => setTimeout(r, 300 * i));
-    }
-  }
-}
 ```
 
 ### Error handling
@@ -210,7 +204,7 @@ const json = await res.json();
 
 if (!json.success) {
   const { code, message, details } = json.error;
-  // code: 'UNAUTHORIZED' | 'VALIDATION_ERROR' | 'CONFLICT' | 'NOT_FOUND' | ...
+  // code: 'UNAUTHORIZED' | 'VALIDATION_ERROR' | 'CONFLICT' | ...
   // details: field-level errors for VALIDATION_ERROR
   throw Object.assign(new Error(message), { code, details });
 }
@@ -223,11 +217,11 @@ GET /invoices?page=1&per_page=50
 ```
 
 ```typescript
-async function* beelPaginate(path: string, params: Record<string, string> = {}) {
+async function* beelPaginate(path: string, params = {}) {
   let page = 1;
   while (true) {
     const url = new URL(`https://app.beel.es/api/v1${path}`);
-    Object.entries({ ...params, page: String(page), per_page: '100' })
+    Object.entries({ ...params, page, per_page: 100 })
       .forEach(([k, v]) => url.searchParams.set(k, v));
 
     const res = await fetch(url, {
@@ -248,244 +242,83 @@ for await (const invoice of beelPaginate('/invoices', { status: 'ISSUED' })) {
 }
 ```
 
-## API-First: Generate Types from OpenAPI
+---
 
-Instead of writing types manually, generate them directly from the OpenAPI spec.
+## Response & Error Formats
 
-### TypeScript — openapi-typescript + openapi-fetch
+### Success Response
 
-```bash
-npx openapi-typescript https://docs.beel.es/api/openapi -o src/beel-api.d.ts
-npm install openapi-fetch
+```json
+{
+  "success": true,
+  "data": { ... },
+  "meta": {
+    "timestamp": "2025-01-15T10:30:00Z",
+    "request_id": "req_abc123"
+  }
+}
 ```
 
-```typescript
-import createClient from 'openapi-fetch';
-import type { paths } from './beel-api.d.ts';
+Paginated lists include: `total`, `page`, `per_page`, `total_pages` in `meta`.
 
-const beel = createClient<paths>({
-  baseUrl: 'https://app.beel.es/api/v1',
-  headers: {
-    'X-API-Key': process.env.BEEL_API_KEY!,
+### Error Response
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Human-readable message",
+    "details": { "field": "error description" }
   },
-});
-
-// Fully typed — request body and response inferred from spec
-const { data, error } = await beel.POST('/invoices', {
-  headers: { 'X-Idempotency-Key': crypto.randomUUID() },
-  body: { ... }, // TypeScript will tell you exactly what goes here
-});
+  "meta": { "timestamp": "...", "request_id": "..." }
+}
 ```
 
-Re-run the codegen whenever the API is updated:
+---
 
-```bash
-npx openapi-typescript https://docs.beel.es/api/openapi -o src/beel-api.d.ts
-```
+## HTTP Status Codes
 
-### Python — openapi-python-client
+| Code | Meaning |
+|------|---------|
+| `200` | OK |
+| `201` | Created |
+| `401` | Unauthorized |
+| `404` | Not Found |
+| `409` | Conflict (idempotency) |
+| `422` | Validation Error |
+| `500` | Internal Server Error |
 
-```bash
-pip install openapi-python-client
-openapi-python-client generate --url https://docs.beel.es/api/openapi
-```
-
-This generates a fully-typed Python client with models for all requests and responses.
+---
 
 ## Resources Overview
 
-### Invoices
+Fetch details from live docs at `https://docs.beel.es/llms.txt` and specific `.mdx` files.
 
-**Types:**
+**Main resources:**
 
-| Value | Description |
-|-------|-------------|
-| `STANDARD` | Standard invoice |
-| `CORRECTIVE` | Corrects or cancels a previous invoice |
-| `SIMPLIFIED` | Simplified invoice (up to 400€ without NIF, 3000€ with NIF) |
+- **Invoices** - Create, list, get, update, delete, mark as paid/sent, schedule, send via email
+- **Customers** - CRUD + search + bulk import (CSV, Holded)
+- **Products** - CRUD + search + bulk operations
+- **Invoice Series** - Configure numbering series
+- **Configuration** - Tax types, VeriFactu settings, preferences
+- **NIF Validation** - Validate Spanish tax IDs
 
-**Statuses:**
-
-| Value | Description |
-|-------|-------------|
-| `DRAFT` | Editable draft, not legally binding. Assigned a draft number (e.g. `DRAFT-2025-001`) |
-| `ISSUED` | Legally issued with definitive number. Triggers VeriFactu if configured |
-| `SENT` | Marked as sent to the customer |
-| `PAID` | Marked as paid |
-| `OVERDUE` | Not paid after due date |
-| `VOIDED` | Cancelled via a TOTAL corrective invoice |
-| `SCHEDULED` | Will auto-issue on a future date |
-
-**Status flow:**
-
-```
-DRAFT → ISSUED → SENT → PAID
-          ↓
-        VOIDED
-
-DRAFT → SCHEDULED → ISSUED
-```
-
-**Rectification types (CORRECTIVE invoices):**
-
-- `TOTAL` — Completely voids the original invoice (status → VOIDED). Lines optional (defaults to negated original lines)
-- `PARTIAL` — Partially corrects the original invoice. Lines required (adjustment amounts)
-
-### Customers
-
-CRUD + bulk operations + CSV import (preview → confirm flow) + Holded import.
-
-### Products
-
-CRUD + search + bulk create/delete.
-
-### Business Profiles
-
-CRUD + representation flow (generate → submit → status → download → cancel) + API key management per profile.
-
-### Configuration
-
-Tax types, invoice series, VeriFactu settings, language preferences, invoice customization options.
-
-## VeriFactu
-
-Spanish tax authority compliance system. When enabled:
-
-- Invoices are submitted automatically on `DRAFT → ISSUED` transition
-- Manual submission: `POST /invoices/{id}/submit-verifactu`
-- Configure via `PUT /verifactu-configuration`
-
-## Example Requests
-
-### Create a standard invoice
-
-```bash
-curl -X POST https://app.beel.es/api/v1/invoices \
-  -H "X-API-Key: $BEEL_API_KEY" \
-  -H "X-Idempotency-Key: $(uuidgen)" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "type": "STANDARD",
-    "issue_date": "2025-01-27",
-    "recipient": {
-      "recipient_type": "EXISTING",
-      "customer_id": "customer-uuid"
-    },
-    "lines": [
-      {
-        "description": "Web development services",
-        "quantity": 10,
-        "unit": "hours",
-        "unit_price": 50.00,
-        "tax_rate": 21
-      }
-    ],
-    "payment_method": "TRANSFER",
-    "payment_deadline": 30
-  }'
-```
-
-### List invoices
-
-```bash
-curl https://app.beel.es/api/v1/invoices?status=ISSUED&page=1&per_page=20 \
-  -H "X-API-Key: $BEEL_API_KEY"
-```
-
-### Get an invoice
-
-```bash
-curl https://app.beel.es/api/v1/invoices/{invoice_id} \
-  -H "X-API-Key: $BEEL_API_KEY"
-```
-
-### Mark invoice as paid
-
-```bash
-curl -X PUT https://app.beel.es/api/v1/invoices/{invoice_id}/mark-as-paid \
-  -H "X-API-Key: $BEEL_API_KEY" \
-  -H "X-Idempotency-Key: $(uuidgen)" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "payment_date": "2025-01-27"
-  }'
-```
-
-### Send invoice via email
-
-```bash
-curl -X POST https://app.beel.es/api/v1/invoices/{invoice_id}/send \
-  -H "X-API-Key: $BEEL_API_KEY" \
-  -H "X-Idempotency-Key: $(uuidgen)" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "recipient_email": "client@example.com",
-    "subject": "Your invoice from BeeL",
-    "message": "Please find attached your invoice."
-  }'
-```
-
-### Create a customer
-
-```bash
-curl -X POST https://app.beel.es/api/v1/customers \
-  -H "X-API-Key: $BEEL_API_KEY" \
-  -H "X-Idempotency-Key: $(uuidgen)" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Acme Corp",
-    "nif": "B12345678",
-    "email": "contact@acme.com",
-    "phone": "+34600123456",
-    "address": {
-      "street": "Gran Vía 123",
-      "city": "Madrid",
-      "postal_code": "28013",
-      "province": "Madrid",
-      "country": "ES"
-    }
-  }'
-```
-
-### Create a product
-
-```bash
-curl -X POST https://app.beel.es/api/v1/products \
-  -H "X-API-Key: $BEEL_API_KEY" \
-  -H "X-Idempotency-Key: $(uuidgen)" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Web Development",
-    "description": "Hourly rate for web development services",
-    "unit_price": 50.00,
-    "tax_rate": 21,
-    "unit": "hour"
-  }'
-```
-
-## Machine-Readable Documentation
-
-Always use the most targeted fetch possible — the full docs file is 300KB+:
-
-1. **Start here — index of all doc pages**: https://docs.beel.es/llms.txt
-   - Lists every page with a short description
-   - Find the relevant page URL, then fetch only that page
-
-2. **Fetch a specific page** by appending `.mdx` to any docs URL:
-   - https://docs.beel.es/docs/invoices/createInvoice.mdx
-   - https://docs.beel.es/docs/guides/idempotency.mdx
-
-3. **OpenAPI spec** (complete schema + all endpoints): https://docs.beel.es/api/openapi
-   - Use when you need request/response schemas for a specific endpoint
-   - Prefer this over `llms-full.txt` when you need structured endpoint data
-
-4. **Full documentation** (single file, ~300KB): https://docs.beel.es/llms-full.txt
-   - **Last resort only** — use only when multiple unrelated sections are needed simultaneously
+---
 
 ## Further Reference
 
-- **Endpoint quick-reference**: [endpoints.md](endpoints.md)
-- **SDK guide** (for Node.js projects): [sdk-guide.md](sdk-guide.md)
-- **Code examples**: [examples.md](examples.md)
-- **OpenAPI spec**: https://docs.beel.es/api/openapi
-- **Full docs**: https://docs.beel.es
+**Always fetch live docs:**
+
+1. **Start here**: `https://docs.beel.es/llms.txt` (index of all pages)
+2. **Specific endpoint**: `https://docs.beel.es/docs/<section>/<endpoint>.mdx`
+3. **OpenAPI spec**: `https://docs.beel.es/api/openapi`
+4. **Full docs** (last resort): `https://docs.beel.es/llms-full.txt`
+
+**Local guides (how to search, not full docs):**
+
+- [sdk-guide.md](sdk-guide.md) - Node.js SDK alternative
+- [endpoints.md](endpoints.md) - Endpoint quick reference
+- [examples.md](examples.md) - Code examples
+
+**Never use static docs** - always fetch from docs.beel.es for latest updates.

@@ -1,20 +1,48 @@
-# BeeL Node.js SDK Guide
+# BeeL Node.js SDK - Integration Guide
 
-> **Recommended option** for Node.js/TypeScript projects. The SDK is 100% auto-generated from the OpenAPI spec and provides full type safety.
+> **Official SDK for Node.js/TypeScript projects.** 100% auto-generated from the OpenAPI spec.
 
-## Installation
+## How to Find SDK Documentation
+
+**Primary source (always use this):**
+
+```
+https://docs.beel.es/docs/node-sdk.mdx
+```
+
+**Workflow:**
+
+1. **Check if the page exists:**
+   ```bash
+   curl https://docs.beel.es/docs/node-sdk.mdx
+   ```
+
+2. **If 404, check the index:**
+   ```bash
+   curl https://docs.beel.es/llms.txt | grep -i sdk
+   ```
+
+3. **Find the correct URL** and fetch that page
+
+**Never use static/cached docs** - always fetch live from docs.beel.es.
+
+---
+
+## Quick Start (Minimal)
+
+### Installation
 
 ```bash
 npm install @beel/sdk
 ```
 
-## Quick Start
+### Basic Setup
 
 ```typescript
 import { BeeL } from '@beel/sdk';
 
 const client = new BeeL({
-  apiKey: process.env.BEEL_API_KEY!, // Get from https://app.beel.es
+  apiKey: process.env.BEEL_API_KEY!, // beel_sk_test_* or beel_sk_live_*
 });
 
 // Create an invoice
@@ -36,234 +64,58 @@ const invoice = await client.invoices.create({
 });
 
 // List customers
-const customers = await client.customers.list({
-  page: 1,
-  pageSize: 20,
-});
-
-// Get a product
-const product = await client.products.get({
-  id: 'product-uuid',
-});
+const customers = await client.customers.list({ page: 1, pageSize: 20 });
 ```
 
-## Configuration
-
-### Basic setup
-
-```typescript
-const client = new BeeL({
-  apiKey: 'your-api-key', // Required
-  baseUrl: 'https://app.beel.es/api/v1', // Optional (this is the default)
-});
-```
-
-### Environment-based setup
-
-```typescript
-// .env file
-BEEL_API_KEY=beel_sk_test_...  # Test environment
-# BEEL_API_KEY=beel_sk_live_... # Production
-
-// app.ts
-import { BeeL } from '@beel/sdk';
-
-const client = new BeeL({
-  apiKey: process.env.BEEL_API_KEY!,
-});
-```
-
-The same base URL (`https://app.beel.es/api/v1`) serves both environments. The API key prefix determines the environment:
-- `beel_sk_test_*` → Sandbox
-- `beel_sk_live_*` → Production
+---
 
 ## Available Services
 
-The SDK exposes all BeeL API resources through typed service classes:
+The SDK provides typed access to all BeeL API resources:
 
-| Service | Description |
-|---------|-------------|
-| `client.invoices` | Create, list, get, update, delete invoices |
-| `client.customers` | Manage customers (CRUD + search) |
-| `client.products` | Manage product catalog |
-| `client.invoiceSeries` | Configure invoice numbering series |
-| `client.invoiceLifecycle` | Mark invoices as sent/paid/overdue, cancel, schedule |
-| `client.invoiceDelivery` | Send invoices via email |
-| `client.customerImport` | Bulk import customers (CSV, Holded) |
-| `client.customerTemplates` | Manage customer templates |
-| `client.configurationTax` | Tax configuration (IRPF, retention types) |
-| `client.configurationPreferences` | User preferences (language, defaults) |
-| `client.configurationVerifactu` | VeriFactu settings |
-| `client.nif` | NIF/CIF validation |
-| `client.publicBusinessProfiles` | Public business information |
-| `client.publicMetrics` | Public metrics |
+```typescript
+client.invoices            // Invoice CRUD + lifecycle
+client.customers           // Customer management
+client.products            // Product catalog
+client.invoiceSeries       // Invoice numbering series
+client.invoiceLifecycle    // Mark as paid/sent/overdue
+client.invoiceDelivery     // Send invoices via email
+client.customerImport      // Bulk import (CSV, Holded)
+client.configurationTax    // Tax settings
+client.configurationPreferences
+client.configurationVerifactu
+client.nif                 // NIF/CIF validation
+```
 
-## Common Patterns
+**For detailed usage of each service:**
 
-### Invoices
+1. Fetch `https://docs.beel.es/docs/node-sdk.mdx`
+2. Or use the OpenAPI spec: `https://docs.beel.es/api/openapi`
 
-#### Create a standard invoice
+---
+
+## Type Safety
+
+The SDK is fully typed. TypeScript will autocomplete and validate all requests:
 
 ```typescript
 const invoice = await client.invoices.create({
-  type: 'STANDARD',
-  issue_date: '2025-01-27',
-  recipient: {
-    recipient_type: 'EXISTING',
-    customer_id: 'customer-uuid',
-  },
-  lines: [
-    {
-      description: 'Web development',
-      quantity: 10,
-      unit: 'hours',
-      unit_price: 50.00,
-      tax_rate: 21, // IVA 21%
-    },
-  ],
-  payment_method: 'TRANSFER',
-  payment_deadline: 30, // Days
+  type: 'STANDARD', // TypeScript suggests: 'STANDARD' | 'CORRECTIVE' | 'SIMPLIFIED'
+  lines: [{
+    description: 'Service',
+    quantity: 10, // TypeScript enforces number
+    // TypeScript errors on invalid fields
+  }],
 });
+
+// Response is fully typed
+console.log(invoice.id);     // ✅ TypeScript knows this exists
+console.log(invoice.number); // ✅ TypeScript knows this exists
 ```
 
-#### Create a corrective invoice (full cancellation)
-
-```typescript
-const corrective = await client.invoices.create({
-  type: 'CORRECTIVE',
-  rectification_type: 'TOTAL', // Completely voids the original
-  original_invoice_id: 'invoice-uuid-to-void',
-  issue_date: '2025-01-27',
-  recipient: {
-    recipient_type: 'EXISTING',
-    customer_id: 'customer-uuid',
-  },
-  // Lines are optional for TOTAL rectification (auto-negates original)
-});
-```
-
-#### List invoices with filters
-
-```typescript
-const issued = await client.invoices.list({
-  status: 'ISSUED',
-  page: 1,
-  pageSize: 50,
-});
-
-console.log(`Found ${issued.total} issued invoices`);
-issued.data.forEach(inv => {
-  console.log(`${inv.number} - ${inv.total_amount}€`);
-});
-```
-
-#### Mark invoice as paid
-
-```typescript
-await client.invoiceLifecycle.markAsPaid({
-  id: 'invoice-uuid',
-  payment_date: '2025-01-27',
-});
-```
-
-#### Send invoice via email
-
-```typescript
-await client.invoiceDelivery.send({
-  id: 'invoice-uuid',
-  recipient_email: 'client@example.com',
-  subject: 'Your invoice from BeeL',
-  message: 'Please find attached your invoice.',
-});
-```
-
-### Customers
-
-#### Create a customer
-
-```typescript
-const customer = await client.customers.create({
-  name: 'Acme Corp',
-  nif: 'B12345678',
-  email: 'contact@acme.com',
-  phone: '+34600123456',
-  address: {
-    street: 'Gran Vía 123',
-    city: 'Madrid',
-    postal_code: '28013',
-    province: 'Madrid',
-    country: 'ES',
-  },
-});
-```
-
-#### Search customers
-
-```typescript
-const results = await client.customers.list({
-  search: 'Acme',
-  page: 1,
-  pageSize: 20,
-});
-```
-
-#### Update a customer
-
-```typescript
-await client.customers.update({
-  id: 'customer-uuid',
-  email: 'newemail@acme.com',
-  phone: '+34600999888',
-});
-```
-
-### Products
-
-#### Create a product
-
-```typescript
-const product = await client.products.create({
-  name: 'Web Development',
-  description: 'Hourly rate for web development services',
-  unit_price: 50.00,
-  tax_rate: 21,
-  unit: 'hour',
-});
-```
-
-#### List products
-
-```typescript
-const products = await client.products.list({
-  page: 1,
-  pageSize: 100,
-});
-```
-
-### VeriFactu
-
-#### Submit invoice to VeriFactu manually
-
-```typescript
-await client.configurationVerifactu.submitInvoice({
-  invoice_id: 'invoice-uuid',
-});
-```
-
-#### Configure VeriFactu auto-submission
-
-```typescript
-await client.configurationVerifactu.update({
-  enabled: true,
-  auto_submit: true, // Submit automatically when invoice is issued
-  certificate: certificateBuffer, // P12/PFX certificate
-  certificate_password: 'cert-password',
-});
-```
+---
 
 ## Error Handling
-
-The SDK throws errors with structured information:
 
 ```typescript
 try {
@@ -273,131 +125,38 @@ try {
     console.error('Invalid API key');
   } else if (error.status === 422) {
     console.error('Validation error:', error.body);
-    // error.body contains field-level validation errors
-  } else {
-    console.error('API error:', error);
   }
 }
 ```
 
-## Type Safety
-
-The SDK is fully typed. TypeScript will autocomplete and validate all requests:
-
-```typescript
-// TypeScript knows all available fields and their types
-const invoice = await client.invoices.create({
-  type: 'STANDARD', // TypeScript suggests: 'STANDARD' | 'CORRECTIVE' | 'SIMPLIFIED'
-  issue_date: '2025-01-27', // TypeScript knows this is a string (ISO date)
-  lines: [
-    {
-      description: 'Service', // TypeScript knows all line fields
-      quantity: 10, // number
-      unit_price: 50.00, // number
-      // TypeScript will error if you add invalid fields
-    },
-  ],
-});
-
-// Response is also fully typed
-console.log(invoice.id); // TypeScript knows invoice has an 'id' field
-console.log(invoice.number); // TypeScript knows invoice has a 'number' field
-```
-
-## Pagination
-
-All list endpoints return paginated responses:
-
-```typescript
-const response = await client.invoices.list({
-  page: 1,
-  pageSize: 50,
-});
-
-console.log(response.data); // Array of invoices
-console.log(response.total); // Total count
-console.log(response.page); // Current page
-console.log(response.total_pages); // Total pages
-```
-
-### Paginate through all results
-
-```typescript
-async function* getAllInvoices() {
-  let page = 1;
-  while (true) {
-    const response = await client.invoices.list({
-      page,
-      pageSize: 100,
-    });
-    
-    yield* response.data;
-    
-    if (page >= response.total_pages) break;
-    page++;
-  }
-}
-
-// Usage
-for await (const invoice of getAllInvoices()) {
-  console.log(invoice.number);
-}
-```
+---
 
 ## Idempotency
 
-The SDK **does not handle idempotency automatically**. If you need idempotency for POST/PUT requests (recommended for production), you have two options:
+⚠️ **The SDK does NOT handle idempotency automatically.**
 
-### Option 1: Use the REST API directly
+If you need idempotency for POST/PUT requests (recommended for production):
 
-The REST API supports `X-Idempotency-Key` headers. See [rest-api-guide.md](rest-api-guide.md#idempotency) for details.
+**Option 1:** Use the REST API directly (supports `X-Idempotency-Key` headers)
 
-### Option 2: Wrap SDK calls with retry logic
+**Option 2:** Implement retry logic with SDK calls
 
-```typescript
-import { v4 as uuidv4 } from 'uuid';
+For idempotency details, see [rest-api-guide.md](rest-api-guide.md#idempotency).
 
-async function createInvoiceIdempotent(data: any) {
-  const idempotencyKey = uuidv4();
-  
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    try {
-      return await client.invoices.create(data);
-    } catch (error) {
-      if (attempt === 3) throw error;
-      await new Promise(r => setTimeout(r, 300 * attempt));
-    }
-  }
-}
-```
-
-## SDK vs REST API
-
-| Feature | SDK | REST API |
-|---------|-----|----------|
-| Type safety | ✅ Full TypeScript types | ⚠️ Manual types or codegen |
-| Idempotency | ❌ Not automatic | ✅ Built-in via headers |
-| Auto-completion | ✅ Full IDE support | ⚠️ Depends on codegen |
-| Flexibility | ⚠️ Limited to generated methods | ✅ Full control |
-| Bundle size | ~50KB (tree-shakeable) | Minimal (fetch only) |
-
-**When to use SDK:**
-- Node.js/TypeScript projects
-- You want type safety and auto-completion
-- Standard use cases covered by the API
-
-**When to use REST API:**
-- Non-Node.js environments (Python, Go, etc.)
-- You need full control over requests (custom headers, retries)
-- You need idempotency guarantees
-- Bundle size is critical
-
-See [rest-api-guide.md](rest-api-guide.md) for REST API implementation.
+---
 
 ## Further Reference
 
-- **OpenAPI spec** (source of truth): https://docs.beel.es/api/openapi
-- **SDK source code**: https://github.com/beel-es/beel-node-sdk
-- **REST API guide**: [rest-api-guide.md](rest-api-guide.md)
-- **Endpoint reference**: [endpoints.md](endpoints.md)
-- **Full documentation**: https://docs.beel.es
+**Always fetch live docs:**
+
+- **SDK docs**: `https://docs.beel.es/docs/node-sdk.mdx`
+- **OpenAPI spec** (source of truth): `https://docs.beel.es/api/openapi`
+- **SDK source code**: `https://github.com/beel-es/beel-node-sdk`
+
+**Local guides (how to search, not full docs):**
+
+- [rest-api-guide.md](rest-api-guide.md) - REST API alternative
+- [endpoints.md](endpoints.md) - Endpoint quick reference
+- [examples.md](examples.md) - Code examples
+
+**Never use static docs** - always fetch from docs.beel.es for latest updates.
