@@ -56,12 +56,12 @@ export BEEL_API_KEY="beel_sk_test_..."
 
 ## Idempotency (Critical for POST/PUT)
 
-All POST and PUT requests **MUST** include an `X-Idempotency-Key` header to prevent duplicate resource creation on retries.
+All POST and PUT requests **MUST** include an `Idempotency-Key` header to prevent duplicate resource creation on retries.
 
 ### Header
 
 ```
-X-Idempotency-Key: <UUID v4 or unique string>
+Idempotency-Key: <UUID v4 or unique string>
 ```
 
 ### Rules
@@ -100,7 +100,7 @@ for (let attempt = 1; attempt <= 3; attempt++) {
       method: 'POST',
       headers: {
         'X-API-Key': API_KEY,
-        'X-Idempotency-Key': idempotencyKey, // REUSE same key on retry
+        'Idempotency-Key': idempotencyKey, // REUSE same key on retry
       },
       body: JSON.stringify(invoiceData),
     });
@@ -149,7 +149,7 @@ const beel = createClient<paths>({
 
 // Fully typed requests and responses
 const { data, error } = await beel.POST('/invoices', {
-  headers: { 'X-Idempotency-Key': crypto.randomUUID() },
+  headers: { 'Idempotency-Key': crypto.randomUUID() },
   body: { ... }, // TypeScript validates this
 });
 ```
@@ -181,7 +181,7 @@ async function beelPost<T>(path: string, body: T): Promise<unknown> {
     method: 'POST',
     headers: {
       'X-API-Key': process.env.BEEL_API_KEY!,
-      'X-Idempotency-Key': crypto.randomUUID(),
+      'Idempotency-Key': crypto.randomUUID(),
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),

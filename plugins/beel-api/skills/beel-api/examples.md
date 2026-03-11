@@ -29,7 +29,7 @@ const beel = createClient<paths>({
 
 // Fully typed — request body and response inferred from spec
 const { data, error } = await beel.POST('/invoices', {
-  headers: { 'X-Idempotency-Key': crypto.randomUUID() },
+  headers: { 'Idempotency-Key': crypto.randomUUID() },
   body: { ... }, // TypeScript will tell you exactly what goes here
 });
 ```
@@ -60,7 +60,7 @@ async function beelPost<T>(path: string, body: T): Promise<unknown> {
     method: 'POST',
     headers: {
       'X-API-Key': process.env.BEEL_API_KEY!,
-      'X-Idempotency-Key': crypto.randomUUID(),
+      'Idempotency-Key': crypto.randomUUID(),
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
@@ -83,7 +83,7 @@ async function beelPostWithRetry<T>(path: string, body: T, retries = 3) {
         method: 'POST',
         headers: {
           'X-API-Key': process.env.BEEL_API_KEY!,
-          'X-Idempotency-Key': idempotencyKey,
+          'Idempotency-Key': idempotencyKey,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),

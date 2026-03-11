@@ -137,7 +137,7 @@ try {
 
 If you need idempotency for POST/PUT requests (recommended for production):
 
-**Option 1:** Use the REST API directly (supports `X-Idempotency-Key` headers)
+**Option 1:** Use the REST API directly (supports `Idempotency-Key` headers)
 
 **Option 2:** Implement retry logic with SDK calls
 
