@@ -20,22 +20,22 @@ BeeL is a SaaS invoicing platform for Spanish autónomos with full VeriFactu com
 5. **Issued invoices are immutable.** To correct → corrective invoice. To cancel → void it.
 6. **When in doubt, fetch the docs** (see below).
 
-## 📚 Live Documentation
+## 📚 How to Look Up Documentation (Token-Efficient)
 
-Always fetch live docs before generating integration code. These are the entry points:
+**Never download full docs into context.** Use `grep` to filter on the command line:
 
 ```bash
-# Index of all doc pages
-curl https://docs.beel.es/llms.txt
+# Step 1: Search the index for what you need (only matching lines enter context)
+curl -s https://docs.beel.es/llms.txt | grep -i "invoice\|customer\|product"
 
-# Full docs in one request
-curl https://docs.beel.es/llms-full.txt
+# Step 2: Fetch only the specific page you need
+curl -s https://docs.beel.es/invoices/createInvoice.mdx
 
-# OpenAPI spec — source of truth for schemas, fields, and validation
-curl https://docs.beel.es/api/openapi
+# Step 3: If you need the OpenAPI spec for a specific schema, grep it too
+curl -s https://docs.beel.es/api/openapi | grep -A 20 "CreateInvoice"
 ```
 
-**Workflow:** `llms.txt` → find relevant page → fetch it → cross-check fields against OpenAPI spec.
+**Do NOT** run `curl https://docs.beel.es/llms-full.txt` or `curl https://docs.beel.es/api/openapi` without piping through `grep`. Those files are 300-600KB and would waste tokens.
 
 ## 🔐 Authentication
 
