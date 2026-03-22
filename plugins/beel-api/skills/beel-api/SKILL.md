@@ -1,145 +1,58 @@
 ---
 name: beel-api
 description: >
-  BeeL invoicing API integration guide for Spanish autonomous workers.
-  Use when implementing BeeL API calls, creating invoices, managing customers
-  or products, or troubleshooting BeeL API responses.
+  BeeL invoicing API integration guide. Use when working with the BeeL API,
+  creating invoices, managing customers or products, implementing webhooks,
+  or troubleshooting BeeL API responses.
 argument-hint: "[resource or task]"
 ---
 
-# BeeL API Integration Guide
+# BeeL API — Integration Guide
 
-BeeL is a SaaS invoicing platform for Spanish autonomous workers (autónomos) with VeriFactu compliance.
+BeeL is a SaaS invoicing platform for Spanish autónomos with full VeriFactu compliance.
 
-## Integration Options
+## ⚠️ Golden Rules
 
-Choose between two integration methods:
+1. **NEVER invent endpoints, fields, or package names.** Always verify against the live docs first. Use `curl https://docs.beel.es/llms.txt` to find the relevant page, then fetch that page to check exact endpoints and fields.
+2. **NEVER hardcode API keys.** Always use environment variables (`process.env.BEEL_API_KEY`).
+3. **There is NO separate test URL.** Base URL is always `https://app.beel.es/api/v1`. The key prefix determines the environment: `beel_sk_test_*` = sandbox, `beel_sk_live_*` = production.
+4. **ALWAYS include `Idempotency-Key` header** on POST and PUT requests.
+5. **Issued invoices are immutable.** To correct → corrective invoice. To cancel → void it.
+6. **When in doubt, fetch the docs** (see below).
 
-### Option 1: Node.js SDK (Recommended for Node.js/TypeScript)
+## 📚 How to Look Up Documentation
 
-**When to use:**
-- Node.js or TypeScript projects
-- You want full type safety and IDE auto-completion
-- Standard use cases covered by the API
+Three sources, from lightest to heaviest:
 
-**Documentation:** [sdk-guide.md](sdk-guide.md)
+```bash
+# 1. Index (~31KB) — search for what you need, pipe through grep to save tokens
+curl -s https://docs.beel.es/llms.txt | grep -i "invoice\|customer"
 
----
+# 2. Specific page — fetch only the page you need (found via index)
+curl -s https://docs.beel.es/invoices/createInvoice.mdx
 
-### Option 2: Direct REST API
-
-**When to use:**
-- Non-Node.js environments (Python, Go, PHP, etc.)
-- You need full control over requests (custom headers, retries)
-- You need idempotency guarantees
-- Bundle size is critical
-
-**Documentation:** [rest-api-guide.md](rest-api-guide.md)
-
----
-
-## Quick Reference
-
-**Base URL:** `https://app.beel.es/api/v1`
-
-**Authentication:** Include API key in `X-API-Key` header
-
-```
-X-API-Key: beel_sk_test_*    # Sandbox
-X-API-Key: beel_sk_live_*    # Production
+# 3. Full docs (~641KB) or OpenAPI spec (~330KB) — when you need broad context
+curl -s https://docs.beel.es/llms-full.txt
+curl -s https://docs.beel.es/api/openapi
 ```
 
-**Always fetch live documentation from:**
+**Tip:** For targeted lookups, prefer `curl | grep` over downloading full files. Use full downloads when you need to explore what's available or understand the overall API surface.
 
-1. **Documentation index** (start here): `https://docs.beel.es/llms.txt`
-2. **Node.js SDK docs**: `https://docs.beel.es/docs/node-sdk.mdx` (when published)
-3. **OpenAPI spec**: `https://docs.beel.es/api/openapi`
-4. **Specific endpoint docs**: `https://docs.beel.es/docs/<section>/<endpoint>.mdx`
+## 🔐 Authentication
 
-**Never use static/cached docs** - always fetch from docs.beel.es for latest updates.
-
----
-
-## Response Format
-
-```json
-{
-  "success": true,
-  "data": { ... },
-  "meta": {
-    "timestamp": "2025-01-15T10:30:00Z",
-    "request_id": "req_abc123"
-  }
-}
+```
+Authorization: Bearer beel_sk_test_*    # Sandbox
+Authorization: Bearer beel_sk_live_*    # Production
 ```
 
-## Error Format
+Base URL: **always** `https://app.beel.es/api/v1` — the key determines the environment, not the URL.
 
-```json
-{
-  "success": false,
-  "error": {
-    "code": "VALIDATION_ERROR",
-    "message": "Human-readable message",
-    "details": { "field": "error description" }
-  }
-}
-```
+## 📖 Additional Resources
 
-## HTTP Status Codes
+For detailed recipes and patterns, load these files when needed:
 
-| Code | Meaning |
-|------|---------|
-| `200` | OK |
-| `201` | Created |
-| `401` | Unauthorized |
-| `404` | Not Found |
-| `409` | Conflict (idempotency) |
-| `422` | Validation Error |
-| `500` | Internal Server Error |
-
----
-
-## Resources
-
-### In this skill folder:
-
-- **[sdk-guide.md](sdk-guide.md)** - Node.js SDK integration (how to search docs + quick start)
-- **[rest-api-guide.md](rest-api-guide.md)** - REST API integration (how to search docs + key concepts)
-- **[endpoints.md](endpoints.md)** - Quick reference of all endpoints
-- **[examples.md](examples.md)** - Code examples
-
-### Always fetch live from docs.beel.es:
-
-1. Start with index: `https://docs.beel.es/llms.txt`
-2. Find the relevant page URL
-3. Fetch that specific `.mdx` file
-4. For schemas: `https://docs.beel.es/api/openapi`
-
-**Never duplicate docs** - the skill teaches you where to find the latest info, not a static copy.
-
----
-
-## Comparison: SDK vs REST API
-
-| Feature | SDK | REST API |
-|---------|-----|----------|
-| Platform | Node.js/TypeScript only | Any language |
-| Type safety | ✅ Full TypeScript types | ⚠️ Manual types or codegen |
-| Idempotency | ❌ Not automatic | ✅ Built-in via headers |
-| Auto-completion | ✅ Full IDE support | ⚠️ Depends on codegen |
-| Bundle size | ~50KB (tree-shakeable) | Minimal (fetch only) |
-
-**Choose SDK if:** Node.js/TypeScript + want type safety
-
-**Choose REST API if:** Other languages, need idempotency control, or minimal bundle size
-
----
-
-**Need help?** Load the relevant guide:
-- For SDK: read [sdk-guide.md](sdk-guide.md)
-- For REST API: read [rest-api-guide.md](rest-api-guide.md)
-- For endpoints: read [endpoints.md](endpoints.md)
-- For examples: read [examples.md](examples.md)
-
-**Then fetch the live docs from docs.beel.es** for the most up-to-date information.
+- **[recipes/typed-client.md](recipes/typed-client.md)** — Generate a fully-typed API client from the OpenAPI spec (TypeScript, Python)
+- **[recipes/webhook-handler.md](recipes/webhook-handler.md)** — Complete webhook receiver with signature verification and deduplication
+- **[recipes/invoice-flow.md](recipes/invoice-flow.md)** — End-to-end invoice lifecycle: create → issue → send → pay
+- **[recipes/fiscal-context.md](recipes/fiscal-context.md)** — Spanish tax system concepts for non-Spanish developers
+- **[recipes/debugging.md](recipes/debugging.md)** — Common errors, causes, and solutions
