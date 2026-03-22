@@ -7,139 +7,166 @@ description: >
 argument-hint: "[resource or task]"
 ---
 
-# BeeL API Integration Guide
+# BeeL API — Integration Guide for Claude Code
 
-BeeL is a SaaS invoicing platform for Spanish autonomous workers (autónomos) with VeriFactu compliance.
+BeeL is a SaaS invoicing platform for Spanish autónomos with full VeriFactu compliance.
 
-## Integration Options
+## ⚠️ Golden Rules
 
-Choose between two integration methods:
-
-### Option 1: Node.js SDK (Recommended for Node.js/TypeScript)
-
-**When to use:**
-- Node.js or TypeScript projects
-- You want full type safety and IDE auto-completion
-- Standard use cases covered by the API
-
-**Documentation:** [sdk-guide.md](sdk-guide.md)
+1. **NEVER invent endpoints, fields, or package names.** If you don't find it in the docs, say so.
+2. **NEVER hardcode API keys.** Always use environment variables (`process.env.BEEL_API_KEY`).
+3. **ALWAYS fetch and verify against the live docs** before generating code (see below).
+4. **There is NO separate test URL.** The base URL is always `https://app.beel.es/api/v1` — the API key prefix determines the environment (`beel_sk_test_*` = sandbox, `beel_sk_live_*` = production).
 
 ---
 
-### Option 2: Direct REST API
+## 📚 How to Find Documentation (Do This Every Time)
 
-**When to use:**
-- Non-Node.js environments (Python, Go, PHP, etc.)
-- You need full control over requests (custom headers, retries)
-- You need idempotency guarantees
-- Bundle size is critical
+The docs are the **single source of truth**. Always fetch them before writing code.
 
-**Documentation:** [rest-api-guide.md](rest-api-guide.md)
+### Quick reference index
 
----
-
-## Quick Reference
-
-**Base URL:** `https://app.beel.es/api/v1`
-
-**Authentication:** Include API key in `X-API-Key` header
-
-```
-X-API-Key: beel_sk_test_*    # Sandbox
-X-API-Key: beel_sk_live_*    # Production
+```bash
+curl https://docs.beel.es/llms.txt
 ```
 
-**Always fetch live documentation from:**
+Returns a list of every doc page with URLs. Use `grep` to find what you need.
 
-1. **Documentation index** (start here): `https://docs.beel.es/llms.txt`
-2. **Node.js SDK docs**: `https://docs.beel.es/docs/node-sdk.mdx` (when published)
-3. **OpenAPI spec**: `https://docs.beel.es/api/openapi`
-4. **Specific endpoint docs**: `https://docs.beel.es/docs/<section>/<endpoint>.mdx`
+### Full docs in one request
 
-**Never use static/cached docs** - always fetch from docs.beel.es for latest updates.
-
----
-
-## Response Format
-
-```json
-{
-  "success": true,
-  "data": { ... },
-  "meta": {
-    "timestamp": "2025-01-15T10:30:00Z",
-    "request_id": "req_abc123"
-  }
-}
+```bash
+curl https://docs.beel.es/llms-full.txt
 ```
 
-## Error Format
+All documentation in a single file. Use when you need broad context.
 
-```json
-{
-  "success": false,
-  "error": {
-    "code": "VALIDATION_ERROR",
-    "message": "Human-readable message",
-    "details": { "field": "error description" }
-  }
-}
+### OpenAPI spec (field names, types, validation)
+
+```bash
+curl https://docs.beel.es/api/openapi
 ```
 
-## HTTP Status Codes
+The OpenAPI spec is the **source of truth** for all request/response schemas. Always verify field names here before generating code.
 
-| Code | Meaning |
-|------|---------|
-| `200` | OK |
-| `201` | Created |
-| `401` | Unauthorized |
-| `404` | Not Found |
-| `409` | Conflict (idempotency) |
-| `422` | Validation Error |
-| `500` | Internal Server Error |
+### Workflow
+
+1. `curl llms.txt` → find the relevant page URL
+2. `curl` that page for detailed guidance
+3. Cross-check field names against the OpenAPI spec
+4. Generate code with verified fields
 
 ---
 
-## Resources
+## Authentication (Stable)
 
-### In this skill folder:
+```
+Authorization: Bearer beel_sk_test_*    # Sandbox
+Authorization: Bearer beel_sk_live_*    # Production
+```
 
-- **[sdk-guide.md](sdk-guide.md)** - Node.js SDK integration (how to search docs + quick start)
-- **[rest-api-guide.md](rest-api-guide.md)** - REST API integration (how to search docs + key concepts)
-- **[endpoints.md](endpoints.md)** - Quick reference of all endpoints
-- **[examples.md](examples.md)** - Code examples
-
-### Always fetch live from docs.beel.es:
-
-1. Start with index: `https://docs.beel.es/llms.txt`
-2. Find the relevant page URL
-3. Fetch that specific `.mdx` file
-4. For schemas: `https://docs.beel.es/api/openapi`
-
-**Never duplicate docs** - the skill teaches you where to find the latest info, not a static copy.
+- Header: `Authorization: Bearer <key>`
+- Base URL: **always** `https://app.beel.es/api/v1`
+- The key prefix determines sandbox vs production — NOT the URL
+- Get keys from: BeeL dashboard → Settings → API Keys
+- **Always use env vars:** `process.env.BEEL_API_KEY`
 
 ---
 
-## Comparison: SDK vs REST API
+## Recommended: Generate Typed Client
 
-| Feature | SDK | REST API |
-|---------|-----|----------|
-| Platform | Node.js/TypeScript only | Any language |
-| Type safety | ✅ Full TypeScript types | ⚠️ Manual types or codegen |
-| Idempotency | ❌ Not automatic | ✅ Built-in via headers |
-| Auto-completion | ✅ Full IDE support | ⚠️ Depends on codegen |
-| Bundle size | ~50KB (tree-shakeable) | Minimal (fetch only) |
+Instead of writing API calls by hand, generate a fully-typed client from the live OpenAPI spec:
 
-**Choose SDK if:** Node.js/TypeScript + want type safety
+### TypeScript (openapi-typescript + openapi-fetch)
 
-**Choose REST API if:** Other languages, need idempotency control, or minimal bundle size
+```bash
+npx openapi-typescript https://docs.beel.es/api/openapi -o src/beel-api.d.ts
+npm install openapi-fetch
+```
+
+```typescript
+import createClient from 'openapi-fetch';
+import type { paths } from './beel-api.d.ts';
+
+const beel = createClient<paths>({
+  baseUrl: 'https://app.beel.es/api/v1',
+  headers: {
+    Authorization: `Bearer ${process.env.BEEL_API_KEY}`,
+  },
+});
+```
+
+Re-run codegen when the API updates:
+```bash
+npx openapi-typescript https://docs.beel.es/api/openapi -o src/beel-api.d.ts
+```
+
+### Python
+
+```bash
+pip install openapi-python-client
+openapi-python-client generate --url https://docs.beel.es/api/openapi
+```
 
 ---
 
-**Need help?** Load the relevant guide:
-- For SDK: read [sdk-guide.md](sdk-guide.md)
-- For REST API: read [rest-api-guide.md](rest-api-guide.md)
-- For endpoints: read [endpoints.md](endpoints.md)
-- For examples: read [examples.md](examples.md)
+## Business Rules (Stable — Not in the OpenAPI Spec)
 
-**Then fetch the live docs from docs.beel.es** for the most up-to-date information.
+These are critical rules the spec doesn't explicitly document. They rarely change.
+
+### Invoice Immutability & VeriFactu
+
+- **Invoices are immutable once issued.** You cannot edit an ISSUED/SENT/PAID invoice.
+- **You cannot delete issued invoices.** Only DRAFT invoices can be deleted.
+- To "cancel" an issued invoice → void it (`POST /v1/invoices/{id}/void`)
+- To correct an issued invoice → create a corrective invoice (`POST /v1/invoices/{id}/corrective`)
+- VeriFactu submissions are automatic — BeeL handles AEAT communication.
+
+### Invoice Lifecycle (State Machine)
+
+```
+DRAFT → ISSUED → SENT → PAID
+  ↓                ↓
+DELETE           VOID → CORRECTIVE
+```
+
+- `DRAFT`: Editable, deleteable. Not legally binding.
+- `ISSUED`: Legally binding. VeriFactu submitted. Cannot edit/delete.
+- `SENT`: Email delivered to customer.
+- `PAID`: Fully settled. Terminal state.
+- `VOID`: Cancelled. Requires a reason. Reported to AEAT.
+
+### Corrective Invoices
+
+- Always reference the original invoice
+- Used for: refunds, corrections, partial credit notes
+- The original invoice remains — it's never modified
+
+### Idempotency
+
+- **All POST/PUT requests SHOULD include `Idempotency-Key` header**
+- Use UUID v4 or a business-meaningful key (e.g., `order_${orderId}`)
+- Keys expire after 24 hours
+- On duplicate: returns the original response with `X-Idempotency-Replay: true`
+- Critical for webhooks and retry logic — prevents duplicate invoices
+
+---
+
+## Common Mistakes
+
+| ❌ Wrong | ✅ Correct |
+|---|---|
+| `X-API-Key: beel_sk_...` | `Authorization: Bearer beel_sk_...` |
+| `https://test.beel.es/api/v1` | `https://app.beel.es/api/v1` (key determines env) |
+| `npm install @beel/sdk` | Use `openapi-typescript` to generate types |
+| Editing an issued invoice | Void it and create a corrective |
+| Deleting an issued invoice | Only drafts can be deleted |
+| POST without `Idempotency-Key` | Always include for POST/PUT |
+| Hardcoding field names from memory | Fetch the OpenAPI spec and verify |
+
+---
+
+## Ecosystem
+
+- **Stripe integration**: BeeL has a native Stripe integration (no-code, from dashboard). Don't build a custom Stripe→BeeL bridge unless explicitly needed.
+- **AI Chat**: docs.beel.es has built-in AI chat for API questions.
+- **Full docs**: Always at [docs.beel.es](https://docs.beel.es)
