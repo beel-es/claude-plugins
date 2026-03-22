@@ -13,7 +13,7 @@ BeeL is a SaaS invoicing platform for Spanish autónomos with full VeriFactu com
 
 ## ⚠️ Golden Rules
 
-1. **NEVER invent endpoints, fields, or package names.** Always verify against the live OpenAPI spec.
+1. **NEVER invent endpoints, fields, or package names.** Always verify against the live docs first. Use `curl https://docs.beel.es/llms.txt` to find the relevant page, then fetch that page to check exact endpoints and fields.
 2. **NEVER hardcode API keys.** Always use environment variables (`process.env.BEEL_API_KEY`).
 3. **There is NO separate test URL.** Base URL is always `https://app.beel.es/api/v1`. The key prefix determines the environment: `beel_sk_test_*` = sandbox, `beel_sk_live_*` = production.
 4. **ALWAYS include `Idempotency-Key` header** on POST and PUT requests.

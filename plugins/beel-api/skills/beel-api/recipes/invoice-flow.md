@@ -2,9 +2,16 @@
 
 The typical integration: create a customer → create a product → create an invoice → issue it → send it.
 
-⚠️ **Always verify field names against the OpenAPI spec before using this pattern:**
+## Before writing any code
+
+Fetch the relevant doc pages to verify endpoints and required fields:
+
 ```bash
-curl https://docs.beel.es/api/openapi
+# Find the endpoints
+curl https://docs.beel.es/llms.txt | grep -i "create invoice\|create customer\|create product\|issue invoice\|send invoice"
+
+# Then fetch each page to see exact fields, e.g.:
+# curl https://docs.beel.es/invoices/createInvoice.mdx
 ```
 
 ## Invoice Lifecycle (Stable)
@@ -28,44 +35,27 @@ ISSUED/SENT → RECTIFIED (via corrective PARTIAL)
 - To fix an issued invoice → create a **corrective** invoice
 - To cancel an issued invoice → **void** it
 
-## Pattern (TypeScript with openapi-fetch)
+## Recommended approach
+
+Use the typed client (see [typed-client.md](typed-client.md)) so endpoint paths and field names come from the generated types — no hardcoding.
 
 ```typescript
 import crypto from 'crypto';
 
-// 1. Create customer (verify required fields in OpenAPI spec)
-const customer = await beel.POST('/customers', {
-  body: { /* fetch required fields from OpenAPI spec */ },
-  params: { header: { 'Idempotency-Key': crypto.randomUUID() } }
-});
+// The typed client from openapi-fetch gives you autocomplete
+// for all endpoints and fields. No guessing.
 
-// 2. Create product (verify required fields in OpenAPI spec)
-const product = await beel.POST('/products', {
-  body: { /* fetch required fields from OpenAPI spec */ },
-  params: { header: { 'Idempotency-Key': crypto.randomUUID() } }
-});
-
-// 3. Create invoice (starts as DRAFT)
-const invoice = await beel.POST('/invoices', {
-  body: {
-    type: 'STANDARD',
-    issue_date: '2026-03-22',
-    recipient: { recipient_type: 'EXISTING', customer_id: customer.data.id },
-    lines: [{ description: 'Service', quantity: 1, unit_price: 100 }]
-  },
-  params: { header: { 'Idempotency-Key': `invoice-order-${orderId}` } }
-});
-
+// 1. Create customer → check docs for required fields
+// 2. Create product → check docs for required fields
+// 3. Create invoice (starts as DRAFT) → include Idempotency-Key
 // 4. Issue it (DRAFT → ISSUED, triggers VeriFactu)
-await beel.POST('/invoices/{invoice_id}/issue', {
-  params: { path: { invoice_id: invoice.data.id } }
-});
-
 // 5. Send by email (ISSUED → SENT)
-await beel.POST('/invoices/{invoice_id}/send', {
-  params: { path: { invoice_id: invoice.data.id } }
-});
+
+// Every POST/PUT must include Idempotency-Key:
+const headers = { 'Idempotency-Key': crypto.randomUUID() };
 ```
+
+The typed client catches wrong endpoints and fields at compile time. If BeeL changes an endpoint, regenerate the types and the compiler tells you what broke.
 
 ## Corrective Invoices
 
@@ -78,14 +68,13 @@ When you need to fix or cancel an issued invoice:
 For reason codes and corrective invoice fields:
 ```bash
 curl https://docs.beel.es/llms.txt | grep -i corrective
-curl https://docs.beel.es/llms.txt | grep -i glossary
 ```
 
 ## Idempotency
 
 - **All POST/PUT must include `Idempotency-Key` header**
 - Keys expire after 24 hours, max 255 characters
-- Use UUID for one-off ops, deterministic keys for business ops (e.g., `shopify-order-${orderId}`)
+- Use UUID for one-off ops, deterministic keys for business ops (e.g., `order-${orderId}`)
 - On duplicate: returns original response with `Idempotency-Replay: true`
 
 For detailed idempotency patterns:
