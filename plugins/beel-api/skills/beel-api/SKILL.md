@@ -20,22 +20,23 @@ BeeL is a SaaS invoicing platform for Spanish autónomos with full VeriFactu com
 5. **Issued invoices are immutable.** To correct → corrective invoice. To cancel → void it.
 6. **When in doubt, fetch the docs** (see below).
 
-## 📚 How to Look Up Documentation (Token-Efficient)
+## 📚 How to Look Up Documentation
 
-**Never download full docs into context.** Use `grep` to filter on the command line:
+Three sources, from lightest to heaviest:
 
 ```bash
-# Step 1: Search the index for what you need (only matching lines enter context)
-curl -s https://docs.beel.es/llms.txt | grep -i "invoice\|customer\|product"
+# 1. Index (~31KB) — search for what you need, pipe through grep to save tokens
+curl -s https://docs.beel.es/llms.txt | grep -i "invoice\|customer"
 
-# Step 2: Fetch only the specific page you need
+# 2. Specific page — fetch only the page you need (found via index)
 curl -s https://docs.beel.es/invoices/createInvoice.mdx
 
-# Step 3: If you need the OpenAPI spec for a specific schema, grep it too
-curl -s https://docs.beel.es/api/openapi | grep -A 20 "CreateInvoice"
+# 3. Full docs (~641KB) or OpenAPI spec (~330KB) — when you need broad context
+curl -s https://docs.beel.es/llms-full.txt
+curl -s https://docs.beel.es/api/openapi
 ```
 
-**Do NOT** run `curl https://docs.beel.es/llms-full.txt` or `curl https://docs.beel.es/api/openapi` without piping through `grep`. Those files are 300-600KB and would waste tokens.
+**Tip:** For targeted lookups, prefer `curl | grep` over downloading full files. Use full downloads when you need to explore what's available or understand the overall API surface.
 
 ## 🔐 Authentication
 
