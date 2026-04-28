@@ -48,9 +48,10 @@ Gives Claude everything it needs to integrate the BeeL API correctly:
 
 Read-only auditor for Stripe integrations. Scans your codebase (and, optionally, your live Stripe account via the official Stripe MCP) and returns a structured report with **finding → severity → evidence → fix** for every issue.
 
-**Install:**
+**Install** (skip the first line if you've already added the marketplace):
 
 ```
+/plugin marketplace add beel-es/claude-plugins
 /plugin install stripe@beel
 ```
 
