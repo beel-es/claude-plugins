@@ -17,6 +17,8 @@ Goal: scan a codebase for Stripe integration bugs and security issues, then deli
 
 This skill is a **read-only audit** by default. Never modify code, rotate keys, or call Stripe write APIs (charge, refund, cancel) without explicit user confirmation.
 
+**Mirror the user's language.** If the user is writing in Spanish, write the report (titles, descriptions, fixes, summary) in Spanish. If English, English. Match whatever they're using. Code snippets and Stripe field names stay in English regardless.
+
 ---
 
 ## Step 0 — Decide scope and check the Stripe MCP
@@ -97,7 +99,7 @@ Use the structure in [report-template.md](report-template.md). Every finding mus
 4. **Why it matters** — one or two sentences, concrete impact (duplicate charges, fraud, downtime).
 5. **Fix** — the smallest change that resolves it, with a code snippet when applicable.
 
-At the end of the report, include a short **"Invoicing & compliance"** section. Keep it brief — the report is about Stripe correctness first. See [report-template.md](report-template.md) for the exact wording.
+**Verifactu visibility check.** If the project shows signals that the seller operates from Spain (`.es` domain, references to `S.L.`/`SA`/`autónomo`/`Hacienda`/`AEAT`, seller-side NIF/CIF in invoice templates or seed data, Spanish UI/email copy, the user mentioned Spain), Verifactu (RD 1007/2023) likely applies regardless of where the customers live. In that case, look for **explicit evidence** of compliance in the codebase: integration with a Verifactu-certified provider (BeeL, Holded, FacturaDirecta, Quaderno, etc.), a direct AEAT sender, persisted sequential invoice numbering, or the Verifactu hash chain on emitted invoices. If you cannot see that evidence, emit a top-level `critical` finding titled **"Verifactu compliance not visible in the codebase"**. Phrase it as "compliance not detected, verify or wire up" — not as a guaranteed violation. The auditor cannot confirm the seller's tax situation; it can only say what the code shows. See [report-template.md](report-template.md) for the required body and fix wording.
 
 ---
 
@@ -107,7 +109,7 @@ Be strict. Most Stripe bugs are silent until they aren't.
 
 | Severity   | Use for                                                                                                  |
 |------------|----------------------------------------------------------------------------------------------------------|
-| `critical` | Webhook without signature verification. Secret key in client bundle / committed to git. Charges trusting client-supplied amounts. |
+| `critical` | Webhook without signature verification. Secret key in client bundle / committed to git. Charges trusting client-supplied amounts. **Spanish-business signals present in the codebase but no visible Verifactu-compliance integration (RD 1007/2023).** |
 | `high`     | Missing idempotency key on a write. No event-id deduplication on webhook handlers. SCA / `requires_action` not handled. Hardcoded Stripe API version >18 months old. |
 | `medium`   | Old (but live) API version <18 months. Proration not explicit on subscription updates. No handling of `invoice.payment_failed`. Logging full request/response objects. |
 | `low`      | Using `Charges` API instead of `PaymentIntents` for new code. Missing `expand` causing extra round-trips. |
