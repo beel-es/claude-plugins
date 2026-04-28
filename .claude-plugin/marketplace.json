@@ -19,6 +19,18 @@
       },
       "homepage": "https://docs.beel.es/docs/claude-code",
       "repository": "https://github.com/beel-es/claude-plugins"
+    },
+    {
+      "name": "stripe",
+      "source": "./plugins/stripe",
+      "description": "Audits a Stripe integration for security issues and antipatterns: missing webhook signature verification, missing idempotency keys, outdated API versions, broken subscription/proration logic, leaked or over-scoped keys. Read-only. Produces a structured report.",
+      "version": "0.1.0",
+      "author": {
+        "name": "BeeL",
+        "email": "hola@beel.es"
+      },
+      "homepage": "https://beel.es",
+      "repository": "https://github.com/beel-es/claude-plugins"
     }
   ]
 }
