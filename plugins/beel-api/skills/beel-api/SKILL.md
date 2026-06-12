@@ -56,6 +56,7 @@ For detailed recipes and patterns, load these files when needed:
 - **[recipes/invoice-flow.md](recipes/invoice-flow.md)** — End-to-end invoice lifecycle: create → issue → send → pay
 - **[recipes/fiscal-context.md](recipes/fiscal-context.md)** — Spanish tax system concepts for non-Spanish developers
 - **[recipes/debugging.md](recipes/debugging.md)** — Common errors, causes, and solutions
+- **[recipes/cli.md](recipes/cli.md)** — `npx @beel_es/cli`: run real API calls (sandbox by default) to verify flows, inspect data, and debug — built for agent use
 
 ## 🛠 Companion Skills
 

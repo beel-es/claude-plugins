@@ -18,7 +18,7 @@ Each check lists what to look for and the pass criteria. Severities are defaults
 - [ ] **`Idempotency-Key` on every POST and PUT** (HIGH)
   Every raw POST/PUT to `app.beel.es` sends the header. SDK calls pass automatically (the SDK injects it) — mark as pass via SDK.
 - [ ] **Current header names, not legacy ones** (HIGH)
-  The documented headers are `Authorization: Bearer <key>` and `Idempotency-Key`. Code sending legacy `X-API-Key` or `X-Idempotency-Key` may be silently unauthenticated or silently non-idempotent if the server no longer honors them — verify the current names against the live auth and idempotency docs before reporting, and recommend a sandbox test if behavior is ambiguous.
+  The documented headers are `Authorization: Bearer <key>` and `Idempotency-Key`. Code sending legacy `X-API-Key` or `X-Idempotency-Key` may be silently unauthenticated or silently non-idempotent if the server no longer honors them — verify the current names against the live auth and idempotency docs before reporting. If behavior is ambiguous and a sandbox key is available, test directly with the BeeL CLI (`npx @beel_es/cli request ...` — see the beel-api skill's `recipes/cli.md`).
 - [ ] **Key generated once per logical operation, reused across retries** (HIGH)
   The most common subtle bug: `uuid()` called *inside* the retry loop or inside the request helper for each attempt. The key must be created before the loop and reused; otherwise retries create duplicates (duplicate invoices = real money).
 - [ ] **Key is deterministic where it should be** (MEDIUM)

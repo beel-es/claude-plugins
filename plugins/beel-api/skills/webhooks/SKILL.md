@@ -61,4 +61,11 @@ Subscriptions are managed via the API (discover the `webhooks/*` endpoints via `
 
 ### 6. Verify end-to-end
 
-If a sandbox key is available: create a subscription pointing at the dev endpoint (use a tunnel like `ngrok`/`cloudflared` for localhost), trigger a real event (e.g. issue a test invoice), and confirm: signature passes, duplicate delivery is ignored, handler completes. Check the webhook deliveries endpoint for the delivery record. Otherwise, unit-test the verifier with a synthetic signed payload and document the manual steps.
+If a sandbox key is available: create a subscription pointing at the dev endpoint (use a tunnel like `ngrok`/`cloudflared` for localhost), trigger a real event, and confirm: signature passes, duplicate delivery is ignored, handler completes. The **BeeL CLI** (see `../beel-api/recipes/cli.md`) does all of this without throwaway scripts — discover the exact commands with `npx @beel_es/cli --help`:
+
+```bash
+npx @beel_es/cli webhooks --help                          # subscription commands
+npx @beel_es/cli invoices create --data @test.json        # then issue it to trigger the event
+```
+
+Check the webhook deliveries endpoint for the delivery record. If no key is available, unit-test the verifier with a synthetic signed payload and document the manual steps.

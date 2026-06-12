@@ -58,7 +58,14 @@ For every endpoint you are about to call, fetch its doc page (discover via `http
 
 ### 6. Verify
 
-If a `beel_sk_test_` key is available in the environment, exercise the implemented flow against the sandbox (create a draft, preview, issue if appropriate) and show the result. If no key is available, finish with exact instructions: where to get the key (Settings > API Keys in the BeeL dashboard) and the one command to run the flow.
+If a `beel_sk_test_` key is available in the environment, exercise the flow against the sandbox and show the result. Prefer the **BeeL CLI** for this (see `../beel-api/recipes/cli.md`) — it runs real calls without writing throwaway scripts, defaults to sandbox, and returns JSON + semantic exit codes:
+
+```bash
+npx @beel_es/cli invoices create --data @test-invoice.json
+npx @beel_es/cli invoices get <id>
+```
+
+Use it to confirm the data your integration created looks right. If no key is available, finish with exact instructions: where to get the key (Settings > API Keys in the BeeL dashboard) and the one command to run the flow.
 
 ## Quality bar
 

@@ -21,7 +21,7 @@ A docs-first toolkit for building and maintaining BeeL integrations. It keeps on
 
 | Skill | What it does |
 |-------|--------------|
-| `/beel-api:beel-api` | Integration guide: golden rules, auth, doc lookup strategy, plus recipes (typed client / official SDK, webhook handler, invoice flow, fiscal context, debugging) |
+| `/beel-api:beel-api` | Integration guide: golden rules, auth, doc lookup strategy, plus recipes (typed client / official SDK, webhook handler, invoice flow, fiscal context, debugging, [`@beel_es/cli`](https://github.com/beel-es/beel-cli) for live sandbox verification) |
 | `/beel-api:implement` | Guided integration: detects your stack (official `@beel_es/sdk` for Node/TS, codegen for Python, raw HTTP otherwise) and implements the flows you need |
 | `/beel-api:audit` | Audits your integration code against the BeeL rules — idempotency, key security, error handling, rate limits, webhook verification, invoice lifecycle — and reports findings with severity and fixes |
 | `/beel-api:webhooks` | Builds a correct webhook receiver: HMAC-SHA256 signature verification, raw-body handling, deduplication, retry-aware processing |
