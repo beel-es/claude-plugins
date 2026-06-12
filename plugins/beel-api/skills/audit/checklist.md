@@ -73,7 +73,7 @@ Each check lists what to look for and the pass criteria. Severities are defaults
 ## 7. Pagination & Data Completeness
 
 - [ ] **All pages consumed** (MEDIUM)
-  List calls used for sync/export iterate to `meta.total_pages`. A bare list call processed once is a partial-data bug.
+  List calls used for sync/export iterate to `pagination.total_pages`. A bare list call processed once is a partial-data bug.
 - [ ] **Filters pushed to the API** (LOW)
   Filtering client-side over full listings where a documented query filter exists.
 

@@ -52,7 +52,7 @@ For every endpoint you are about to call, fetch its doc page (discover via `http
 - `Authorization: Bearer <key>` auth; `Idempotency-Key` on every POST/PUT (SDK does this automatically) — generated once per logical operation, reused on retry
 - Parse the `{success, data, error}` envelope; surface `error.code` and `error.details`
 - Handle 429 with `Retry-After` + backoff (SDK does this automatically); don't retry other 4xx
-- Paginate to `meta.total_pages` on list endpoints
+- Paginate to `pagination.total_pages` on list endpoints
 - Respect the invoice lifecycle: validate before issuing (draft PDF preview exists for this); corrective invoices for anything already issued
 - Prefer bulk endpoints when the flow processes many resources
 
