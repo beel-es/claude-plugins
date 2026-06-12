@@ -47,11 +47,22 @@ app.post('/webhooks/beel', express.raw({ type: 'application/json' }), (req, res)
 function verifySignature(payload: Buffer, header: string, secret: string): boolean {
   // BeeL-Signature format: t=timestamp,v1=hmac
   const parts = Object.fromEntries(header.split(',').map(p => p.split('=')));
+  if (!parts.t || !parts.v1) return false;
+
+  // Reject stale timestamps (replay protection) — verify the exact window in the live docs
+  const now = Math.floor(Date.now() / 1000);
+  if (Math.abs(now - parseInt(parts.t, 10)) > 300) return false;
+
   const expected = crypto
     .createHmac('sha256', secret)
     .update(`${parts.t}.${payload.toString()}`)
     .digest('hex');
-  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(parts.v1));
+
+  // timingSafeEqual throws on length mismatch — guard first
+  const expectedBuf = Buffer.from(expected);
+  const receivedBuf = Buffer.from(parts.v1);
+  if (expectedBuf.length !== receivedBuf.length) return false;
+  return crypto.timingSafeEqual(expectedBuf, receivedBuf);
 }
 
 async function handleEvent(event: any) {
