@@ -12,7 +12,7 @@
       "name": "beel-api",
       "source": "./plugins/beel-api",
       "description": "BeeL invoicing API toolkit: docs-first integration guide plus skills to implement, audit, upgrade and webhook-enable a BeeL integration. Activates automatically when working with the BeeL API.",
-      "version": "2.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "BeeL",
         "email": "hola@beel.es"
