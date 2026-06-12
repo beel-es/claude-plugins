@@ -51,8 +51,18 @@ Base URL: **always** `https://app.beel.es/api/v1` — the key determines the env
 
 For detailed recipes and patterns, load these files when needed:
 
-- **[recipes/typed-client.md](recipes/typed-client.md)** — Generate a fully-typed API client from the OpenAPI spec (TypeScript, Python)
+- **[recipes/typed-client.md](recipes/typed-client.md)** — Official SDK (`@beel_es/sdk`) or a generated typed client from the OpenAPI spec (TypeScript, Python)
 - **[recipes/webhook-handler.md](recipes/webhook-handler.md)** — Complete webhook receiver with signature verification and deduplication
 - **[recipes/invoice-flow.md](recipes/invoice-flow.md)** — End-to-end invoice lifecycle: create → issue → send → pay
 - **[recipes/fiscal-context.md](recipes/fiscal-context.md)** — Spanish tax system concepts for non-Spanish developers
 - **[recipes/debugging.md](recipes/debugging.md)** — Common errors, causes, and solutions
+- **[recipes/cli.md](recipes/cli.md)** — `npx @beel_es/cli`: run real API calls (sandbox by default) to verify flows, inspect data, and debug — built for agent use
+
+## 🛠 Companion Skills
+
+For task-shaped work, this plugin ships dedicated skills:
+
+- `/beel-api:implement` — guided implementation of a new BeeL integration
+- `/beel-api:audit` — audit existing integration code against these rules
+- `/beel-api:webhooks` — build a correct webhook receiver end to end
+- `/beel-api:upgrade` — check an integration against the live API for drift
