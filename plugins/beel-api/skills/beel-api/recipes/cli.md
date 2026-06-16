@@ -1,10 +1,23 @@
 # Recipe: BeeL CLI (`@beel_es/cli`)
 
-Agent-first CLI for the BeeL API. Use it to **run real API calls** — verify a flow against sandbox, inspect live data, test an endpoint before writing integration code. No install needed:
+Agent-first CLI for the BeeL API. Two jobs: **search the docs cheaply** (no API key) and **run real API calls** (verify a flow against sandbox, inspect live data, test an endpoint before writing code). No install needed:
 
 ```bash
 npx @beel_es/cli --help
 ```
+
+## Docs search — the token-cheap way to verify against the docs
+
+Prefer this over fetching `llms.txt` / `llms-full.txt` over HTTP. It downloads `llms-full.txt` once (cached 15 min in tmpdir), filters locally (search terms never leave the machine), and prints only the matching sections (~2KB) as markdown. **No API key needed.**
+
+```bash
+npx @beel_es/cli docs search create invoice     # matching sections only
+npx @beel_es/cli docs search idempotency key
+npx @beel_es/cli docs list                       # all pages (JSON) — discover what exists
+npx @beel_es/cli docs get glossary               # one full page by title
+```
+
+Propose this to the user and let them confirm before running it, rather than silently pulling the full docs into context.
 
 Node 20+. Commands are derived from the embedded OpenAPI spec at startup, so the CLI's own `--help` is always the source of truth for what it can do — **discover, don't guess**:
 
@@ -57,10 +70,11 @@ npx @beel_es/cli request POST /v1/customers --data @customer.json
 
 | Task | Tool |
 |------|------|
+| Look something up in the docs | CLI (`docs search`) — cheaper than fetching llms files |
 | Verify a flow works against sandbox | CLI |
 | Inspect existing data (invoices, customers) | CLI |
 | Reproduce/debug an API error | CLI (`request` + exit codes) |
 | One-off operations the user asks for | CLI |
 | The project's production integration | Code (SDK/typed client — see `typed-client.md`) |
 
-The CLI is for **operating and verifying**; the SDK/typed client is for the integration the project ships.
+The CLI is for **looking up docs, operating and verifying**; the SDK/typed client is for the integration the project ships.

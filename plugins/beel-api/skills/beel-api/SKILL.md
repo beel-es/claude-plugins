@@ -13,30 +13,43 @@ BeeL is a SaaS invoicing platform for Spanish autónomos with full VeriFactu com
 
 ## ⚠️ Golden Rules
 
-1. **NEVER invent endpoints, fields, or package names.** Always verify against the live docs first. Use `curl https://docs.beel.es/llms.txt` to find the relevant page, then fetch that page to check exact endpoints and fields.
+1. **NEVER invent endpoints, fields, or package names.** Always verify against the live docs first — see "How to Look Up Documentation" below for the token-efficient way to do it.
 2. **NEVER hardcode API keys.** Always use environment variables (`process.env.BEEL_API_KEY`).
 3. **There is NO separate test URL.** Base URL is always `https://app.beel.es/api/v1`. The key prefix determines the environment: `beel_sk_test_*` = sandbox, `beel_sk_live_*` = production.
 4. **ALWAYS include `Idempotency-Key` header** on POST and PUT requests.
 5. **Issued invoices are immutable.** To correct → corrective invoice. To cancel → void it.
-6. **When in doubt, fetch the docs** (see below).
+6. **When in doubt, look up the docs** (see below).
 
 ## 📚 How to Look Up Documentation
 
-Three sources, from lightest to heaviest:
+**Preferred: the BeeL CLI `docs search` — and propose it to the user first.**
+
+When you need to check the docs, don't silently fetch the whole `llms.txt` / `llms-full.txt` (that burns tokens and pulls in ~600KB you don't need). Instead, **suggest running the CLI and wait for the user's go-ahead**, e.g.:
+
+> "I need to confirm the exact fields for creating an invoice. Want me to run `npx @beel_es/cli docs search create invoice`? It searches the docs locally and returns only the matching ~2KB section — no API key needed."
+
+Once confirmed, run it:
 
 ```bash
-# 1. Index (~31KB) — search for what you need, pipe through grep to save tokens
+npx @beel_es/cli docs search create invoice    # only the matching sections (markdown, ~2KB)
+npx @beel_es/cli docs search idempotency key
+npx @beel_es/cli docs list                      # all pages (JSON), to discover what exists
+npx @beel_es/cli docs get glossary              # one full page by title
+```
+
+`docs search` downloads `llms-full.txt` once (cached 15 min in tmpdir) and filters locally, so search terms never leave the machine and you only pay for the slice you need. See [recipes/cli.md](recipes/cli.md).
+
+**Fallback (no Node / CLI unavailable):** fetch over HTTP, lightest first.
+
+```bash
+# Index (~31KB) — grep for the page you need
 curl -s https://docs.beel.es/llms.txt | grep -i "invoice\|customer"
-
-# 2. Specific page — fetch only the page you need (found via index)
+# Specific page (found via the index)
 curl -s https://docs.beel.es/invoices/createInvoice.mdx
-
-# 3. Full docs (~641KB) or OpenAPI spec (~330KB) — when you need broad context
+# Full docs (~641KB) or OpenAPI spec (~330KB) — only when you need broad context
 curl -s https://docs.beel.es/llms-full.txt
 curl -s https://docs.beel.es/api/openapi
 ```
-
-**Tip:** For targeted lookups, prefer `curl | grep` over downloading full files. Use full downloads when you need to explore what's available or understand the overall API surface.
 
 ## 🔐 Authentication
 
