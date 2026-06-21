@@ -21,14 +21,15 @@
 | 3 | **Huella/hash SHA-256** + **encadenamiento** con el registro anterior | art. 12 / Orden art. 13 | | |
 | 4 | **Registro de eventos** (solo modo no-Veri*Factu) | Orden art. 9 | | |
 | 5 | **Firma electrónica** de cada registro (solo modo no-Veri*Factu) | art. 12 / 16.3 | | |
-| 6 | **Código QR** en todas las facturas | Disp. final 1ª / Orden art. 20-21 | | |
-| 7 | **Leyenda "VERI*FACTU"** (solo si el sistema remite a la AEAT) | Disp. final 1ª | | |
+| 6 | **Código QR** en todas las facturas | Disp. final 1ª RD 1007/2023 (art. 6.5 RD 1619/2012) | | |
+| 7 | **Leyenda "VERI*FACTU"** (solo si el sistema remite a la AEAT) | Disp. final 1ª RD 1007/2023 (art. 6.5 RD 1619/2012) | | |
 | 8 | **Declaración responsable** del fabricante disponible | art. 13 | | |
 | 9 | Modalidad declarada: ☐ Veri*Factu (remite) ☐ No Veri*Factu (local) | art. 15-16 | | |
 
 ## C. Lo que te corresponde como usuario (aunque uses un proveedor conforme)
 - [ ] **Usar efectivamente** un sistema conforme (no uno casero no adaptado).
-- [ ] **No manipular** el sistema ni los registros (sanción usuario: **50.000 €/ejercicio**, art. 201 bis).
+- [ ] **No manipular** el sistema ni los registros, y usar uno **certificado/conforme** (sanción al usuario:
+      **50.000 €/ejercicio**, art. 201 bis.2 y .4 LGT).
 - [ ] **Conservar** los registros y poder **exhibirlos** a la AEAT a requerimiento.
 - [ ] Guardar la **declaración responsable** del proveedor del software.
 

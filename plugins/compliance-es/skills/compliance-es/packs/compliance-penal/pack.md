@@ -47,13 +47,16 @@ los 6 requisitos para acceder a la eximente.
 | Corrupción en los negocios (corrupción privada) | 286 bis-286 ter | art. 288 |
 | Cohecho (a funcionario) | 419-427 | art. 427 bis |
 | Propiedad intelectual e industrial | 270-277 | art. 288 |
-> Los números de imputación se reproducen del Código Penal consolidado; verificar el literal vigente en
-> BOE-A-1995-25444 antes de citarlos en un documento (`[verificar contra fuente oficial]`).
+> Artículos de imputación **verificados** contra el consolidado del BOE-A-1995-25444 (últ. mod. 9-abr-2026).
+> Matices: el **197 quinquies** solo cubre los arts. 197/197 bis/197 ter (no 197 quater ni 198); el **288**
+> canaliza tanto la propiedad intelectual/industrial como la corrupción en los negocios (286 bis-286 quater),
+> con dos escalas de multa.
 
 ## Canal de denuncias — Ley 2/2023 (Sistema interno de información)
 - **Obligatorio** desde **50 trabajadores** (y, sin umbral, en finanzas, blanqueo, transporte y medio
   ambiente; y partidos/sindicatos/fundaciones con fondos públicos). Plazos de implantación **ya vencidos**
-  (250+ y sector público: 13-jun-2023; 50-249: 1-dic-2023).
+  (sector público y privadas de 250+ trabajadores: 13-jun-2023; privadas de ≤249 y municipios <10.000 hab.:
+  1-dic-2023).
 - Requisitos: **Responsable del Sistema** independiente; **confidencialidad**; el canal **debe permitir
   comunicaciones anónimas**; **acuse de recibo en 7 días naturales**; **respuesta máx. 3 meses** (prorrogable
   otros 3); **prohibición de represalias**.

@@ -42,7 +42,7 @@ que hace genérico al motor: para agregar un marco nuevo, se le suman columnas a
 | `ctrl-interno` | Control interno: segregación de funciones / autorizaciones | — | Sí (art. 31 bis.5.1ª-3ª) | autorización de facturas/abonos | ISO A.5.x / SOC2 CC | usuario + código |
 | `fact-integridad` | Integridad/inalterabilidad de registros de facturación | — | — | Sí (LGT art. 29.2.j) | — | código (facturación) |
 | `fact-encadenamiento` | Encadenamiento + huella (hash) de registros | — | — | Sí (RD 1007/2023) | — | código (facturación) |
-| `fact-qr` | QR + mención "Veri*Factu" en la factura | — | — | Sí (Orden HAC/1177/2024) | — | código (PDF/plantilla factura) |
+| `fact-qr` | QR + mención "Veri*Factu" en la factura | — | — | Sí (Disp. final 1ª RD 1007/2023 → art. 6.5 RD 1619/2012) | — | código (PDF/plantilla factura) |
 | `fact-remision` | Remisión a la AEAT o conservación conforme (Veri*Factu vs no-Veri*Factu) | — | — | Sí (RD 1007/2023) | — | código (integración AEAT/proveedor) |
 | `sec-monitoring` | Monitoreo y alertas (audit log, secretos, errores) | detección de brechas | detección de irregularidades | alerta sobre el registro de eventos | SOC2 CC7 | infra + usuario |
 

@@ -38,8 +38,9 @@
   entraña riesgo o incluye categorías especiales → en un SaaS, en la práctica, **hay que llevarlo**.
 - **DPO (arts. 37-39 + LOPDGDD art. 34):** obligatorio en los 3 supuestos del art. 37.1 (autoridad pública;
   observación habitual y sistemática a gran escala; categorías especiales/penales a gran escala) y en la
-  lista del art. 34 LOPDGDD (p. ej. prestadores de servicios de la sociedad de la información que elaboren
-  **perfiles a gran escala**). Si no, basta el responsable designado.
+  lista del art. 34 LOPDGDD (p. ej. art. 34.1.d) prestadores de servicios de la sociedad de la información que
+  elaboren **perfiles a gran escala**; art. 34.1.l) centros sanitarios obligados a conservar historias
+  clínicas). Si no, basta el responsable designado.
 - **EIPD (art. 35):** obligatoria ante probable **alto riesgo** (perfilado con efectos significativos,
   categorías especiales a gran escala, observación sistemática a gran escala; + listas de la AEPD).
 - **Transferencias internacionales (arts. 44-49):** lícitas con **decisión de adecuación** (art. 45; incluye

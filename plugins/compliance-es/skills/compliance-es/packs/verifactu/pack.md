@@ -35,7 +35,10 @@ resolución. Canarias (IGIC), Ceuta/Melilla (IPSI) y el comercio online **sí** 
 - **Registro de eventos** (Orden art. 9): inicio/fin de modo no-Veri*Factu, detección de anomalías,
   restauración de backups, exportaciones, y un **resumen cada 6 horas** de operación.
 - **Código QR** en **todas** las facturas (norma ISO/IEC 18004, 30×30–40×40 mm) y **leyenda "VERI*FACTU"** /
-  "Factura verificable en la sede electrónica de la AEAT" **solo** cuando el sistema remite a la AEAT.
+  "Factura verificable en la sede electrónica de la AEAT" **solo** cuando el sistema remite a la AEAT. Esta
+  obligación no está en el cuerpo del RD 1007/2023 sino en su **Disposición Final 1ª**, que añade el
+  **art. 6.5 y 7.5 al RD 1619/2012** (Reglamento de facturación); la especificación técnica del QR está en la
+  Orden HAC/1177/2024.
 - **Declaración responsable** del **productor** del software (art. 13): el fabricante certifica por escrito,
   visible en el propio sistema y por versión, que cumple el RD 1007/2023.
 
@@ -50,12 +53,15 @@ resolución. Canarias (IGIC), Ceuta/Melilla (IPSI) y el comercio online **sí** 
 > Veri*Factu es **menos carga técnica** (sin firma de cada registro) y da presunción reforzada de
 > cumplimiento. No-Veri*Factu es **más estricto** (firma + log + custodia local).
 
-## Régimen sancionador (art. 201 bis LGT — cuantías fijas)
-- **Usuario**: tenencia/uso de un sistema **no conforme o manipulado** → **50.000 €** por ejercicio.
-- **Fabricante**: producir/comercializar sistemas no conformes → **150.000 €** por ejercicio y por tipo de
-  sistema; **1.000 €** por cada sistema vendido sin la certificación/declaración debida.
-> `[verificar]` la numeración interna de los apartados del art. 201 bis contra el BOE; las cuantías están
-> confirmadas.
+## Régimen sancionador (art. 201 bis LGT — cuantías fijas, todas en el apartado 4)
+- **Usuario** (conducta del **art. 201 bis.2**): **50.000 €** por ejercicio. Ojo: la sanción al usuario solo
+  procede cuando el sistema **no está certificado debiendo estarlo** o se ha **alterado/modificado un
+  dispositivo certificado** — no por un incumplimiento genérico.
+- **Fabricante** (conducta del **art. 201 bis.1**): **150.000 €** por ejercicio y por tipo de sistema;
+  **1.000 €** por cada sistema comercializado sin el certificado/declaración cuando se requiera
+  (**art. 201 bis.1.f**).
+> Las cuantías se imponen por el **art. 201 bis.4**; los apartados 1 y 2 tipifican las conductas y el
+> apartado 3 las califica como **graves**. Verificado contra el consolidado del BOE-A-2003-23186.
 
 ## Lo más importante para un SaaS / autónomo (cómo cumplir barato)
 **No reimplementes Veri*Factu a mano.** Lo correcto y económico es **facturar a través de un proveedor que
