@@ -107,6 +107,12 @@ No reemplaza a un abogado: te deja listo para cumplir y te dice qué falta. Ver
 Esto no es asesoramiento jurídico: un software no asume tu responsabilidad legal, la decisión final es tuya.
 Ver [`NOTICE.md`](NOTICE.md).
 
+## Créditos
+
+Inspirado por [`compliance-cl`](https://github.com/Lelemon-studio/compliance-cl) (Lelemon Studio), que aplica
+la misma idea —motor de cumplimiento multi-marco en Claude Code— al marco legal chileno. `compliance-es`
+adapta el enfoque a la normativa española y de la UE.
+
 ## Licencia
 
 [MIT](../../LICENSE) © 2026 Honey Solutions S.L. (BeeL.)
