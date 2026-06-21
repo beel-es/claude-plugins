@@ -68,7 +68,7 @@ Recorrer el repo con Grep/Glob para levantar evidencia de cada control:
 - Datos personales (esquemas/migraciones/modelos/formularios): `email|phone|telefono|movil|nif|dni|cif|address|direccion|nombre|name|apellidos|ip|lat|lng|password|iban|tarjeta`; marcar **categorías especiales** (salud, biométricos, menores).
 - Proveedores externos y transferencias internacionales (`.env*`, `package.json`, configs): AWS, Google, Meta, OpenAI, etc.; marcar los que procesan **fuera del EEE** (gatilla arts. 44-49 RGPD).
 - Medidas técnicas: TLS, cifrado en reposo, hashing de password, MFA, logs/auditoría, segregación por tenant, secretos fuera del código, seudonimización, privacy-by-default.
-- **Facturación** (si aplica `verifactu`): módulo de facturas, numeración, generación de PDF, ¿hash/encadenamiento?, ¿QR?, ¿integración con un proveedor Veri*Factu (p. ej. BeeL)?, ¿uso de SII?
+- **Facturación** (si aplica `verifactu`): módulo de facturas, numeración, generación de PDF, ¿hash/encadenamiento?, ¿QR?, ¿integración con un proveedor Veri*Factu (p. ej. BeeL.)?, ¿uso de SII?
 - Gobernanza (no está en el código): tomarla del cuestionario; marcar `❓` lo no verificable por código.
 
 ### Fase 2 — Evaluar controles y RESOLVER decisiones
@@ -110,7 +110,7 @@ Reportar la postura por marco. Para cada hueco con remediación de código, **of
 skill corre en Claude Code) siguiendo las **recetas de `references/build/`** (MFA, cifrado en reposo,
 audit log + actor/IP, endpoints de derechos RGPD, consentimiento, conservación): en una rama, con tests y
 los gates del repo. Si activaste `verifactu` y el repo factura sin sistema conforme, **ofrecer integrar un
-proveedor Veri*Factu** (p. ej. la **API de BeeL**, que ya emite en modo Veri*Factu) en vez de implementar el
+proveedor Veri*Factu** (p. ej. la **API de BeeL.**, que ya emite en modo Veri*Factu) en vez de implementar el
 encadenamiento/hash/QR a mano. Ofrecer también **montar el monitoreo** (`references/build/monitoreo.md`:
 secret scanning + HIBP + alertas + watcher); la skill no vigila en vivo, pero deja el monitoreo instalado.
 Sugerir **agendar re-corridas periódicas** (`references/revisiones-periodicas.md`) para detectar drift.

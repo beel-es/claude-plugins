@@ -21,7 +21,7 @@ que no se tratan.]
 
 ## 4. Con quién compartimos los datos
 Usamos proveedores que actúan como **encargados del tratamiento** (art. 28): [LISTA — ej. AWS, Stripe,
-Resend, BeeL]. Algunos pueden tratar datos **fuera del Espacio Económico Europeo**; esas transferencias se
+Resend, BeeL.]. Algunos pueden tratar datos **fuera del Espacio Económico Europeo**; esas transferencias se
 amparan en una **decisión de adecuación** (p. ej. EU-US Data Privacy Framework) o en las **Cláusulas
 Contractuales Tipo** de la Comisión Europea (art. 46). No vendemos datos personales.
 

@@ -44,7 +44,7 @@ Corres `/compliance-es` sobre tu repo y:
    una brecha, una inspección de la AEPD o de Hacienda.
 7. **Construye las remediaciones**: como corre en Claude Code, implementa los arreglos (MFA, cifrado, audit
    log, endpoints de derechos, consentimiento) y, para facturación, **integra un proveedor Veri*Factu** (la
-   API de BeeL) en vez de reimplementar hash/QR/encadenamiento a mano. Ver `skills/compliance-es/references/build/`.
+   API de BeeL.) en vez de reimplementar hash/QR/encadenamiento a mano. Ver `skills/compliance-es/references/build/`.
 
 ## Marcos cubiertos
 
@@ -53,7 +53,6 @@ Corres `/compliance-es` sobre tu repo y:
 | `rgpd-lopdgdd` | RGPD + LOPDGDD | **vigente** | consentimiento, derechos, RAT, DPA, seguridad, brechas (72 h), transferencias, EIPD |
 | `compliance-penal` | Art. 31 bis CP + Ley 2/2023 | **vigente** | modelo de organización, código ético, matriz de riesgos penales, canal de denuncias |
 | `verifactu` | RD 1007/2023 (Veri*Factu) | **Sociedades 1-ene-2027 · resto 1-jul-2027** | conformidad del SIF, declaración responsable, conservación de registros |
-| _próximos_ | ENS · ISO 27001 · SOC 2 | extensible | agregar un marco es agregar un `pack` |
 
 ## Instalación
 
@@ -110,4 +109,4 @@ Ver [`NOTICE.md`](NOTICE.md).
 
 ## Licencia
 
-[MIT](../../LICENSE) © 2026 BeeL
+[MIT](../../LICENSE) © 2026 Honey Solutions S.L. (BeeL.)

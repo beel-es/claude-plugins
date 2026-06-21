@@ -10,7 +10,7 @@ que hace genérico al motor: para agregar un marco nuevo, se le suman columnas a
 
 ## Crosswalk (control → marcos)
 
-| id | Control | RGPD + LOPDGDD (Datos) | Compliance penal (31 bis) | Veri*Factu (Facturación) | Futuro (ISO 27001 / SOC 2 / ENS) | Fuente de evidencia |
+| id | Control | RGPD + LOPDGDD (Datos) | Compliance penal (31 bis) | Veri*Factu (Facturación) | Ref. cruzada (ISO 27001 / SOC 2 / ENS) | Fuente de evidencia |
 |----|---------|------------------------|---------------------------|--------------------------|----------------------------------|---------------------|
 | `gov-responsable` | Responsable/órgano designado | DPO si aplica (art. 37) | Órgano de cumplimiento (art. 31 bis.2.2ª) | — | ISO A.5.3 / SOC2 CC1 | usuario |
 | `gov-registro` | Registro/inventario formal | RAT (art. 30) | Matriz de riesgos penales | Registro de facturación | ISO A.5.9 | usuario + código |
@@ -53,6 +53,6 @@ que hace genérico al motor: para agregar un marco nuevo, se le suman columnas a
 4. Guarda el resultado por control en `state.json` (ver `output-model.md`).
 
 > Nota Veri*Factu: si la empresa factura a través de un **proveedor conforme** (un SaaS que ya emite en
-> modo Veri*Factu, p. ej. la API de BeeL), los controles `fact-*` se consideran ✅ "cubiertos por el
+> modo Veri*Factu, p. ej. la API de BeeL.), los controles `fact-*` se consideran ✅ "cubiertos por el
 > proveedor" — la evidencia es la integración + la declaración responsable del fabricante. No hay que
 > reimplementar el hash/QR/encadenamiento a mano.

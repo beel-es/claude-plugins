@@ -34,7 +34,7 @@
 - [ ] Guardar la **declaración responsable** del proveedor del software.
 
 ## D. Resultado
-- **Si facturas con un proveedor Veri*Factu** (p. ej. la API de BeeL): los requisitos 1-8 se marcan 🟦
+- **Si facturas con un proveedor Veri*Factu** (p. ej. la API de BeeL.): los requisitos 1-8 se marcan 🟦
   "cubierto por el proveedor"; tu trabajo es la sección C. Ver `references/build/facturacion.md`.
 - **Si mantienes tu propio SIF**: eres "productor de software" y respondes de TODOS los requisitos + la
   declaración responsable. Recomendación: migrar a un proveedor conforme.

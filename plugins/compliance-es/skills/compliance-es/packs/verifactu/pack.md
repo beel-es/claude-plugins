@@ -65,7 +65,7 @@ resolución. Canarias (IGIC), Ceuta/Melilla (IPSI) y el comercio online **sí** 
 
 ## Lo más importante para un SaaS / autónomo (cómo cumplir barato)
 **No reimplementes Veri*Factu a mano.** Lo correcto y económico es **facturar a través de un proveedor que
-ya emita en modo Veri*Factu** (un SaaS de facturación conforme, p. ej. la **API de BeeL**). Eso traslada al
+ya emita en modo Veri*Factu** (un SaaS de facturación conforme, p. ej. la **API de BeeL.**). Eso traslada al
 proveedor el riesgo de conformidad del **software** (sanciones de 150.000 €/1.000 €). **Pero al usuario le
 sigue correspondiendo:** (1) **usar efectivamente** un sistema conforme, (2) **no manipularlo** (la sanción
 de 50.000 €/ejercicio es por uso de sistema no conforme o alterado) y (3) **conservar y exhibir** los

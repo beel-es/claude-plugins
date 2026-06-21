@@ -8,7 +8,6 @@ Official [Claude Code](https://claude.ai/claude-code) plugins for the [BeeL](htt
 - [Plugins](#plugins)
   - [`beel-api`](#beel-api) — BeeL invoicing API integration guide
   - [`stripe`](#stripe) — read-only Stripe integration auditor
-  - [`compliance-es`](#compliance-es) — Spanish legal compliance generator (RGPD · 31 bis CP · Veri*Factu)
     - [What gets audited](#what-gets-audited)
       - [Webhooks](#webhooks)
       - [Payments](#payments)
@@ -16,6 +15,10 @@ Official [Claude Code](https://claude.ai/claude-code) plugins for the [BeeL](htt
       - [API version &amp; secrets](#api-version--secrets)
     - [Output](#output)
     - [Hard rules](#hard-rules)
+  - [`compliance-es`](#compliance-es) — Spanish legal compliance generator (RGPD · 31 bis CP · Veri*Factu)
+    - [Frameworks covered](#frameworks-covered)
+    - [What it produces](#what-it-produces)
+    - [Hard rules](#hard-rules-1)
 - [Auto-enable for your project](#auto-enable-for-your-project)
 - [License](#license)
 

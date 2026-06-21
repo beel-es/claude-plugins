@@ -9,7 +9,7 @@
 
 | # | Actividad / finalidad | Rol (responsable / encargado) | Categorías de datos | Categorías de interesados | Base de licitud (art. 6) | Encargados / proveedores | Transferencia internacional (país + mecanismo art. 46) | Plazo de conservación | Medidas de seguridad (art. 32) |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | [ej. Gestión de clientes y facturación] | [responsable] | [nombre, NIF, email, dirección, datos de factura] | [clientes] | [ejecución de contrato / obligación legal] | [Stripe, AWS, BeeL] | [EE. UU. — EU-US DPF / Cláusulas Tipo] | [datos fiscales: 4-6 años] | [TLS, MFA, cifrado, logs] |
+| 1 | [ej. Gestión de clientes y facturación] | [responsable] | [nombre, NIF, email, dirección, datos de factura] | [clientes] | [ejecución de contrato / obligación legal] | [Stripe, AWS, BeeL.] | [EE. UU. — EU-US DPF / Cláusulas Tipo] | [datos fiscales: 4-6 años] | [TLS, MFA, cifrado, logs] |
 | 2 | [ej. Marketing por email] | [responsable] | [nombre, email] | [leads/suscriptores] | [consentimiento] | [Resend, Brevo] | [— / Cláusulas Tipo] | [hasta baja] | [TLS, control de acceso] |
 | 3 | | | | | | | | | |
 

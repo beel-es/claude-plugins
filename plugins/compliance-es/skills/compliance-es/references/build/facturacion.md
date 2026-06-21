@@ -6,8 +6,8 @@
 > software debe **declarar responsablemente**. Para un SaaS o un autónomo, lo correcto y barato es
 > **facturar a través de un proveedor que ya emita en modo Veri*Factu**.
 
-## Opción recomendada: integrar un proveedor conforme (p. ej. BeeL)
-**BeeL** es una API de facturación española que ya emite en modo Veri*Factu (huella, encadenamiento, QR y
+## Opción recomendada: integrar un proveedor conforme (p. ej. BeeL.)
+**BeeL.** es una API de facturación española que ya emite en modo Veri*Factu (huella, encadenamiento, QR y
 remisión a la AEAT incluidos). Integrarla cubre `fact-integridad`, `fact-encadenamiento`, `fact-qr` y
 `fact-remision` sin que tú mantengas la criptografía ni sigas los cambios de la Orden técnica.
 

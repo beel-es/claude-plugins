@@ -12,4 +12,4 @@ interpretación requiere criterio profesional. En particular, las **fechas de Ve
 **EU-US Data Privacy Framework** deben re-verificarse en cada uso. Ver
 `skills/compliance-es/references/cuando-acudir-a-abogado.md`.
 
-Distribuido bajo licencia [MIT](../../LICENSE) © 2026 BeeL.
+Distribuido bajo licencia [MIT](../../LICENSE) © 2026 Honey Solutions S.L. (BeeL.).
