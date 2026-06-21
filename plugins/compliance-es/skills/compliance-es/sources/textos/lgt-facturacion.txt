@@ -1,0 +1,97 @@
+# Ley General Tributaria (Ley 58/2003) — facturación (29.2.j) y sanción (201 bis)
+# Fuente oficial: https://www.boe.es/buscar/pdf/2003/BOE-A-2003-23186-consolidado.pdf
+# idBOE: BOE-A-2003-23186 · Descargado: 2026-06-21 · Artículos: 29, 201 bis
+# Extracto literal del consolidado; ante cualquier duda, abrir la URL.
+
+Artículo 29. Obligaciones tributarias formales.
+     1. Son obligaciones tributarias formales las que, sin tener carácter pecuniario, son
+impuestas por la normativa tributaria o aduanera a los obligados tributarios, deudores o no
+del tributo, y cuyo cumplimiento está relacionado con el desarrollo de actuaciones o
+procedimientos tributarios o aduaneros.
+     2. Además de las restantes que puedan legalmente establecerse, los obligados
+tributarios deberán cumplir las siguientes obligaciones:
+    a) La obligación de presentar declaraciones censales por las personas o entidades que
+desarrollen o vayan a desarrollar en territorio español actividades u operaciones
+empresariales y profesionales o satisfagan rendimientos sujetos a retención.
+    b) La obligación de solicitar y utilizar el número de identificación fiscal en sus relaciones
+de naturaleza o con trascendencia tributaria.
+    c) La obligación de presentar declaraciones, autoliquidaciones y comunicaciones.
+    d) La obligación de llevar y conservar libros de contabilidad y registros, así como los
+programas, ficheros y archivos informáticos que les sirvan de soporte y los sistemas de
+codificación utilizados que permitan la interpretación de los datos cuando la obligación se
+cumpla con utilización de sistemas informáticos. Se deberá facilitar la conversión de dichos
+datos a formato legible cuando la lectura o interpretación de los mismos no fuera posible por
+estar encriptados o codificados.
+    En todo caso, los obligados tributarios que deban presentar autoliquidaciones o
+declaraciones por medios telemáticos deberán conservar copia de los programas, ficheros y
+archivos generados que contengan los datos originarios de los que deriven los estados
+contables y las autoliquidaciones o declaraciones presentadas.
+    e) La obligación de expedir y entregar facturas o documentos sustitutivos y conservar las
+facturas, documentos y justificantes que tengan relación con sus obligaciones tributarias.
+    f) La obligación de aportar a la Administración tributaria libros, registros, documentos o
+información que el obligado tributario deba conservar en relación con el cumplimiento de las
+obligaciones tributarias propias o de terceros, así como cualquier dato, informe, antecedente
+y justificante con trascendencia tributaria, a requerimiento de la Administración o en
+declaraciones periódicas. Cuando la información exigida se conserve en soporte informático
+deberá suministrarse en dicho soporte cuando así fuese requerido.
+    g) La obligación de facilitar la práctica de inspecciones y comprobaciones
+administrativas.
+    h) La obligación de entregar un certificado de las retenciones o ingresos a cuenta
+practicados a los obligados tributarios perceptores de las rentas sujetas a retención o ingreso
+a cuenta.
+    i) Las obligaciones de esta naturaleza que establezca la normativa aduanera.
+    j) La obligación, por parte de los productores, comercializadores y usuarios, de que los
+sistemas y programas informáticos o electrónicos que soporten los procesos contables, de
+facturación o de gestión de quienes desarrollen actividades económicas, garanticen la
+integridad, conservación, accesibilidad, legibilidad, trazabilidad e inalterabilidad de los
+registros, sin interpolaciones, omisiones o alteraciones de las que no quede la debida
+anotación en los sistemas mismos. Reglamentariamente se podrán establecer
+especificaciones técnicas que deban reunir dichos sistemas y programas, así como la
+obligación de que los mismos estén debidamente certificados y utilicen formatos estándar
+para su legibilidad.
+    3. En desarrollo de lo dispuesto en este artículo, las disposiciones reglamentarias podrán
+regular las circunstancias relativas al cumplimiento de las obligaciones tributarias formales.
+    En particular, se determinarán los casos en los que la aportación o llevanza de los libros
+registro se deba efectuar de forma periódica y por medios telemáticos.
+
+         Subsección 6.ª Obligaciones tributarias en el marco de la asistencia mutua.
+
+
+
+Artículo 201 bis. Infracción tributaria por fabricación, producción, comercialización y
+tenencia de sistemas informáticos que no cumplan las especificaciones exigidas por la
+normativa aplicable.
+    1. Constituye infracción tributaria la fabricación, producción y comercialización de
+sistemas y programas informáticos o electrónicos que soporten los procesos contables, de
+facturación o de gestión por parte de las personas o entidades que desarrollen actividades
+económicas, cuando concurra cualquiera de las siguientes circunstancias:
+     a) permitan llevar contabilidades distintas en los términos del artículo 200.1.d) de esta
+Ley;
+     b) permitan no reflejar, total o parcialmente, la anotación de transacciones realizadas;
+     c) permitan registrar transacciones distintas a las anotaciones realizadas;
+     d) permitan alterar transacciones ya registradas incumpliendo la normativa aplicable;
+     e) no cumplan con las especificaciones técnicas que garanticen la integridad,
+conservación, accesibilidad, legibilidad, trazabilidad e inalterabilidad de los registros, así
+como su legibilidad por parte de los órganos competentes de la Administración Tributaria, en
+los términos del artículo 29.2.j) de esta Ley;
+     f) no se certifiquen, estando obligado a ello por disposición reglamentaria, los sistemas
+fabricados, producidos o comercializados.
+
+     2. Constituye infracción tributaria la tenencia de los sistemas o programas informáticos o
+electrónicos que no se ajusten a lo establecido en el artículo 29.2.j) de esta Ley, cuando los
+mismos no estén debidamente certificados teniendo que estarlo por disposición
+reglamentaria o cuando se hayan alterado o modificado los dispositivos certificados.
+     La misma persona o entidad que haya sido sancionada conforme al apartado anterior no
+podrá ser sancionada por lo dispuesto en este apartado.
+     3. Las infracciones previstas en este artículo serán graves.
+     4. La infracción señalada en el apartado 1 anterior se sancionará con multa pecuniaria
+fija de 150.000 euros, por cada ejercicio económico en el que se hayan producido ventas y
+por cada tipo distinto de sistema o programa informático o electrónico que sea objeto de la
+infracción. No obstante, las infracciones de la letra f) del apartado 1 de este artículo se
+sancionarán con multa pecuniaria fija de 1.000 euros por cada sistema o programa
+comercializado en el que se produzca la falta del certificado.
+     La infracción señalada en el apartado 2 anterior, se sancionará con multa pecuniaria fija
+de 50.000 euros por cada ejercicio, cuando se trate de la infracción por la tenencia de
+sistemas o programas informáticos o electrónicos que no estén debidamente certificados,
+teniendo que estarlo por disposición reglamentaria, o se hayan alterado o modificado los
+dispositivos certificados.

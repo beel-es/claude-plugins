@@ -4,9 +4,26 @@ Objetivo: que la auditoría sea **reproducible y contrastada contra la norma vig
 Toda afirmación legal de la skill debe poder rastrearse a una de estas fuentes + el artículo. Si algo no se
 puede verificar, se marca `[verificar contra fuente oficial]`.
 
-> Los textos oficiales son documentos extensos y vivos del BOE/EUR-Lex; en vez de adjuntarlos, referenciamos
-> sus **URLs oficiales y consolidadas**. Antes de incrustar un literal en un documento formal, **abrir la URL
-> y copiar el texto exacto vigente**. Verificado en **junio de 2026**.
+> Los consolidados del BOE/EUR-Lex son documentos enormes y vivos. En vez de adjuntar las leyes enteras,
+> guardamos en **`textos/`** los **extractos literales de los artículos que la skill cita** (grepeables y
+> verificables **offline**), y referenciamos las **URLs oficiales** para el resto y para re-verificar online.
+> Descargado/verificado: **2026-06-21**. Reproducible con `python3 descargar-fuentes.py`.
+
+## Corpus local (`textos/`) — extractos literales con SHA-256
+La skill puede grepear estos archivos para contrastar un literal sin conexión. Si cambia la norma,
+re-generar con el script y actualizar los hashes.
+
+| Archivo (`textos/`) | Norma · idBOE | Artículos | SHA-256 (trunc.) |
+|---|---|---|---|
+| `cp-resp-penal-pj.txt` | Código Penal · BOE-A-1995-25444 | 31 bis, 31 ter, 31 quater, 31 quinquies, 197 quinquies, 251 bis, 264 quater, 288, 302, 310 bis, 427 bis | `16eb0e36…` |
+| `lgt-facturacion.txt` | LGT (Ley 58/2003) · BOE-A-2003-23186 | 29 (29.2.j), 201 bis | `9cbfe1d0…` |
+| `lopdgdd.txt` | LOPDGDD (LO 3/2018) · BOE-A-2018-16673 | 7, 32, 34, 72, 73, 74, 78 | `52887f62…` |
+| `ley-2-2023-canal.txt` | Ley 2/2023 · BOE-A-2023-4513 | 7, 9, 10, 65 | `9d606b1a…` |
+| `rd-1007-2023-verifactu.txt` | RD 1007/2023 · BOE-A-2023-24840 | 9, 10, 11, 12, 13, 15, 16 | `df737c28…` |
+
+> El **RGPD** (consolidado de EUR-Lex) y normas más pequeñas (Orden HAC/1177/2024, RD-ley 15/2025, RD
+> 1619/2012, "Crea y Crece") se verifican por **URL** (abajo); no se extraen a `textos/` para no duplicar
+> texto que cambia. Para esos, usar WebFetch sobre la URL oficial.
 
 ## Protección de datos (RGPD + LOPDGDD)
 | Norma | Referencia | URL oficial |
@@ -56,8 +73,11 @@ puede verificar, se marca `[verificar contra fuente oficial]`.
   proviene de la **Disp. final 1ª del RD 1007/2023** (art. 6.5/7.5 del RD 1619/2012), no del cuerpo del RD.
 
 ## Regla de uso para la skill
-1. Antes de afirmar algo legal, búscalo en estas fuentes (texto consolidado del BOE/EUR-Lex).
+1. Antes de afirmar algo legal, **grepea el extracto en `textos/`** (offline) o abre la **URL oficial** con
+   WebFetch; para lo no extraído (RGPD, Orden, RD-ley…), usa la URL.
 2. Cita siempre **norma + artículo + fuente**.
 3. Si no está o no es verificable, dilo: `[verificar contra fuente oficial / abogado]`.
 4. Nunca uses un blog/fuente secundaria como base de una afirmación normativa en el output final.
-5. **Re-verifica las fechas de Veri*Factu y el estado del DPF** en cada corrida: cambian.
+5. **Re-verifica las fechas de Veri*Factu y el estado del DPF** en cada corrida (con WebFetch sobre la sede de
+   la AEAT / EUR-Lex): cambian. Si una norma se actualiza, re-genera el corpus con `python3 descargar-fuentes.py`
+   y actualiza los SHA-256.

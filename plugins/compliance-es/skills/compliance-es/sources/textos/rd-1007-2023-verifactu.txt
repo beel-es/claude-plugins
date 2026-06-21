@@ -1,0 +1,141 @@
+# RD 1007/2023 (Veri*Factu) — extractos
+# Fuente oficial: https://www.boe.es/buscar/pdf/2023/BOE-A-2023-24840-consolidado.pdf
+# idBOE: BOE-A-2023-24840 · Descargado: 2026-06-21 · Artículos: 9, 10, 11, 12, 13, 15, 16
+# Extracto literal del consolidado; ante cualquier duda, abrir la URL.
+
+Artículo 9. Generación del registro de facturación de alta.
+    Los sistemas informáticos de facturación que sean utilizados por los obligados tributarios
+a que se refiere el artículo 3 de este Reglamento, deberán generar automáticamente un
+registro de facturación de alta de forma simultánea o inmediatamente anterior a la expedición
+de cada factura.
+
+Artículo 10. Contenido del registro de facturación de alta.
+    1. El registro informático de facturación de alta incluirá la siguiente información:
+     a) Número de identificación fiscal y nombre y apellidos, razón o denominación social
+completa del obligado a expedir la factura.
+     b) Cuando sea obligatorio de acuerdo con lo previsto en el Reglamento por el que se
+regulan las obligaciones de facturación, el número de identificación fiscal (en su caso,
+atribuido por la Administración tributaria competente de cualquier Estado miembro de la
+Unión Europea) y nombre y apellidos, razón o denominación social completa de la persona o
+entidad destinataria de las operaciones.
+     c) Indicación de si la factura ha sido expedida por la propia persona o entidad que realiza
+las operaciones, por sus destinatarios o por terceros, de acuerdo con lo previsto en el
+
+Artículo 11. Generación y contenido del registro de facturación de anulación.
+    1. Procederá la generación de un registro de facturación de anulación cuando se haya
+emitido erróneamente una factura y sea por lo tanto necesario anular su correspondiente
+registro de facturación de alta.
+    2. El registro de facturación de anulación incluirá la siguiente información:
+    a) Número de identificación fiscal y nombre y apellidos, razón o denominación social
+completa del obligado a generar el registro de facturación de anulación.
+    b) Indicación de si el registro de facturación de anulación ha sido generado por la propia
+persona o entidad que realiza las operaciones, por sus destinarios o por terceros, de
+acuerdo con lo previsto en el artículo 5 del Reglamento por el que se regulan las
+obligaciones de facturación.
+    En su caso, número de identificación fiscal y nombre y apellidos, razón o denominación
+social completa del destinatario o tercero a que se refiere el artículo 6 de este Reglamento,
+que utilice algún sistema informático de los citados en el artículo 7 de este Reglamento.
+    c) El número y, en su caso, serie de la factura correspondiente al registro de facturación
+de alta que se anule.
+    d) La fecha de expedición de la factura correspondiente al registro de facturación de alta
+que se anule.
+    e) Cuando no se trate del primer registro de facturación generado por el sistema
+informático, el número y, en su caso, la serie, así como la fecha de expedición de la factura
+que consta en el registro de facturación, de alta o de anulación, inmediatamente anterior,
+junto con parte de la huella o «hash» de dicho registro anterior.
+    f) El código de identificación del sistema informático utilizado, así como otros datos
+referentes a dicho sistema informático que genera el registro de facturación de anulación
+que, además de servir para identificar al mencionado sistema informático, permitan conocer
+las características del mismo y de su instalación, junto con los datos identificativos del
+productor del citado sistema informático.
+    g) Fecha, hora, minuto y segundo en que se genere el registro de facturación de
+anulación.
+    h) Características adicionales que permitan conocer las circunstancias de generación del
+registro de facturación de anulación.
+
+Artículo 12. Huella o «hash» y firma electrónica de los registros de facturación.
+    Los sistemas informáticos indicados en el artículo 7 de este Reglamento deberán añadir
+una huella o «hash» a los registros de facturación de alta y de anulación a que se refieren
+los artículos 9, 10 y 11 de este Reglamento, según las especificaciones que se determinen.
+    Asimismo, los registros de facturación de alta y de anulación a que se refieren los
+mencionados artículos deberán ser firmados electrónicamente.
+
+                  Sección 3.ª Certificación de los sistemas informáticos
+
+Artículo 13. Declaración responsable de los sistemas informáticos.
+     1. Corresponderá a la persona o entidad productora del sistema informático certificar,
+mediante una declaración responsable, que el sistema informático cumple con lo dispuesto
+en el artículo 29.2.j) de la Ley 58/2003, General Tributaria, así como con lo dispuesto en este
+Reglamento y en las especificaciones que, en su desarrollo, se aprueben mediante orden
+ministerial.
+     2. La declaración responsable deberá constar por escrito y de modo visible en el propio
+sistema informático en cada una de sus versiones, así como para el cliente y el
+comercializador en el momento de la adquisición del producto.
+     3. Esta declaración responsable podrá ser solicitada por el cliente o por la Administración
+tributaria a la persona o entidad productora o comercializadora del sistema informático, que
+deberá guardar y conservar las declaraciones responsables de todas las versiones de los
+sistemas informáticos producidos o comercializados.
+     4. La declaración responsable incluirá los datos referentes al sistema informático que
+permitan identificarlo y saber su tipología, composición y funcionalidades, así como conocer
+las características de la instalación del mismo. Además, contendrá los datos identificativos y
+de localización del productor del mencionado sistema informático y la fecha y lugar en que la
+firma.
+
+   Sección 4.ª Verificación del cumplimiento de la obligación por parte de la
+                             Administración Tributaria
+
+artículo 15 del Reglamento por el que se regulan las obligaciones de facturación, indicación
+de su tipo, características y, en particular, la identificación de las facturas rectificadas cuando
+sea preceptiva.
+     h) Si la factura corresponde a una factura emitida en sustitución de facturas simplificadas
+expedidas con anterioridad, identificación de las facturas simplificadas sustituidas.
+     i) La descripción general de las operaciones.
+     j) El importe total de la factura.
+     k) Indicación del régimen o regímenes aplicados a las operaciones documentadas a
+efectos del Impuesto sobre el Valor Añadido, o de otras operaciones con trascendencia
+tributaria.
+     l) Indicación de si el destinatario de la factura es el sujeto pasivo del Impuesto sobre el
+Valor Añadido conforme a lo previsto en los ordinales 2.º y 3.º del apartado uno del artículo
+84 de la Ley 37/1992, de 28 de diciembre, del Impuesto sobre el Valor Añadido.
+     m) La base imponible de las operaciones, determinada conforme a los artículos 78 y 79
+de la Ley 37/1992, de 28 de diciembre, del Impuesto sobre el Valor Añadido, el tipo o tipos
+impositivos aplicados, la cuota del Impuesto sobre el Valor Añadido, el tipo o tipos del
+recargo de equivalencia aplicados, y la cuota del recargo de equivalencia.
+     Se informará además si la operación documentada ha sido realizada por un
+contribuyente al que le sea de aplicación el régimen simplificado o el régimen de recargo de
+equivalencia del Impuesto sobre el Valor Añadido.
+     Si la operación que se documenta está exenta del Impuesto sobre el Valor Añadido, el
+importe de la base imponible exenta e indicación de que está exenta o de la causa de
+exención.
+     n) Si la operación no se encuentra sujeta al Impuesto sobre el Valor Añadido, el importe
+que corresponde a dicha operación y la causa de la no sujeción al impuesto.
+
+    ñ) Cuando no se trate del primer registro de facturación generado por el sistema
+informático, el número y, en su caso, la serie, así como la fecha de expedición de la factura
+que consta en el registro de facturación, de alta o de anulación, inmediatamente anterior,
+junto con parte de la huella o «hash» de dicho registro anterior.
+    o) El código de identificación del sistema informático utilizado, así como otros datos
+referentes a dicho sistema informático que genera el registro de facturación de alta que,
+además de servir para identificar al mencionado sistema informático, permitan conocer las
+características del mismo y de su instalación, junto con los datos identificativos del productor
+del citado sistema informático.
+    p) Fecha, hora, minuto y segundo en que se genere el registro de facturación de alta.
+    q) Características adicionales que permitan conocer las circunstancias de generación del
+registro de facturación de alta.
+   2. Todos los importes monetarios que consten en el registro de facturación de alta
+deberán expresarse en euros. Cuando la factura se hubiese expedido en una unidad de
+cuenta o divisa distinta del euro tendrá que efectuarse en el registro la correspondiente
+conversión.
+
+Artículo 16. Sistema de emisión de facturas verificables.
+     1. Aquellos sistemas informáticos indicados en la letra a) del artículo 7 de este
+Reglamento que, cumpliendo con todas las obligaciones que impone este Reglamento y de
+acuerdo a las especificaciones técnicas que se establezcan, sean utilizados por el obligado
+tributario para remitir efectivamente por medios electrónicos a la Agencia Estatal de
+Administración Tributaria de forma continuada, segura, correcta, íntegra, automática,
+consecutiva, instantánea y fehaciente todos los registros de facturación generados tendrán la
+consideración de «Sistemas de emisión de facturas verificables» o «Sistemas
+VERI*FACTU».
+     2. A los efectos de este Reglamento, se presumirá que los «Sistemas de emisión de
+facturas verificables» cumplen por diseño los requisitos establecidos en el artículo 8 de este
+Reglamento, y por lo tanto tampoco les será de aplicación lo dispuesto en el apartado 2 del

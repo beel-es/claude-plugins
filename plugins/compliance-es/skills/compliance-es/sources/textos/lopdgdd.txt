@@ -1,0 +1,258 @@
+# LOPDGDD (LO 3/2018) — extractos
+# Fuente oficial: https://www.boe.es/buscar/pdf/2018/BOE-A-2018-16673-consolidado.pdf
+# idBOE: BOE-A-2018-16673 · Descargado: 2026-06-21 · Artículos: 7, 32, 34, 72, 73, 74, 78
+# Extracto literal del consolidado; ante cualquier duda, abrir la URL.
+
+Artículo 7. Consentimiento de los menores de edad.
+    1. El tratamiento de los datos personales de un menor de edad únicamente podrá
+fundarse en su consentimiento cuando sea mayor de catorce años.
+    Se exceptúan los supuestos en que la ley exija la asistencia de los titulares de la patria
+potestad o tutela para la celebración del acto o negocio jurídico en cuyo contexto se recaba
+el consentimiento para el tratamiento.
+    2. El tratamiento de los datos de los menores de catorce años, fundado en el
+consentimiento, solo será lícito si consta el del titular de la patria potestad o tutela, con el
+alcance que determinen los titulares de la patria potestad o tutela.
+
+artículo 32 de esta ley orgánica.
+     4. El deber de información previsto en el artículo 12 del Reglamento (UE) 2016/679 se
+entenderá cumplido mediante la colocación de un dispositivo informativo en lugar
+suficientemente visible identificando, al menos, la existencia del tratamiento, la identidad del
+responsable y la posibilidad de ejercitar los derechos previstos en los artículos 15 a 22 del
+Reglamento (UE) 2016/679. También podrá incluirse en el dispositivo informativo un código
+de conexión o dirección de internet a esta información.
+     En todo caso, el responsable del tratamiento deberá mantener a disposición de los
+afectados la información a la que se refiere el citado reglamento.
+     5. Al amparo del artículo 2.2.c) del Reglamento (UE) 2016/679, se considera excluido de
+su ámbito de aplicación el tratamiento por una persona física de imágenes que solamente
+capten el interior de su propio domicilio.
+     Esta exclusión no abarca el tratamiento realizado por una entidad de seguridad privada
+que hubiera sido contratada para la vigilancia de un domicilio y tuviese acceso a las
+imágenes.
+     6. El tratamiento de los datos personales procedentes de las imágenes y sonidos
+obtenidos mediante la utilización de cámaras y videocámaras por las Fuerzas y Cuerpos de
+Seguridad y por los órganos competentes para la vigilancia y control en los centros
+penitenciarios y para el control, regulación, vigilancia y disciplina del tráfico, se regirá por la
+legislación de transposición de la Directiva (UE) 2016/680, cuando el tratamiento tenga fines
+de prevención, investigación, detección o enjuiciamiento de infracciones penales o de
+ejecución de sanciones penales, incluidas la protección y la prevención frente a las
+amenazas contra la seguridad pública. Fuera de estos supuestos, dicho tratamiento se regirá
+por su legislación específica y supletoriamente por el Reglamento (UE) 2016/679 y la
+presente ley orgánica.
+     7. Lo regulado en el presente artículo se entiende sin perjuicio de lo previsto en la Ley
+5/2014, de 4 de abril, de Seguridad Privada y sus disposiciones de desarrollo.
+     8. El tratamiento por el empleador de datos obtenidos a través de sistemas de cámaras o
+videocámaras se somete a lo dispuesto en el artículo 89 de esta ley orgánica.
+
+Artículo 34. Designación de un delegado de protección de datos.
+    1. Los responsables y encargados del tratamiento deberán designar un delegado de
+protección de datos en los supuestos previstos en el artículo 37.1 del Reglamento (UE)
+2016/679 y, en todo caso, cuando se trate de las siguientes entidades:
+   a) Los colegios profesionales y sus consejos generales.
+
+    b) Los centros docentes que ofrezcan enseñanzas en cualquiera de los niveles
+establecidos en la legislación reguladora del derecho a la educación, así como las
+Universidades públicas y privadas.
+    c) Las entidades que exploten redes y presten servicios de comunicaciones electrónicas
+conforme a lo dispuesto en su legislación específica, cuando traten habitual y
+sistemáticamente datos personales a gran escala.
+    d) Los prestadores de servicios de la sociedad de la información cuando elaboren a gran
+escala perfiles de los usuarios del servicio.
+    e) Las entidades incluidas en el artículo 1 de la Ley 10/2014, de 26 de junio, de
+ordenación, supervisión y solvencia de entidades de crédito.
+    f) Los establecimientos financieros de crédito.
+    g) Las entidades aseguradoras y reaseguradoras.
+    h) Las empresas de servicios de inversión, reguladas por la legislación del Mercado de
+Valores.
+    i) Los distribuidores y comercializadores de energía eléctrica y los distribuidores y
+comercializadores de gas natural.
+    j) Las entidades responsables de ficheros comunes para la evaluación de la solvencia
+patrimonial y crédito o de los ficheros comunes para la gestión y prevención del fraude,
+incluyendo a los responsables de los ficheros regulados por la legislación de prevención del
+blanqueo de capitales y de la financiación del terrorismo.
+    k) Las entidades que desarrollen actividades de publicidad y prospección comercial,
+incluyendo las de investigación comercial y de mercados, cuando lleven a cabo tratamientos
+basados en las preferencias de los afectados o realicen actividades que impliquen la
+elaboración de perfiles de los mismos.
+    l) Los centros sanitarios legalmente obligados al mantenimiento de las historias clínicas
+de los pacientes.
+    Se exceptúan los profesionales de la salud que, aun estando legalmente obligados al
+mantenimiento de las historias clínicas de los pacientes, ejerzan su actividad a título
+individual.
+    m) Las entidades que tengan como uno de sus objetos la emisión de informes
+comerciales que puedan referirse a personas físicas.
+    n) Los operadores que desarrollen la actividad de juego a través de canales electrónicos,
+informáticos, telemáticos e interactivos, conforme a la normativa de regulación del juego.
+    ñ) Las empresas de seguridad privada.
+    o) Las federaciones deportivas cuando traten datos de menores de edad.
+    2. Los responsables o encargados del tratamiento no incluidos en el párrafo anterior
+podrán designar de manera voluntaria un delegado de protección de datos, que quedará
+sometido al régimen establecido en el Reglamento (UE) 2016/679 y en la presente ley
+orgánica.
+    3. Los responsables y encargados del tratamiento comunicarán en el plazo de diez días
+a la Agencia Española de Protección de Datos o, en su caso, a las autoridades autonómicas
+de protección de datos, las designaciones, nombramientos y ceses de los delegados de
+protección de datos tanto en los supuestos en que se encuentren obligadas a su designación
+como en el caso en que sea voluntaria.
+    4. La Agencia Española de Protección de Datos y las autoridades autonómicas de
+protección de datos mantendrán, en el ámbito de sus respectivas competencias, una lista
+actualizada de delegados de protección de datos que será accesible por medios
+electrónicos.
+    5. En el cumplimiento de las obligaciones de este artículo los responsables y encargados
+del tratamiento podrán establecer la dedicación completa o a tiempo parcial del delegado,
+entre otros criterios, en función del volumen de los tratamientos, la categoría especial de los
+datos tratados o de los riesgos para los derechos o libertades de los interesados.
+
+Artículo 72. Infracciones consideradas muy graves.
+    1. En función de lo que establece el artículo 83.5 del Reglamento (UE) 2016/679 se
+consideran muy graves y prescribirán a los tres años las infracciones que supongan una
+vulneración sustancial de los artículos mencionados en aquel y, en particular, las siguientes:
+     a) El tratamiento de datos personales vulnerando los principios y garantías establecidos
+en el artículo 5 del Reglamento (UE) 2016/679.
+     b) El tratamiento de datos personales sin que concurra alguna de las condiciones de
+licitud del tratamiento establecidas en el artículo 6 del Reglamento (UE) 2016/679.
+     c) El incumplimiento de los requisitos exigidos por el artículo 7 del Reglamento (UE)
+2016/679 para la validez del consentimiento.
+     d) La utilización de los datos para una finalidad que no sea compatible con la finalidad
+para la cual fueron recogidos, sin contar con el consentimiento del afectado o con una base
+legal para ello.
+     e) El tratamiento de datos personales de las categorías a las que se refiere el artículo 9
+del Reglamento (UE) 2016/679, sin que concurra alguna de las circunstancias previstas en
+dicho precepto y en el artículo 9 de esta ley orgánica.
+     f) El tratamiento de datos personales relativos a condenas e infracciones penales o
+medidas de seguridad conexas fuera de los supuestos permitidos por el artículo 10 del
+Reglamento (UE) 2016/679 y en el artículo 10 de esta ley orgánica.
+     g) El tratamiento de datos personales relacionados con infracciones y sanciones
+administrativas fuera de los supuestos permitidos por el artículo 27 de esta ley orgánica.
+     h) La omisión del deber de informar al afectado acerca del tratamiento de sus datos
+personales conforme a lo dispuesto en los artículos 13 y 14 del Reglamento (UE) 2016/679 y
+12 de esta ley orgánica.
+     i) La vulneración del deber de confidencialidad establecido en el artículo 5 de esta ley
+orgánica.
+     j) La exigencia del pago de un canon para facilitar al afectado la información a la que se
+refieren los artículos 13 y 14 del Reglamento (UE) 2016/679 o por atender las solicitudes de
+ejercicio de derechos de los afectados previstos en los artículos 15 a 22 del Reglamento
+(UE) 2016/679, fuera de los supuestos establecidos en su artículo 12.5.
+     k) El impedimento o la obstaculización o la no atención reiterada del ejercicio de los
+derechos establecidos en los artículos 15 a 22 del Reglamento (UE) 2016/679.
+     l) La transferencia internacional de datos personales a un destinatario que se encuentre
+en un tercer país o a una organización internacional, cuando no concurran las garantías,
+requisitos o excepciones establecidos en los artículos 44 a 49 del Reglamento (UE)
+2016/679.
+     m) El incumplimiento de las resoluciones dictadas por la autoridad de protección de
+datos competente en ejercicio de los poderes que le confiere el artículo 58.2 del Reglamento
+(UE) 2016/679.
+     n) El incumplimiento de la obligación de bloqueo de los datos establecida en el artículo
+32 de esta ley orgánica cuando la misma sea exigible.
+     ñ) No facilitar el acceso del personal de la autoridad de protección de datos competente
+a los datos personales, información, locales, equipos y medios de tratamiento que sean
+requeridos por la autoridad de protección de datos para el ejercicio de sus poderes de
+investigación.
+     o) La resistencia u obstrucción del ejercicio de la función inspectora por la autoridad de
+protección de datos competente.
+
+    p) La reversión deliberada de un procedimiento de anonimización a fin de permitir la
+reidentificación de los afectados.
+    2. Tendrán la misma consideración y también prescribirán a los tres años las infracciones
+a las que se refiere el artículo 83.6 del Reglamento (UE) 2016/679.
+
+Artículo 73. Infracciones consideradas graves.
+    En función de lo que establece el artículo 83.4 del Reglamento (UE) 2016/679 se
+consideran graves y prescribirán a los dos años las infracciones que supongan una
+vulneración sustancial de los artículos mencionados en aquel y, en particular, las siguientes:
+     a) El tratamiento de datos personales de un menor de edad sin recabar su
+consentimiento, cuando tenga capacidad para ello, o el del titular de su patria potestad o
+tutela, conforme al artículo 8 del Reglamento (UE) 2016/679.
+     b) No acreditar la realización de esfuerzos razonables para verificar la validez del
+consentimiento prestado por un menor de edad o por el titular de su patria potestad o tutela
+sobre el mismo, conforme a lo requerido por el artículo 8.2 del Reglamento (UE) 2016/679.
+     c) El impedimento o la obstaculización o la no atención reiterada de los derechos de
+acceso, rectificación, supresión, limitación del tratamiento o a la portabilidad de los datos en
+tratamientos en los que no se requiere la identificación del afectado, cuando este, para el
+ejercicio de esos derechos, haya facilitado información adicional que permita su
+identificación.
+     d) La falta de adopción de aquellas medidas técnicas y organizativas que resulten
+apropiadas para aplicar de forma efectiva los principios de protección de datos desde el
+diseño, así como la no integración de las garantías necesarias en el tratamiento, en los
+términos exigidos por el artículo 25 del Reglamento (UE) 2016/679.
+     e) La falta de adopción de las medidas técnicas y organizativas apropiadas para
+garantizar que, por defecto, solo se tratarán los datos personales necesarios para cada uno
+de los fines específicos del tratamiento, conforme a lo exigido por el artículo 25.2 del
+Reglamento (UE) 2016/679.
+     f) La falta de adopción de aquellas medidas técnicas y organizativas que resulten
+apropiadas para garantizar un nivel de seguridad adecuado al riesgo del tratamiento, en los
+términos exigidos por el artículo 32.1 del Reglamento (UE) 2016/679.
+     g) El quebrantamiento, como consecuencia de la falta de la debida diligencia, de las
+medidas técnicas y organizativas que se hubiesen implantado conforme a lo exigido por el
+artículo 32.1 del Reglamento (UE) 2016/679.
+     h) El incumplimiento de la obligación de designar un representante del responsable o
+encargado del tratamiento no establecido en el territorio de la Unión Europea, conforme a lo
+previsto en el artículo 27 del Reglamento (UE) 2016/679.
+     i) La falta de atención por el representante en la Unión del responsable o del encargado
+del tratamiento de las solicitudes efectuadas por la autoridad de protección de datos o por
+los afectados.
+     j) La contratación por el responsable del tratamiento de un encargado de tratamiento que
+no ofrezca las garantías suficientes para aplicar las medidas técnicas y organizativas
+apropiadas conforme a lo establecido en el Capítulo IV del Reglamento (UE) 2016/679.
+     k) Encargar el tratamiento de datos a un tercero sin la previa formalización de un
+contrato u otro acto jurídico escrito con el contenido exigido por el artículo 28.3 del
+Reglamento (UE) 2016/679.
+     l) La contratación por un encargado del tratamiento de otros encargados sin contar con la
+autorización previa del responsable, o sin haberle informado sobre los cambios producidos
+en la subcontratación cuando fueran legalmente exigibles.
+     m) La infracción por un encargado del tratamiento de lo dispuesto en el Reglamento (UE)
+2016/679 y en la presente ley orgánica, al determinar los fines y los medios del tratamiento,
+conforme a lo dispuesto en el artículo 28.10 del citado reglamento.
+     n) No disponer del registro de actividades de tratamiento establecido en el artículo 30 del
+Reglamento (UE) 2016/679.
+
+     ñ) No poner a disposición de la autoridad de protección de datos que lo haya solicitado,
+el registro de actividades de tratamiento, conforme al apartado 4 del artículo 30 del
+Reglamento (UE) 2016/679.
+     o) No cooperar con las autoridades de control en el desempeño de sus funciones en los
+supuestos no previstos en el artículo 72 de esta ley orgánica.
+     p) El tratamiento de datos personales sin llevar a cabo una previa valoración de los
+elementos mencionados en el artículo 28 de esta ley orgánica.
+     q) El incumplimiento del deber del encargado del tratamiento de notificar al responsable
+del tratamiento las violaciones de seguridad de las que tuviera conocimiento.
+     r) El incumplimiento del deber de notificación a la autoridad de protección de datos de
+una violación de seguridad de los datos personales de conformidad con lo previsto en el
+
+Artículo 74. Infracciones consideradas leves.
+   Se consideran leves y prescribirán al año las restantes infracciones de carácter
+meramente formal de los artículos mencionados en los apartados 4 y 5 del artículo 83 del
+Reglamento (UE) 2016/679 y, en particular, las siguientes:
+    a) El incumplimiento del principio de transparencia de la información o el derecho de
+información del afectado por no facilitar toda la información exigida por los artículos 13 y 14
+del Reglamento (UE) 2016/679.
+
+     b) La exigencia del pago de un canon para facilitar al afectado la información exigida por
+los artículos 13 y 14 del Reglamento (UE) 2016/679 o por atender las solicitudes de ejercicio
+de derechos de los afectados previstos en los artículos 15 a 22 del Reglamento (UE)
+2016/679, cuando así lo permita su artículo 12.5, si su cuantía excediese el importe de los
+costes afrontados para facilitar la información o realizar la actuación solicitada.
+     c) No atender las solicitudes de ejercicio de los derechos establecidos en los artículos 15
+a 22 del Reglamento (UE) 2016/679, salvo que resultase de aplicación lo dispuesto en el
+artículo 72.1.k) de esta ley orgánica.
+     d) No atender los derechos de acceso, rectificación, supresión, limitación del tratamiento
+o a la portabilidad de los datos en tratamientos en los que no se requiere la identificación del
+afectado, cuando este, para el ejercicio de esos derechos, haya facilitado información
+adicional que permita su identificación, salvo que resultase de aplicación lo dispuesto en el
+
+Artículo 78. Prescripción de las sanciones.
+   1. Las sanciones impuestas en aplicación del Reglamento (UE) 2016/679 y de esta ley
+orgánica prescriben en los siguientes plazos:
+   a) Las sanciones por importe igual o inferior a 40.000 euros, prescriben en el plazo de un
+año.
+   b) Las sanciones por importe comprendido entre 40.001 y 300.000 euros prescriben a los
+dos años.
+   c) Las sanciones por un importe superior a 300.000 euros prescriben a los tres años.
+
+    2. El plazo de prescripción de las sanciones comenzará a contarse desde el día siguiente
+a aquel en que sea ejecutable la resolución por la que se impone la sanción o haya
+transcurrido el plazo para recurrirla.
+    3. La prescripción se interrumpirá por la iniciación, con conocimiento del interesado, del
+procedimiento de ejecución, volviendo a transcurrir el plazo si el mismo está paralizado
+durante más de seis meses por causa no imputable al infractor.
+
+                                          TÍTULO X
+                            Garantía de los derechos digitales

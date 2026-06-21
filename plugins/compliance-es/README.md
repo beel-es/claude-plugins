@@ -87,9 +87,12 @@ Cada corrida es un commit, así que git te queda como historial: ves cuándo sub
 ## Respaldado en la norma
 
 El contenido legal se contrasta contra el texto oficial (BOE, EUR-Lex, AEPD, AEAT). En
-[`sources/FUENTES.md`](skills/compliance-es/sources/FUENTES.md) están todas las referencias con su URL, y en
-[`references/mapa-articulos.md`](skills/compliance-es/references/mapa-articulos.md) cada artículo está cotejado
-contra el texto vigente. Lo que no se puede confirmar queda marcado `[verificar contra fuente oficial]`.
+[`sources/textos/`](skills/compliance-es/sources/textos) se guardan los **extractos literales** de los
+artículos citados (grepeables offline), con sus **SHA-256** y URLs en
+[`sources/FUENTES.md`](skills/compliance-es/sources/FUENTES.md) y un script de re-descarga
+(`descargar-fuentes.py`). En [`references/mapa-articulos.md`](skills/compliance-es/references/mapa-articulos.md)
+cada artículo está cotejado contra el texto vigente. Lo que no se puede confirmar queda marcado
+`[verificar contra fuente oficial]`.
 
 ## Qué no hace
 

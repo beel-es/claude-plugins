@@ -1,0 +1,134 @@
+# Ley 2/2023 (protección del informante / canal de denuncias) — extractos
+# Fuente oficial: https://www.boe.es/buscar/pdf/2023/BOE-A-2023-4513-consolidado.pdf
+# idBOE: BOE-A-2023-4513 · Descargado: 2026-06-21 · Artículos: 7, 9, 10, 65
+# Extracto literal del consolidado; ante cualquier duda, abrir la URL.
+
+Artículo 7. Canal interno de información.
+    1. Todo canal interno de información de que disponga una entidad para posibilitar la
+presentación de información respecto de las infracciones previstas en el artículo 2 estará
+integrado dentro del Sistema interno de información a que se refiere el artículo 5.
+    2. El canal interno deberá permitir realizar comunicaciones por escrito o verbalmente, o
+de las dos formas. La información se podrá realizar bien por escrito, a través de correo
+postal o a través de cualquier medio electrónico habilitado al efecto, o verbalmente, por vía
+telefónica o a través de sistema de mensajería de voz. A solicitud del informante, también
+podrá presentarse mediante una reunión presencial dentro del plazo máximo de siete días.
+    En su caso, se advertirá al informante de que la comunicación será grabada y se le
+informará del tratamiento de sus datos de acuerdo a lo que establece el Reglamento (UE)
+2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016.
+    Además, a quienes realicen la comunicación a través de canales internos se les
+informará, de forma clara y accesible, sobre los canales externos de información ante las
+
+autoridades competentes y, en su caso, ante las instituciones, órganos u organismos de la
+Unión Europea.
+    Al hacer la comunicación, el informante podrá indicar un domicilio, correo electrónico o
+lugar seguro a efectos de recibir las notificaciones.
+    Las comunicaciones verbales, incluidas las realizadas a través de reunión presencial,
+telefónicamente o mediante sistema de mensajería de voz, deberán documentarse de alguna
+de las maneras siguientes, previo consentimiento del informante:
+    a) mediante una grabación de la conversación en un formato seguro, duradero y
+accesible, o
+    b) a través de una transcripción completa y exacta de la conversación realizada por el
+personal responsable de tratarla.
+    Sin perjuicio de los derechos que le corresponden de acuerdo a la normativa sobre
+protección de datos, se ofrecerá al informante la oportunidad de comprobar, rectificar y
+aceptar mediante su firma la transcripción de la conversación.
+    3. Los canales internos de información permitirán incluso la presentación y posterior
+tramitación de comunicaciones anónimas.
+    4. Los canales internos de información podrán estar habilitados por la entidad que los
+gestione para la recepción de cualesquiera otras comunicaciones o informaciones fuera del
+ámbito establecido en el artículo 2, si bien dichas comunicaciones y sus remitentes quedarán
+fuera del ámbito de protección dispensado por la misma.
+
+Artículo 9. Procedimiento de gestión de informaciones.
+    1. El órgano de administración u órgano de gobierno de cada entidad u organismo
+obligado por esta ley aprobará el procedimiento de gestión de informaciones. El
+Responsable del Sistema responderá de su tramitación diligente.
+
+    2. El procedimiento establecerá las previsiones necesarias para que el Sistema interno
+de información y los canales internos de información existentes cumplan con los requisitos
+establecidos en esta ley. En particular, el procedimiento responderá al contenido mínimo y
+principios siguientes:
+     a) Identificación del canal o canales internos de información a los que se asocian.
+     b) Inclusión de información clara y accesible sobre los canales externos de información
+ante las autoridades competentes y, en su caso, ante las instituciones, órganos u
+organismos de la Unión Europea.
+     c) Envío de acuse de recibo de la comunicación al informante, en el plazo de siete días
+naturales siguientes a su recepción, salvo que ello pueda poner en peligro la
+confidencialidad de la comunicación.
+     d) Determinación del plazo máximo para dar respuesta a las actuaciones de
+investigación, que no podrá ser superior a tres meses a contar desde la recepción de la
+comunicación o, si no se remitió un acuse de recibo al informante, a tres meses a partir del
+vencimiento del plazo de siete días después de efectuarse la comunicación, salvo casos de
+especial complejidad que requieran una ampliación del plazo, en cuyo caso, este podrá
+extenderse hasta un máximo de otros tres meses adicionales.
+     e) Previsión de la posibilidad de mantener la comunicación con el informante y, si se
+considera necesario, de solicitar a la persona informante información adicional.
+     f) Establecimiento del derecho de la persona afectada a que se le informe de las
+acciones u omisiones que se le atribuyen, y a ser oída en cualquier momento. Dicha
+comunicación tendrá lugar en el tiempo y forma que se considere adecuado para garantizar
+el buen fin de la investigación.
+     g) Garantía de la confidencialidad cuando la comunicación sea remitida por canales de
+denuncia que no sean los establecidos o a miembros del personal no responsable de su
+tratamiento, al que se habrá formado en esta materia y advertido de la tipificación como
+infracción muy grave de su quebranto y, asimismo, el establecimiento de la obligación del
+receptor de la comunicación de remitirla inmediatamente al Responsable del Sistema.
+     h) Exigencia del respeto a la presunción de inocencia y al honor de las personas
+afectadas.
+     i) Respeto de las disposiciones sobre protección de datos personales de acuerdo a lo
+previsto en el título VI.
+     j) Remisión de la información al Ministerio Fiscal con carácter inmediato cuando los
+hechos pudieran ser indiciariamente constitutivos de delito. En el caso de que los hechos
+afecten a los intereses financieros de la Unión Europea, se remitirá a la Fiscalía Europea.
+
+                                       CAPÍTULO II
+                  Sistema interno de información en el sector privado
+
+Artículo 10. Entidades obligadas del sector privado.
+    1. Estarán obligadas a disponer un Sistema interno de información en los términos
+previstos en esta ley:
+    a) Las personas físicas o jurídicas del sector privado que tengan contratados cincuenta o
+más trabajadores.
+    b) Las personas jurídicas del sector privado que entren en el ámbito de aplicación de los
+actos de la Unión Europea en materia de servicios, productos y mercados financieros,
+prevención del blanqueo de capitales o de la financiación del terrorismo, seguridad del
+transporte y protección del medio ambiente a que se refieren las partes I.B y II del anexo de
+la Directiva (UE) 2019/1937, del Parlamento Europeo y del Consejo, de 23 de octubre de
+2019, deberán disponer de un Sistema interno de información que se regulará por su
+normativa específica con independencia del número de trabajadores con que cuenten. En
+estos casos, esta ley será de aplicación en lo no regulado por su normativa específica.
+    Se considerarán incluidas en el párrafo anterior las personas jurídicas que, pese a no
+tener su domicilio en territorio nacional, desarrollen en España actividades a través de
+sucursales o agentes o mediante prestación de servicios sin establecimiento permanente.
+
+    c) Los partidos políticos, los sindicatos, las organizaciones empresariales y las
+fundaciones creadas por unos y otros, siempre que reciban o gestionen fondos públicos.
+    2. Las personas jurídicas del sector privado que no estén vinculadas por la obligación
+impuesta en el apartado 1 podrán establecer su propio Sistema interno de información, que
+deberá cumplir, en todo caso, los requisitos previstos en esta ley.
+
+Artículo 65. Sanciones.
+    1. La comisión de infracciones previstas en esta ley llevará aparejada la imposición de
+las siguientes multas:
+    a) Si son personas físicas las responsables de las infracciones, serán multadas con una
+cuantía de 1.001 hasta 10.000 euros por la comisión de infracciones leves; de 10.001 hasta
+30.000 euros por la comisión de infracciones graves y de 30.001 hasta 300.000 euros por la
+comisión de infracciones muy graves.
+    b) Si son personas jurídicas serán multadas con una cuantía hasta 100.000 euros en
+caso de infracciones leves, entre 100.001 y 600.000 euros en caso de infracciones graves y
+entre 600.001 y 1.000.000 de euros en caso de infracciones muy graves.
+    2. Adicionalmente, en el caso de infracciones muy graves, la Autoridad Independiente de
+Protección del Informante, A.A.I., podrá acordar:
+   a) La amonestación pública.
+
+    b) La prohibición de obtener subvenciones u otros beneficios fiscales durante un plazo
+máximo de cuatro años.
+    c) La prohibición de contratar con el sector público durante un plazo máximo de tres años
+de conformidad con lo previsto en la Ley 9/2017, de 8 de noviembre, de Contratos del Sector
+Público, por la que se transponen al ordenamiento jurídico español las Directivas del
+Parlamento Europeo y del Consejo 2014/23/UE y 2014/24/UE, de 26 de febrero de 2014.
+    3. Las sanciones por infracciones muy graves de cuantía igual o superior a 600.001
+euros impuestas a entidades jurídicas podrán ser publicadas en el «Boletín Oficial del
+Estado», tras la firmeza de la resolución en vía administrativa. La publicación deberá
+contener, al menos, información sobre el tipo y naturaleza de la infracción y, en su caso, la
+identidad de las personas responsables de las mismas de acuerdo con la normativa en
+materia de protección de datos.

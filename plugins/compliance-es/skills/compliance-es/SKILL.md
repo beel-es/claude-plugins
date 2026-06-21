@@ -18,6 +18,7 @@ allowed-tools:
   - Grep
   - Glob
   - Bash
+  - WebFetch
   - AskUserQuestion
 ---
 
@@ -38,10 +39,11 @@ opcional (ver `references/cuando-acudir-a-abogado.md`).
 - **Packs** = una norma cada uno (`packs/<id>/pack.md`): obligaciones, controles que exige y documentos a
   generar. Hoy: `rgpd-lopdgdd`, `compliance-penal`, `verifactu`.
 - **Estado** = el output vive en `<repo>/.compliance/` versionado por git. Formato: `references/output-model.md`.
-- **Fuentes (verdad)** = textos OFICIALES (BOE, EUR-Lex, AEPD, AEAT) en `sources/FUENTES.md`. Toda
-  afirmación legal cita **norma + artículo + fuente**; lo no verificable se marca
-  `[verificar contra fuente oficial]`. NADA inventado. Numeración verificada:
-  `references/mapa-articulos.md`.
+- **Fuentes (verdad)** = textos OFICIALES (BOE, EUR-Lex, AEPD, AEAT). Extractos literales grepeables en
+  `sources/textos/` (offline, con SHA-256 en `sources/FUENTES.md`) y URLs oficiales para re-verificar online
+  con **WebFetch**. Toda afirmación legal cita **norma + artículo + fuente**: grepear el extracto en
+  `sources/textos/` o abrir la URL; lo no verificable se marca `[verificar contra fuente oficial]`. NADA
+  inventado. Numeración ya verificada: `references/mapa-articulos.md`.
 
 ## Flujo
 
@@ -143,4 +145,5 @@ Cerrar con UN siguiente paso.
 - `references/revisiones-periodicas.md` — automatizar la re-corrida (`/loop`, cron headless `claude -p`,
   `/schedule`) para detectar drift entre corridas.
 - `packs/rgpd-lopdgdd/`, `packs/compliance-penal/`, `packs/verifactu/` — obligaciones + plantillas por marco.
-- `sources/FUENTES.md` — referencias a los textos legales oficiales (BOE, EUR-Lex, AEPD, AEAT) con URL.
+- `sources/textos/` — extractos literales grepeables de los artículos citados (offline). `sources/FUENTES.md`
+  — índice con SHA-256 + URLs oficiales; `sources/descargar-fuentes.py` re-genera el corpus.
