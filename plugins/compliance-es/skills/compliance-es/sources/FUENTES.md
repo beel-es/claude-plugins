@@ -4,10 +4,9 @@ Objetivo: que la auditoría sea **reproducible y contrastada contra la norma vig
 Toda afirmación legal de la skill debe poder rastrearse a una de estas fuentes + el artículo. Si algo no se
 puede verificar, se marca `[verificar contra fuente oficial]`.
 
-> A diferencia del repo de Chile (que adjunta los textos en `sources/`), aquí los textos oficiales son
-> documentos extensos y vivos del BOE/EUR-Lex; referenciamos sus **URLs oficiales y consolidadas**. Antes de
-> incrustar un literal en un documento formal, **abrir la URL y copiar el texto exacto vigente**.
-> Verificado en **junio de 2026**.
+> Los textos oficiales son documentos extensos y vivos del BOE/EUR-Lex; en vez de adjuntarlos, referenciamos
+> sus **URLs oficiales y consolidadas**. Antes de incrustar un literal en un documento formal, **abrir la URL
+> y copiar el texto exacto vigente**. Verificado en **junio de 2026**.
 
 ## Protección de datos (RGPD + LOPDGDD)
 | Norma | Referencia | URL oficial |
