@@ -10,7 +10,7 @@ quién se autentica y quién paga** en cada una (se confunde a menudo):
 ## 1. `/loop` — dentro de una sesión abierta
 Repite un prompt mientras la terminal está abierta. Útil para algo puntual, no para dejar corriendo.
 ```
-/loop 1d /compliance-es
+/loop 1d /compliance-es:auditar
 ```
 - Sin intervalo Claude elige uno; con intervalo (`5m`, `1h`, `1d`) corre fijo.
 - **Cuenta:** corre en tu sesión, con la credencial que ya usa tu Claude Code.
@@ -67,7 +67,7 @@ tu máquina prendida.
 > aunque estés logueado en Pro/Max**. Verifica con `/status` en Claude Code.
 
 ## Cadencia sugerida
-- **Re-auditoría completa** (`/compliance-es`): mensual o trimestral, y antes de un release grande.
+- **Re-auditoría completa** (`/compliance-es:auditar`): mensual o trimestral, y antes de un release grande.
 - **Watcher** (filtraciones/secretos/eventos del audit log): más seguido (diario/semanal) — ver `build/monitoreo.md`.
 - **Disparada por evento:** además del cron, correrla cuando cambia el modelo de datos, se suma un proveedor,
   o se acerca una fecha clave (p. ej. la obligación Veri*Factu de 2027).

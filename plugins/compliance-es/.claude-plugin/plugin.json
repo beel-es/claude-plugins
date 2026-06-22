@@ -1,7 +1,7 @@
 {
   "name": "compliance-es",
   "description": "Audita un repo y genera, sin abogado, toda la documentación de cumplimiento para un SaaS o empresa en España: protección de datos (RGPD + LOPDGDD), compliance penal (art. 31 bis CP + canal de denuncias Ley 2/2023) y facturación antifraude (Veri*Factu). Cada conclusión cita el artículo de la norma. Multi-marco (packs), extensible y con estado versionado.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "BeeL",
     "email": "hola@beel.es"

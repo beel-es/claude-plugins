@@ -7,9 +7,9 @@ asesor es un plus opcional si quieres una revisión, y solo es imprescindible pa
 inspeccionan (AEPD/Hacienda) y escala a un procedimiento sancionador o judicial.
 
 El contenido legal se contrasta contra los textos oficiales referenciados en
-`skills/compliance-es/sources/FUENTES.md` (BOE, EUR-Lex, AEPD, AEAT), pero las normas cambian y la
+`skills/auditar/sources/FUENTES.md` (BOE, EUR-Lex, AEPD, AEAT), pero las normas cambian y la
 interpretación requiere criterio profesional. En particular, las **fechas de Veri*Factu** y el estado del
 **EU-US Data Privacy Framework** deben re-verificarse en cada uso. Ver
-`skills/compliance-es/references/cuando-acudir-a-abogado.md`.
+`skills/auditar/references/cuando-acudir-a-abogado.md`.
 
 Distribuido bajo licencia [MIT](../../LICENSE) © 2026 Honey Solutions S.L. (BeeL.).
