@@ -2,71 +2,55 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html,body { width:1280px; height:640px; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ width:1280px; height:640px; }
   body{
-    font-family:"Inter","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
-    background:#0a0b0e; color:#fff; width:1280px; height:640px; position:relative; overflow:hidden;
+    font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:#FDFCFA; color:#1C1C1F; width:1280px; height:640px; position:relative; overflow:hidden;
   }
-  /* glows de marca: oro (BeeL) arriba-derecha, rojo (España) abajo-izquierda */
-  .glow1{ position:absolute; width:720px; height:720px; right:-200px; top:-260px;
-    background:radial-gradient(circle, rgba(255,196,0,.16), transparent 60%); }
-  .glow2{ position:absolute; width:680px; height:680px; left:-240px; bottom:-300px;
-    background:radial-gradient(circle, rgba(198,11,30,.18), transparent 62%); }
-  /* rejilla sutil tipo editor */
-  .grid{ position:absolute; inset:0; opacity:.05;
-    background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
-    background-size:46px 46px; mask-image:radial-gradient(circle at 30% 40%, #000 40%, transparent 78%); }
-  .wrap{ position:absolute; inset:0; padding:74px 84px; display:flex; flex-direction:column; justify-content:center; }
-  .top{ display:flex; align-items:center; gap:22px; margin-bottom:26px; }
-  /* bandera de España: rojo / amarillo (doble alto) / rojo */
-  .flag{ width:180px; height:120px; border-radius:12px; overflow:hidden; position:relative;
-    box-shadow:0 14px 40px rgba(0,0,0,.55); flex:none; border:1px solid rgba(255,255,255,.08); }
-  .flag .r{ position:absolute; left:0; right:0; height:25%; background:#c60b1e; }
-  .flag .r.t{ top:0; } .flag .r.b{ bottom:0; }
-  .flag .y{ position:absolute; top:25%; left:0; right:0; height:50%; background:#ffc400; }
-  .kicker{ font-size:23px; letter-spacing:5px; text-transform:uppercase; color:#9aa1ad; font-weight:700; }
-  .kicker b{ color:#fff; }
-  h1{ font-size:112px; font-weight:800; letter-spacing:-3px; line-height:.96; }
-  h1 .es{ color:#c60b1e; }
-  h1 .dot{ color:#ffc400; }
-  .tag{ font-size:39px; color:#f3f5f9; margin-top:24px; max-width:1080px; line-height:1.22; font-weight:650; }
-  .sub{ font-size:26px; color:#99a0ac; margin-top:14px; max-width:1040px; line-height:1.3; }
-  .chips{ display:flex; gap:13px; margin-top:40px; flex-wrap:wrap; align-items:center; }
-  .chip{ font-size:22px; padding:12px 20px; border-radius:999px; background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.12); color:#e9ebf1; }
-  .chip b{ color:#fff; }
-  .term{ font-family:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
-    font-size:22px; padding:12px 20px; border-radius:999px; color:#ffd84d;
-    background:rgba(255,196,0,.08); border:1px solid rgba(255,196,0,.28); }
-  .term .p{ color:#7d8290; }
-  .foot{ position:absolute; right:84px; bottom:44px; font-size:21px; color:#6b7280; letter-spacing:.4px; text-align:right; }
-  .foot b{ color:#aeb3bd; }
-  .base{ position:absolute; left:0; right:0; bottom:0; height:8px;
-    background:linear-gradient(90deg,#c60b1e 0 38%,#ffc400 38% 62%,#c60b1e 62% 100%); }
+  /* toque de marca: leve halo miel arriba-derecha, muy sutil */
+  .halo{ position:absolute; width:560px; height:560px; right:-160px; top:-200px;
+    background:radial-gradient(circle, rgba(184,132,43,.10), transparent 62%); }
+  .wrap{ position:absolute; inset:0; padding:84px 90px; display:flex; flex-direction:column; justify-content:center; }
+  .top{ display:flex; align-items:center; gap:20px; margin-bottom:34px; }
+  .icon{ width:74px; height:74px; border-radius:18px; box-shadow:0 10px 30px -8px rgba(34,77,169,.45); }
+  .kick{ display:flex; align-items:center; gap:13px; font-size:21px; letter-spacing:3px;
+    text-transform:uppercase; color:#8A92A8; font-weight:700; }
+  .kick .flag{ width:40px; height:27px; border-radius:5px; overflow:hidden; position:relative;
+    box-shadow:0 3px 9px rgba(0,0,0,.18); }
+  .kick .flag .r{ position:absolute; left:0; right:0; height:25%; background:#c60b1e; }
+  .kick .flag .r.t{ top:0 } .kick .flag .r.b{ bottom:0 }
+  .kick .flag .y{ position:absolute; top:25%; left:0; right:0; height:50%; background:#ffc400; }
+  .kick b{ color:#1C1C1F; }
+  h1{ font-size:118px; font-weight:800; letter-spacing:-3.5px; line-height:.95; color:#1C1C1F; }
+  h1 .es{ color:#224DA9; }
+  .tag{ font-size:38px; color:#34343B; margin-top:30px; max-width:1020px; line-height:1.2; font-weight:700; }
+  .sub{ font-size:25px; color:#5A6580; margin-top:15px; max-width:980px; line-height:1.3; font-weight:500; }
+  .foot{ position:absolute; left:90px; bottom:52px; font-size:21px; color:#8A92A8; font-weight:500; }
+  .foot b{ color:#224DA9; font-weight:700; }
+  .base{ position:absolute; left:0; right:0; bottom:0; height:7px;
+    background:linear-gradient(90deg,#224DA9 0 70%,#B8842B 70% 100%); }
 </style>
 </head>
 <body>
-  <div class="glow1"></div>
-  <div class="glow2"></div>
-  <div class="grid"></div>
+  <div class="halo"></div>
   <div class="wrap">
     <div class="top">
-      <div class="flag"><div class="r t"></div><div class="y"></div><div class="r b"></div></div>
-      <span class="kicker">Cumplimiento legal · <b>España</b></span>
+      <img class="icon" src="beel-icon.svg" alt="BeeL">
+      <span class="kick">
+        <span class="flag"><span class="r t"></span><span class="y"></span><span class="r b"></span></span>
+        Cumplimiento legal · <b>España</b>
+      </span>
     </div>
     <h1>compliance<span class="es">-es</span></h1>
     <div class="tag">Audita tu app y deja listos tus documentos de cumplimiento.</div>
     <div class="sub">Cada hallazgo apunta al artículo de la norma que lo respalda — sin abogado.</div>
-    <div class="chips">
-      <div class="chip">⚖️ <b>RGPD</b> + LOPDGDD</div>
-      <div class="chip">🛡️ Art. <b>31 bis</b> CP</div>
-      <div class="chip">🧾 <b>Veri*Factu</b></div>
-      <div class="term"><span class="p">›</span> /compliance-es</div>
-    </div>
   </div>
-  <div class="foot">Claude Code plugin · <b>BeeL.</b><br>github.com/beel-es/claude-plugins</div>
+  <div class="foot">Un plugin de <b>BeeL.</b> para Claude Code · github.com/beel-es/claude-plugins</div>
   <div class="base"></div>
 </body>
 </html>
