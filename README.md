@@ -15,6 +15,10 @@ Official [Claude Code](https://claude.ai/claude-code) plugins for the [BeeL](htt
       - [API version &amp; secrets](#api-version--secrets)
     - [Output](#output)
     - [Hard rules](#hard-rules)
+  - [`compliance-es`](#compliance-es) — Spanish legal compliance generator (RGPD · 31 bis CP · Veri*Factu)
+    - [Frameworks covered](#frameworks-covered)
+    - [What it produces](#what-it-produces)
+    - [Hard rules](#hard-rules-1)
 - [Auto-enable for your project](#auto-enable-for-your-project)
 - [License](#license)
 
@@ -145,6 +149,47 @@ A single Markdown report with:
 #### Hard rules
 
 The auditor is **read-only**. It will never edit code, call any Stripe write API (`create_*`, `update_*`, `cancel_*`, `create_refund`), or rotate keys — even if it finds a leaked one.
+
+### `compliance-es`
+
+Audits a repo and generates, **without a lawyer**, the full legal-compliance documentation for a Spanish
+SaaS or company. Each conclusion cites the article of the law that backs it, contrasted against the official
+text (BOE / EUR-Lex / AEPD / AEAT). Multi-framework (packs), with versioned state in `.compliance/`.
+
+**Install** (skip the first line if you've already added the marketplace):
+
+```
+/plugin marketplace add beel-es/claude-plugins
+/plugin install compliance-es@beel
+```
+
+**Run** (inside the repo to audit):
+
+```
+/compliance-es
+```
+
+#### Frameworks covered
+
+| Pack | Norm | Status | Covers |
+|------|------|--------|--------|
+| `rgpd-lopdgdd` | RGPD + LOPDGDD | in force | consent, data-subject rights, RAT, DPA, security, breaches (72 h), international transfers, DPIA |
+| `compliance-penal` | Art. 31 bis Criminal Code + Ley 2/2023 | in force | organisation model, code of ethics, criminal-risk matrix, whistleblowing channel |
+| `verifactu` | RD 1007/2023 (Veri*Factu) | corporate **1-Jan-2027** · others **1-Jul-2027** | SIF conformity, responsible declaration, record retention |
+
+#### What it produces
+
+A versioned `.compliance/` state in the audited repo: `state.json` (posture per framework + per-control
+evidence), `RESUMEN.md` (prioritised gaps + diff vs the previous run), `INSTRUCTIVO.md` (runbooks: rights,
+breach, AEPD/tax inspection), and `docs/` with every filled-in document. Each run is a commit.
+
+#### Hard rules
+
+Every legal statement cites **norm + article + source**; anything unverifiable is flagged
+`[verificar contra fuente oficial]`. It resolves the decisions (DPO? DPIA? transfer mechanism? Veri*Factu
+obligation?) instead of leaving them open, and it never claims "guaranteed/certified compliance". When a
+project invoices, it offers to integrate a Veri*Factu-compliant provider (the BeeL API) rather than
+re-implementing hash/QR/chaining by hand.
 
 ## Auto-enable for your project
 
