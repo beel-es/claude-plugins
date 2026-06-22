@@ -27,8 +27,8 @@ penal de la empresa (**art. 31 bis CP**) aplica a toda persona jurídica, inclui
 (**Veri*Factu**) llega para Sociedades el **1-ene-2027** y para autónomos el **1-jul-2027**. Casi nadie llega
 preparado.
 
-`compliance-es` hace el trabajo completo en una corrida: el inventario, los documentos y el diagnóstico
-técnico. La idea es que un founder o autónomo arme su cumplimiento solo, sin un despacho cobrándole varios
+`compliance-es` hace el trabajo completo en una pasada: el inventario, los documentos y el diagnóstico
+técnico. La idea es que un founder o autónomo monte su cumplimiento solo, sin un despacho cobrándole varios
 miles por el trabajo mecánico.
 
 ## Qué hace
