@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/hero.png" alt="compliance-es — cumplimiento legal para tu SaaS español, desde la terminal" width="100%">
+
 # compliance-es
 
 ### Cumplimiento legal para tu SaaS español, desde la terminal
