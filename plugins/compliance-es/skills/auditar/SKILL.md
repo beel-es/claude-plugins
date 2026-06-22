@@ -1,5 +1,5 @@
 ---
-name: compliance-es
+name: auditar
 description: >-
   Esta skill se usa cuando el usuario pide "armar el compliance", "cumplir el RGPD / la LOPD",
   "preparar la protección de datos", "auditar datos personales", "generar política de privacidad /

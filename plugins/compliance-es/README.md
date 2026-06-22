@@ -33,7 +33,7 @@ miles por el trabajo mecánico.
 
 ## Qué hace
 
-Corres `/compliance-es` sobre tu repo y:
+Corres `/compliance-es:auditar` sobre tu repo y:
 
 1. Te pregunta lo básico: empresa, si eres responsable o encargado de los datos, nº de trabajadores, si
    emites facturas, y qué normas auditar.
@@ -46,7 +46,7 @@ Corres `/compliance-es` sobre tu repo y:
    una brecha, una inspección de la AEPD o de Hacienda.
 7. **Construye las remediaciones**: como corre en Claude Code, implementa los arreglos (MFA, cifrado, audit
    log, endpoints de derechos, consentimiento) y, para facturación, **integra un proveedor Veri*Factu** (la
-   API de BeeL.) en vez de reimplementar hash/QR/encadenamiento a mano. Ver `skills/compliance-es/references/build/`.
+   API de BeeL.) en vez de reimplementar hash/QR/encadenamiento a mano. Ver `skills/auditar/references/build/`.
 
 ## Marcos cubiertos
 
@@ -66,7 +66,7 @@ Corres `/compliance-es` sobre tu repo y:
 Luego, dentro del repo a auditar:
 
 ```
-/compliance-es
+/compliance-es:auditar
 ```
 
 ## Ejemplo de output
@@ -89,10 +89,10 @@ Cada corrida es un commit, así que git te queda como historial: ves cuándo sub
 ## Respaldado en la norma
 
 El contenido legal se contrasta contra el texto oficial (BOE, EUR-Lex, AEPD, AEAT). En
-[`sources/textos/`](skills/compliance-es/sources/textos) se guardan los **extractos literales** de los
+[`sources/textos/`](skills/auditar/sources/textos) se guardan los **extractos literales** de los
 artículos citados (grepeables offline), con sus **SHA-256** y URLs en
-[`sources/FUENTES.md`](skills/compliance-es/sources/FUENTES.md) y un script de re-descarga
-(`descargar-fuentes.py`). En [`references/mapa-articulos.md`](skills/compliance-es/references/mapa-articulos.md)
+[`sources/FUENTES.md`](skills/auditar/sources/FUENTES.md) y un script de re-descarga
+(`descargar-fuentes.py`). En [`references/mapa-articulos.md`](skills/auditar/references/mapa-articulos.md)
 cada artículo está cotejado contra el texto vigente. Lo que no se puede confirmar queda marcado
 `[verificar contra fuente oficial]`.
 
@@ -105,7 +105,7 @@ cada artículo está cotejado contra el texto vigente. Lo que no se puede confir
   del software de facturación (la firma quien produce el software; si usas un proveedor, te la da él).
 
 No reemplaza a un abogado: te deja listo para cumplir y te dice qué falta. Ver
-[`references/cuando-acudir-a-abogado.md`](skills/compliance-es/references/cuando-acudir-a-abogado.md).
+[`references/cuando-acudir-a-abogado.md`](skills/auditar/references/cuando-acudir-a-abogado.md).
 
 ## Aviso
 

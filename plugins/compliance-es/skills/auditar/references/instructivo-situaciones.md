@@ -51,7 +51,7 @@ representación de una inspección o procedimiento sancionador (caso reactivo).
 ## F. Cambia la ley o sale un reglamento (ej. nueva prórroga de Veri*Factu, Orden de factura B2B)
 1. Actualiza las referencias en `sources/FUENTES.md` (re-verifica fechas/artículos en BOE/AEAT/AEPD).
 2. Ajusta el pack afectado y los controles.
-3. Re-corre `/compliance-es` → el `state.json` muestra qué cambió.
+3. Re-corre `/compliance-es:auditar` → el `state.json` muestra qué cambió.
 
 ## G. Calendario de revisión
 | Cuándo | Qué | Quién |
@@ -61,7 +61,7 @@ representación de una inspección o procedimiento sancionador (caso reactivo).
 | Anual | Formación del equipo (datos + compliance penal) | Responsable |
 | Al firmar/renovar proveedor | **DPA** + anexo de transferencia (Cláusulas Tipo) | Responsable |
 | Antes de 1-ene-2027 / 1-jul-2027 | Verificar conformidad **Veri*Factu** del sistema de facturación | Administración |
-| Cada release relevante | Re-correr `/compliance-es` (drift) | Dev |
+| Cada release relevante | Re-correr `/compliance-es:auditar` (drift) | Dev |
 
 ---
 *Guía operativa de compliance-es. No constituye asesoramiento jurídico.*

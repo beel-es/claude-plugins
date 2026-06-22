@@ -12,8 +12,8 @@ se aceptan afirmaciones normativas basadas solo en blogs o resúmenes secundario
 ## Cómo aportar
 
 - **Corregir un artículo/dato:** cita la fuente oficial (BOE/EUR-Lex) y actualiza
-  `skills/compliance-es/references/mapa-articulos.md`.
-- **Agregar un marco nuevo (pack):** crea `skills/compliance-es/packs/<id>/pack.md` (obligaciones + controles
+  `skills/auditar/references/mapa-articulos.md`.
+- **Agregar un marco nuevo (pack):** crea `skills/auditar/packs/<id>/pack.md` (obligaciones + controles
   que exige + plantillas) y mapea sus controles en `references/controls.md` (crosswalk). Añade sus fuentes a
   `sources/FUENTES.md` con su URL oficial.
 - **Mejorar runbooks/plantillas:** mantén el disclaimer "no es asesoramiento jurídico" y marca `[ABOGADO]`
