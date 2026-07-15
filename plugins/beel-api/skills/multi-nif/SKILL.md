@@ -38,7 +38,7 @@ require both scopes — an integration uses one model:
   owner, billing and NIF stay with that account; the invitee only needs a **login**
   (not an account of their own) and does **no** fiscal onboarding. Use when *the
   client signed up and pays themselves* and invites you in.
-- **Managed accounts** (`accounts:provision`) — you **create and run a third party's
+- **Managed accounts** (`accounts:write`) — you **create and run a third party's
   account** (its own NIF, its own billing) and they can later **claim** it. Use when
   *you onboard them by API and you pay* (fleets, mass onboarding, platform gestorías
   whose clients aren't on BeeL yet).
@@ -82,7 +82,7 @@ Each item has `id` (UUID → use as the header value) and `nif`.
 |------|------|-------|
 | Companies | `companies:read` (one), `companies:list` (list & stats) | `companies:write` |
 | Members, grants & invitations | `members:read` | `members:write` |
-| Managed accounts (provisioning) | `accounts:provision` | `accounts:provision` |
+| Managed accounts (provisioning) | `accounts:write` | `accounts:write` |
 | Payment connections (Stripe per NIF) | `payment-connections:read` | `payment-connections:write` |
 
 Canonical table: fetch the `auth/scopes` page from the docs (below).
@@ -132,7 +132,7 @@ curl -s https://docs.beel.es/multi-nif/managed-accounts.mdx
 - **Give a teammate access** — invitations + per-company grants (`members:write`).
   Fetch `multi-nif/members-and-grants` and `multi-nif/invitations`.
 - **Agency/fleet operating clients** — provisioning + managed accounts
-  (`accounts:provision`, `OPERATE` access). Fetch `multi-nif/managed-accounts`.
+  (`accounts:write`, `OPERATE` access). Fetch `multi-nif/managed-accounts`.
 
 ## 🛠 Companion skills
 
