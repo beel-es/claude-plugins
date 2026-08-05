@@ -3,8 +3,10 @@
   "description": "Designs, implements and audits API-first multitenancy in Spring Boot and PostgreSQL, including API keys, browser sessions, Spring Security, hierarchical authorization, token rotation and fail-closed row-level security.",
   "version": "0.1.0",
   "author": {
-    "name": "Carlos MGV"
+    "name": "BeeL.",
+    "email": "hola@beel.es"
   },
+  "homepage": "https://beel.es",
   "repository": "https://github.com/beel-es/claude-plugins",
   "license": "MIT"
 }
