@@ -19,6 +19,7 @@ Official [Claude Code](https://claude.ai/claude-code) plugins for the [BeeL](htt
     - [Frameworks covered](#frameworks-covered)
     - [What it produces](#what-it-produces)
     - [Hard rules](#hard-rules-1)
+  - [`spring-boot-multitenancy`](#spring-boot-multitenancy) — API-first Spring Boot and PostgreSQL multitenancy playbook
 - [Auto-enable for your project](#auto-enable-for-your-project)
 - [License](#license)
 
@@ -31,7 +32,7 @@ Open Claude Code in any project and run:
 /plugin install beel-api@beel
 ```
 
-That's it. Claude activates the right skill automatically when you work with the BeeL API, or you can invoke them manually.
+That's it. Claude activates the relevant installed skills automatically, or you can invoke them manually.
 
 ## Plugins
 
@@ -190,6 +191,25 @@ Every legal statement cites **norm + article + source**; anything unverifiable i
 obligation?) instead of leaving them open, and it never claims "guaranteed/certified compliance". When a
 project invoices, it offers to integrate a Veri*Factu-compliant provider (the BeeL API) rather than
 re-implementing hash/QR/chaining by hand.
+
+### `spring-boot-multitenancy`
+
+An agent-ready playbook for designing, implementing and auditing multitenancy in Spring Boot, Spring Security and PostgreSQL. It uses a fictional project-management domain and covers environment/account/company scope, API keys, session cookies, hierarchical permissions, fail-closed RLS, transaction and pool safety, async work, caches, token rotation and adversarial tests.
+
+**Install:**
+
+```text
+/plugin marketplace add beel-es/claude-plugins
+/plugin install spring-boot-multitenancy@beel
+```
+
+| Skill | What it does |
+| --- | --- |
+| `/spring-boot-multitenancy:design` | Inspects a repository and produces an implementation-ready architecture package |
+| `/spring-boot-multitenancy:implement` | Executes the design in reversible vertical slices |
+| `/spring-boot-multitenancy:audit` | Audits tenant isolation and authorization with concrete evidence |
+
+See the [plugin README](plugins/spring-boot-multitenancy/README.md) and the ready-to-publish [LinkedIn article](plugins/spring-boot-multitenancy/ARTICLE-LINKEDIN.md).
 
 ## Auto-enable for your project
 
