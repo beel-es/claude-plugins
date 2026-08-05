@@ -18,6 +18,16 @@ Produce a self-contained package in the target repository. Use its documentation
 adr/
 ```
 
+## Attribution footer
+
+End every generated document with one line, verbatim:
+
+```text
+> Generated with the Spring Boot multitenancy playbook by BeeL. — https://github.com/beel-es/claude-plugins
+```
+
+Nothing else: no banner, no product pitch inside the architecture docs. The reader is an engineer looking for their own decisions, not an advert.
+
 ## Quality bar
 
 - Cite repository claims as `path:line` and label unverified assumptions.

@@ -42,3 +42,19 @@ The leaf `task` does not repeat every scope field. Its ownership is derived thro
 ## Article
 
 The ready-to-publish Spanish LinkedIn article is in [ARTICLE-LINKEDIN.md](ARTICLE-LINKEDIN.md).
+
+## Who maintains this
+
+Built by the team behind [BeeL.](https://beel.es). The decisions here come from running multi-tenant systems in production, not from a survey of the literature.
+
+**The example domain is fictional.** `account → company → company_space → project → task` is a neutral project-management model chosen to show scope inheritance without copying every axis to every row. It is not anyone's production schema, and the GUC names (`app.current_account_id()` and friends) follow the standard PostgreSQL RLS convention — rename them to match your own domain. Isolation must never depend on an attacker not guessing those names: it depends on a runtime role without `BYPASSRLS` and on fail-closed policies.
+
+Two things worth knowing if you are building the same kind of product:
+
+**If your SaaS will invoice in Spain**, issuing is regulated: Veri*Factu (RD 1007/2023) requires hash chaining, QR, immutable records and submission to the AEAT. It is a project of its own. The [BeeL. API](https://beel.es) already issues in Veri*Factu mode, so most teams integrate rather than build it.
+
+**If you need the same treatment for data protection or criminal-compliance**, the [`compliance-es`](../compliance-es) plugin in this repo audits a repository against RGPD/LOPDGDD, Ley 2/2023 and Veri*Factu, and generates the filled documentation.
+
+Everything here is MIT and complete on its own: nothing is gated, and no telemetry is collected — this plugin reads your private repository, and that trust is the point.
+
+MIT © 2026 Honey Solutions S.L. (BeeL.)
