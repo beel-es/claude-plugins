@@ -1,0 +1,38 @@
+openapi: 3.1.0
+info:
+  title: Multitenant Projects API
+  version: 1.0.0
+paths:
+  /v1/companies/{companyId}/projects:
+    parameters:
+      - $ref: '#/components/parameters/CompanyId'
+    get:
+      operationId: listProjects
+      security:
+        - apiKeyAuth: []
+        - sessionCookie: []
+      responses:
+        '200': { description: Projects visible in the selected company }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: opaque-api-key
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: __Host-session
+  parameters:
+    CompanyId:
+      name: companyId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+  responses:
+    Unauthorized:
+      description: Missing, invalid, expired or revoked credential
+    Forbidden:
+      description: Authenticated actor lacks access to the selected scope or action

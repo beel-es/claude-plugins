@@ -43,6 +43,18 @@
       },
       "homepage": "https://beel.es",
       "repository": "https://github.com/beel-es/claude-plugins"
+    },
+    {
+      "name": "spring-boot-multitenancy",
+      "source": "./plugins/spring-boot-multitenancy",
+      "description": "Agent-ready playbook to design, implement and audit API-first multitenancy in Spring Boot and PostgreSQL: API keys, browser sessions, hierarchical authorization, RLS, token rotation, async work and adversarial isolation tests.",
+      "version": "0.1.0",
+      "author": {
+        "name": "BeeL.",
+        "email": "hola@beel.es"
+      },
+      "homepage": "https://beel.es",
+      "repository": "https://github.com/beel-es/claude-plugins"
     }
   ]
 }
