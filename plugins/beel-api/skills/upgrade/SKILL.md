@@ -13,44 +13,38 @@ argument-hint: "[area to check, defaults to everything]"
 
 Read what changed, find what the project does today, propose the migration. **Report first — only modify code if the user asks.**
 
-The order matters: the releases tell you *what* moved and *what it became*, the project tells you *where*. Doing it the other way round produces a list of endpoints with no idea which ones are a problem.
+The order matters: the changelog tells you *what* moved and *what it became*, the project tells you *where*. Doing it the other way round produces a list of endpoints with no idea which ones are a problem.
 
 ## Procedure
 
 ### 1. Read what changed
 
-**Start with the releases feed.** BeeL. publishes the big migrations as structured release notes — route-by-route old→new tables, sunset calendars, and the traps where the successor is not a drop-in.
+**Start with the changelog feed.** It is one surface: the small entries and the big migrations live in the same stream, newest first. The migrations that can break you carry `note: true` and have a page of their own — route-by-route old→new tables, sunset calendars, and the traps where the successor is not a drop-in.
 
 ```bash
-curl -s https://docs.beel.es/api/releases     # every release note as JSON, newest first
+curl -s https://docs.beel.es/api/changelog     # every entry as JSON, newest first
 ```
 
-The response is `{ "releases": [ … ] }`. Per release, the fields worth reading:
+The response is `{ "entries": [ … ] }`. **Read the `note: true` ones first** — those are the migrations; the rest are usually additions. Per entry, the fields worth reading:
 
 | Field | What you get from it |
 | --- | --- |
-| `date`, `title`, `slug`, `url` | Identity, and the page to cite in the report |
+| `date`, `title`, `slug`, `url` | Identity, and the page to cite in the report. `url` is already resolved: `/changelog/<slug>` for a migration, `/changelog#<slug>` for a short entry |
+| `note` | `true` = big migration with its own page. Start here |
 | `breaking` | Whether this one can break the project at all |
 | `breakingChanges[]` | **Read every one.** Prose, one entry per thing that breaks — this is where semantic changes hide |
 | `routeMigration.groups[].rows[]` | The equivalence table: `methods`, `path` (old), `successor` (new, **absent = removed with no replacement**), `note` |
 | `timeline.phases[]`, `timeline.ifYouDoNotMigrate` | When the old way stops answering and what happens then |
 | `audience.checks[]` | Concrete checks BeeL. itself suggests — usually greps and headers. Run them |
 | `highlights[]`, `links[]` | Non-breaking additions, and where to read more |
+| `assistant` | Guidance BeeL. wrote for this exact job, when the entry carries it |
 
 If the feed 404s (older deployment), fall back in this order and say in the report which source you used:
 
 ```bash
-curl -s https://docs.beel.es/llms.mdx/releases/<slug>   # one release as markdown
-curl -s https://docs.beel.es/releases                   # the index, HTML
+curl -s https://docs.beel.es/llms.mdx/changelog/<slug>   # one migration as markdown
+curl -s https://docs.beel.es/changelog                    # the index, HTML
 ```
-
-**Then the changelog**, for the smaller changes that never got a release note:
-
-```bash
-curl -s https://docs.beel.es/api/changelog     # { "entries": [ … ] }, newest first
-```
-
-Read `date`, `type`, `breaking`, `description`, `endpoints[]` and `links[]`. An entry whose `links` point at `/releases/<slug>` is only a pointer — the release note is the authoritative version, and you have already read it. The human page is `https://docs.beel.es/changelog`; its markdown export (`/llms.mdx/changelog`) carries no entries, so don't fetch it expecting a list.
 
 **Then the contract**, to catch anything unannounced:
 
@@ -99,9 +93,9 @@ If a change is purely a path rewrite with an identical request and response, say
 Three buckets, empty ones omitted without padding:
 
 - **Required** — removed routes, deprecated routes with their `Sunset` date, shape changes, unhandled error codes. Each with the file, the diff, and any semantic caveat from step 4.
-- **Recommended** — outdated patterns the releases make avoidable: polling where a webhook event now exists, hand-rolled loops where a bulk endpoint exists, raw HTTP where the SDK applies.
+- **Recommended** — outdated patterns the changelog makes avoidable: polling where a webhook event now exists, hand-rolled loops where a bulk endpoint exists, raw HTTP where the SDK applies.
 - **Opportunities** — capabilities added since the integration was written that would delete project code.
 
-Cite the release page (`https://docs.beel.es/releases/<slug>`) for anything the user may want to read in full. If everything is current, say exactly that — a clean bill of health is a valid result.
+Cite the changelog page (`https://docs.beel.es/changelog/<slug>`) for anything the user may want to read in full. If everything is current, say exactly that — a clean bill of health is a valid result.
 
 Offer to apply the **Required** bucket, minus the items flagged as semantic decisions; leave those and the other two buckets as the user's call.
