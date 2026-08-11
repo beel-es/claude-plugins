@@ -79,4 +79,4 @@ For task-shaped work, this plugin ships dedicated skills:
 - `/beel-api:audit` — audit existing integration code against these rules
 - `/beel-api:webhooks` — build a correct webhook receiver end to end
 - `/beel-api:upgrade` — check an integration against the live API for drift
-- `/beel-api:multi-nif` — integrate the multi-NIF model (many companies per account, `Beel-Active-Company`, managed accounts)
+- `/beel-api:multi-nif` — integrate the multi-NIF model (many companies per account, `BeeL-Active-Company`, managed accounts)
