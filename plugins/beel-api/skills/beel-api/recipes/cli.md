@@ -19,7 +19,7 @@ npx @beel_es/cli docs get glossary               # one full page by title
 
 Propose this to the user and let them confirm before running it, rather than silently pulling the full docs into context.
 
-Node 20+. Commands are derived from the embedded OpenAPI spec at startup, so the CLI's own `--help` is always the source of truth for what it can do — **discover, don't guess**:
+Commands are derived from the embedded OpenAPI spec at startup, so the CLI's own `--help` is always the source of truth for what it can do — **discover, don't guess**:
 
 ```bash
 npx @beel_es/cli --help                    # top-level resources
@@ -35,6 +35,12 @@ export BEEL_API_KEY=beel_sk_test_...   # recommended for agent/CI use
 
 **Sandbox is the default.** Every command uses the test key unless `--live` is passed explicitly. A live key without `--live` is an error, not a silent upgrade — so it's safe to experiment. Never pass `--live` unless the user explicitly asks for production.
 
+`--live` is a global flag and goes before the resource:
+
+```bash
+npx @beel_es/cli --live invoices list
+```
+
 ## Usage shape
 
 ```bash
@@ -42,7 +48,7 @@ npx @beel_es/cli invoices list --status PAID --limit 5
 npx @beel_es/cli invoices get <invoice_id>
 npx @beel_es/cli invoices create --data @invoice.json
 npx @beel_es/cli invoices issue <invoice_id> --wait-for-pdf
-npx @beel_es/cli customers create --data '{"fiscal_name":"ACME SL", ...}'
+npx @beel_es/cli customers create --data '{"legal_name":"ACME SL","nif":"B12345678","address":{"street":"Calle Mayor","number":"123","postal_code":"28001","city":"Madrid","province":"Madrid"}}'
 npx @beel_es/cli nif validate --data '{"nif":"B12345678"}'
 npx @beel_es/cli invoices export-excel --output invoices.xlsx
 ```
@@ -56,9 +62,11 @@ npx @beel_es/cli invoices export-excel --output invoices.xlsx
 If a command doesn't exist in the installed CLI version, hit the endpoint directly:
 
 ```bash
-npx @beel_es/cli request GET /v1/invoices --query status=PAID
-npx @beel_es/cli request POST /v1/customers --data @customer.json
+npx @beel_es/cli request GET /v1/companies/<company_id>/invoices --query status=PAID
+npx @beel_es/cli request POST /v1/companies/<company_id>/customers --data @customer.json
 ```
+
+The company-scoped paths above are the canonical form. The flat equivalents (`/v1/invoices`, `/v1/customers`, …) are deprecated and live until their `Sunset` date.
 
 ## Output contract (built for agents)
 

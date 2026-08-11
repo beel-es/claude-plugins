@@ -11,13 +11,13 @@
 | `422 Unprocessable Entity` | Invalid fields or missing required fields | Fetch OpenAPI spec, verify field names and types |
 | `429 Too Many Requests` | Rate limit exceeded | Implement exponential backoff, check rate limit headers (see docs) |
 | Can't edit invoice | Invoice is ISSUED (immutable) | Create a corrective invoice |
-| Can't delete invoice | Invoice is ISSUED (immutable) | Void it (POST `/invoices/{id}/void`) |
-| Can't delete customer | Customer has associated invoices | Deactivate instead (soft delete) |
+| Can't delete invoice | Invoice is ISSUED (immutable) | Void it (`POST /v1/companies/{company_id}/invoices/{invoice_id}/void`) |
+| Can't delete customer | Customer has associated invoices (`409 CLIENT_HAS_INVOICES`) | The customer is left untouched — update it with `active: false` (not `is_active`) to stop using it |
 
 ## Debugging Workflow
 
 1. **Check the status code** — see table above
-2. **Read the error body** — BeeL returns `{ success: false, error: { code, message } }`
+2. **Read the error body** — BeeL returns `{ success: false, error: { code, message, details } }` plus the RFC 9457 fields `type`, `title`, `detail` and `instance`. `type` is a stable URI to that error's documentation page (e.g. `https://docs.beel.es/errors/INVOICE_NO_LINES`)
 3. **Verify against OpenAPI spec** — field names, types, required fields
 4. **Check idempotency** — if 409, you may be reusing a key with different data
 
@@ -28,4 +28,4 @@ For current rate limit tiers and backoff strategies:
 curl https://docs.beel.es/llms.txt | grep -i rate
 ```
 
-⚠️ **Don't hardcode rate limit header names.** Check the live docs for the exact headers — they may change. As of writing, the documented headers are `RateLimit-Limit`, `RateLimit-Remaining`, and `RateLimit-Reset`.
+**`RateLimit-*` headers only come with the `429`.** Successful responses carry none, so a client cannot track its remaining budget ahead of time: retry on `429`, honouring `Retry-After`. As of writing the `429` carries `Retry-After`, `RateLimit-Limit`, `RateLimit-Remaining` and `RateLimit-Reset` — check the live docs before hardcoding those names.

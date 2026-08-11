@@ -7,6 +7,16 @@ When implementing a webhook receiver for BeeL events, always include these four 
 3. **Fast response** — return 200 immediately, process async
 4. **Retry awareness** — BeeL retries up to 5 times on failure
 
+## Delivery headers
+
+Every delivery carries:
+
+- `BeeL-Signature` — HMAC-SHA256, format `t=timestamp,v1=hmac`
+- `BeeL-Event` — the event type, so you can route without parsing the body
+- `BeeL-Event-Id` — the event's UUID; stable across retries, use it to deduplicate
+- `BeeL-Delivery-Id` — unique per delivery attempt
+- `Idempotency-Key` — same UUID as `BeeL-Event-Id`
+
 ⚠️ **Always verify the exact signature format and event types from the live docs:**
 ```bash
 curl https://docs.beel.es/llms.txt | grep -i webhook
@@ -69,7 +79,7 @@ async function handleEvent(event: any) {
   // Fetch docs for the full list of event types:
   // curl https://docs.beel.es/llms.txt | grep -i events
   switch (event.type) {
-    case 'invoice.emitted':
+    case 'invoice.issued':
       break;
     case 'verifactu.status.updated':
       break;

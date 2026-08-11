@@ -38,17 +38,23 @@ import createClient from 'openapi-fetch';
 import type { paths } from './beel-api.d.ts';
 
 const beel = createClient<paths>({
-  baseUrl: 'https://app.beel.es/api/v1',
+  baseUrl: 'https://app.beel.es/api',
   headers: {
     Authorization: `Bearer ${process.env.BEEL_API_KEY}`,
   },
 });
 
-// Fully typed — autocomplete and compile-time validation
-const { data, error } = await beel.GET('/invoices', {
-  params: { query: { status: 'ISSUED', limit: 10 } }
+// Fully typed — autocomplete and compile-time validation.
+// Paths include the /v1 prefix; company-scoped is the canonical form.
+const { data, error } = await beel.GET('/v1/companies/{company_id}/invoices', {
+  params: {
+    path: { company_id: process.env.BEEL_COMPANY_ID! },
+    query: { status: 'ISSUED', limit: 10 },
+  },
 });
 ```
+
+The flat `/v1/invoices` route still resolves but is deprecated, with an `x-successor` pointing at the company-scoped path.
 
 Re-run codegen whenever the API updates:
 ```bash
