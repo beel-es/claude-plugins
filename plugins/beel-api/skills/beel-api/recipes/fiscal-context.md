@@ -16,8 +16,8 @@ BeeL operates in the Spanish tax system. This file explains concepts for develop
 Tax rates, regime codes, and available tax types **change over time**. Always fetch current values:
 
 ```bash
-# Current tax config for the user's account
-GET /v1/tax-configuration
+# Current tax config for a NIF (company) — canonical, company-scoped form
+GET /v1/companies/{company_id}/tax-configuration
 
 # Full glossary of fiscal terms and API field mappings
 curl https://docs.beel.es/llms.txt | grep -i glossary
@@ -31,6 +31,7 @@ curl https://docs.beel.es/llms.txt | grep -i glossary
 - **STANDARD** → regular B2B/B2C invoices, full fiscal data required
 - **SIMPLIFIED** → consumer receipts (like restaurant tickets), NIF/address optional
 - **CORRECTIVE** → fixes or cancels a previously issued invoice
+- **PROFORMA** → commercial document (a formal quote) with no fiscal validity. Never enters VeriFactu: no QR, nothing sent to the AEAT
 
 For which type to use when, and required fields per type:
 ```bash
