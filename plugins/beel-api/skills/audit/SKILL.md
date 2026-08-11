@@ -33,7 +33,7 @@ app.beel.es            # raw HTTP calls
 Idempotency-Key        # manual idempotency (also matches legacy X- prefix)
 BEEL_API_KEY           # env var convention
 beel_sk_               # key prefix: hardcoded literals (instant CRITICAL) or auth code
-X-API-Key              # LEGACY auth header — finding in itself, see checklist 8
+X-API-Key              # not a BeeL header — a call sending it is unauthenticated, see checklist 2
 BeeL-Signature / BeeL-Event-Id  # webhook handling
 ```
 

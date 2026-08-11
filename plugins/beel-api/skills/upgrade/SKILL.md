@@ -33,18 +33,29 @@ The response is `{ "entries": [ … ] }`. **Read the `note: true` ones first** �
 | `note` | `true` = big migration with its own page. Start here |
 | `breaking` | Whether this one can break the project at all |
 | `breakingChanges[]` | **Read every one.** Prose, one entry per thing that breaks — this is where semantic changes hide |
-| `routeMigration.groups[].rows[]` | The equivalence table: `methods`, `path` (old), `successor` (new, **absent = removed with no replacement**), `note` |
+| `endpoints[]` | `{method, path, description}` for the routes the entry adds or touches — carried by about half the current entries, and usually the fastest thing to grep the project for |
+| `routeMigration.groups[].rows[]` | The equivalence table: `methods`, `path` (old), `successor` (new — **absent, or `status: "removed"`, means no replacement**), `note` |
 | `timeline.phases[]`, `timeline.ifYouDoNotMigrate` | When the old way stops answering and what happens then |
 | `audience.checks[]` | Concrete checks BeeL. itself suggests — usually greps and headers. Run them |
 | `highlights[]`, `links[]` | Non-breaking additions, and where to read more |
 | `assistant` | Guidance BeeL. wrote for this exact job, when the entry carries it |
 
+**Do not assume the richer fields are there.** `routeMigration`, `timeline`, `audience` and `assistant` are part of the schema, but none of the 18 entries the feed serves today carries them, and every row of the one migration that exists (`resources-under-the-nif`, 82 deprecated routes) has a successor. That migration keeps its route table on its own page, so read it there:
+
+```bash
+curl -s https://docs.beel.es/llms.mdx/changelog/resources-under-the-nif   # the prose
+```
+
+and open `https://docs.beel.es/changelog/resources-under-the-nif` in HTML for the table itself.
+
 If the feed 404s (older deployment), fall back in this order and say in the report which source you used:
 
 ```bash
-curl -s https://docs.beel.es/llms.mdx/changelog/<slug>   # one migration as markdown
+curl -s https://docs.beel.es/llms.mdx/changelog/<slug>   # one migration's prose as markdown
 curl -s https://docs.beel.es/changelog                    # the index, HTML
 ```
+
+Two caveats on `llms.mdx/changelog/<slug>`: it returns the **prose only** — the route migration table is a rendered component and does not appear there, so read it in the HTML page — and it only resolves for slugs that have an `.mdx` page of their own, not for short entries that live on the index.
 
 **Then the contract**, to catch anything unannounced:
 
@@ -82,9 +93,9 @@ For each affected call site, report: the `file:line`, what it does today, the re
 
 **Be explicit about what you cannot decide.** A row in the table says a path changed; it does not say the operation means the same thing. When a migration changes semantics, stop and describe the decision instead of rewriting:
 
-> **Real example from the "resources under the NIF" release.** `PUT /v1/members/{member_id}/grants` replaced a member's *entire* grant set — sending a partial list silently revoked the rest. Its successor, `PUT /v1/accounts/{account_id}/members/{member_id}/grants/{company_id}`, grants **one company at a time** and touches nothing else. A mechanical path swap turns "these are now their permissions" into "add this permission", or — worse, if the old call was a loop over a set — leaves stale grants that the old call used to clear. The correct migration reads `GET …/grants` first, then reconciles: one `PUT` per company to add or change, one `DELETE` per grant that should no longer exist. That is a judgement call about the project's intent, so surface it, don't guess.
+> **Real example from the "resources under the NIF" release.** `PUT /v1/customers/{customer_id}` replaced the customer *whole*: every field omitted from the body was cleared. Its successor, `PATCH /v1/companies/{company_id}/customers/{customer_id}`, **merges** — it touches only the fields you send. A mechanical path swap turns "this is the customer now" into "change these fields", and leaves old values standing that the previous call used to wipe. If the project relied on that clearing behaviour, the migration has to send the customer complete, or `null` the fields it means to empty. That is a judgement call about the project's intent, so surface it, don't guess.
 
-Other shapes of the same trap, all worth a flag rather than a rewrite: replace-vs-merge semantics, an operation that became idempotent (`POST …/transfer-ownership` → `PUT …/owner`, which states the desired state rather than performing a transfer), a parameter that moved from the path into the body, and a list response that gained a pagination wrapper.
+Other shapes of the same trap, all worth a flag rather than a rewrite: replace-vs-merge semantics, an operation that became idempotent, a parameter that moved from the path into the body, and a list response that gained a pagination wrapper.
 
 If a change is purely a path rewrite with an identical request and response, say so plainly — those are the ones safe to batch.
 

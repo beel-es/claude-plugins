@@ -4,13 +4,14 @@ description: >
   Implement a correct BeeL webhook receiver: HMAC-SHA256 signature
   verification, raw-body handling, event deduplication, retry-aware
   processing and subscription management. Use when receiving BeeL events
-  (invoice paid, issued, etc.) or debugging webhook delivery/signature issues.
-argument-hint: "[events to handle, e.g. 'invoice.paid']"
+  (invoice issued, voided, VeriFactu status, etc.) or debugging webhook
+  delivery/signature issues.
+argument-hint: "[events to handle, e.g. 'invoice.issued']"
 ---
 
 # BeeL Webhook Receiver
 
-Build or fix a webhook receiver that BeeL can deliver to safely. An unverified or non-idempotent receiver is worse than polling — it can be forged ("invoice paid" from anyone) or double-process events.
+Build or fix a webhook receiver that BeeL can deliver to safely. An unverified or non-idempotent receiver is worse than polling — it can be fed a fake `invoice.issued` from anyone, or double-process events.
 
 The base pattern (Express example) lives in `../beel-api/recipes/webhook-handler.md`. This skill adds the full procedure around it: live event catalog, framework gotchas, subscription management and end-to-end verification.
 
@@ -53,15 +54,19 @@ Deliveries can arrive more than once (retries, redeliveries). Key idempotent pro
 
 ### 4. Acknowledge fast, process async
 
-Return 2xx as soon as the event is verified, deduplicated and durably accepted (queued or stored). Slow handlers hit BeeL's delivery timeout and trigger retries, amplifying load. Non-2xx responses are retried per the documented retry policy.
+Return 2xx as soon as the event is verified, deduplicated and durably accepted (queued or stored). Slow handlers hit BeeL's delivery timeout and trigger retries, amplifying load.
+
+**Not every failure is retried.** Only 5xx responses, network errors and `408`/`429` are treated as transient and retried with backoff. Any other 4xx is a permanent client error — the delivery is dropped, not retried. A handler that answers `400` on a payload it does not recognise silently loses the event.
 
 ### 5. Subscription management
 
-Subscriptions are managed via the API (discover the `webhooks/*` endpoints via `llms.txt`): create (HTTPS URLs only; a max-active limit applies), update, rotate secret (**the old secret invalidates immediately** — deploy the new secret first, then rotate), list deliveries and retry failed ones for debugging.
+Subscriptions are managed via the API (discover the `webhooks/*` endpoints via `llms.txt`): create (HTTPS URLs only; **10 subscriptions per user maximum, counting all of them, not only the active ones**), update, rotate secret (**the old secret invalidates immediately** — deploy the new secret first, then rotate), list deliveries and retry failed ones for debugging.
+
+There is also a test endpoint, `POST /v1/accounts/{account_id}/webhooks/{webhook_id}/test`: it sends a synthetic, fully signed payload (`"test": true`) to the subscription URL immediately, outside the delivery queue. It is not retried and does not appear in the delivery history — it is the cheapest way to prove the endpoint is reachable and the signature check works.
 
 ### 6. Verify end-to-end
 
-If a sandbox key is available: create a subscription pointing at the dev endpoint (use a tunnel like `ngrok`/`cloudflared` for localhost), trigger a real event, and confirm: signature passes, duplicate delivery is ignored, handler completes. The **BeeL CLI** (see `../beel-api/recipes/cli.md`) does all of this without throwaway scripts — discover the exact commands with `npx @beel_es/cli --help`:
+If a sandbox key is available: create a subscription pointing at the dev endpoint (use a tunnel like `ngrok`/`cloudflared` for localhost), then either fire the test endpoint above — enough to prove reachability and signature — or trigger a real event when the payload shape matters, and confirm: signature passes, duplicate delivery is ignored, handler completes. The **BeeL CLI** (see `../beel-api/recipes/cli.md`) does all of this without throwaway scripts — discover the exact commands with `npx @beel_es/cli --help`:
 
 ```bash
 npx @beel_es/cli webhooks --help                          # subscription commands
