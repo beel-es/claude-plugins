@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "beel": {
+      "type": "http",
+      "url": "https://mcp.beel.es/mcp"
+    }
+  }
+}

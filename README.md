@@ -50,6 +50,8 @@ A docs-first toolkit for building and maintaining BeeL integrations. It keeps on
 
 **Docs**: [docs.beel.es/docs/claude-code](https://docs.beel.es/docs/claude-code)
 
+**Bundled MCP**: installing `beel-api` also connects the hosted **BeeL MCP** (`https://mcp.beel.es/mcp`, OAuth in the browser), so the same session gets live tools (create/issue invoices, manage NIFs…) and docs search alongside the skills. No API key needed.
+
 ### `stripe`
 
 Read-only auditor for Stripe integrations. Scans your codebase (and, optionally, your live Stripe account via the official Stripe MCP) and returns a structured report with **finding → severity → evidence → fix** for every issue.
