@@ -15,7 +15,7 @@ BeeL is a SaaS invoicing platform for Spanish autónomos with full VeriFactu com
 
 1. **NEVER invent endpoints, fields, or package names.** Always verify against the live docs first — see "How to Look Up Documentation" below for the token-efficient way to do it.
 2. **NEVER hardcode API keys.** Always use environment variables (`process.env.BEEL_API_KEY`).
-3. **There is NO separate test URL.** Base URL is always `https://app.beel.es/api`, and every path starts with `/v1/`. The key prefix determines the environment: `beel_sk_test_*` = sandbox, `beel_sk_live_*` = production.
+3. **There is NO separate test URL.** Base URL is always `https://app.beel.es/api`, and every path starts with `/v1/`. The key prefix determines the environment: `beel_sk_test_*` = Test, `beel_sk_live_*` = Live.
 4. **Company-scoped paths are the canonical form.** Build new code against `/v1/companies/{company_id}/…` (invoices, customers, products, series, tax and VeriFactu settings). The flat routes (`/v1/invoices`, `/v1/customers`, `/v1/products`, `/v1/configuration/*` and their sub-paths like `/issue` and `/void`) are `deprecated: true`, each carrying an `x-successor`; they keep working until the date in their `Sunset` response header.
 5. **Send `BeeL-Active-Company`** (the `company_id`) on any request touching company-owned data. Optional on an account with a single NIF, required on an account with several — otherwise `403 ACTIVE_COMPANY_REQUIRED`. See `/beel-api:multi-nif`.
 6. **`Idempotency-Key` on POST.** Ignored on PUT/PATCH/DELETE unless the operation opts in. Optional in general, required on bulk imports. See [recipes/invoice-flow.md](recipes/invoice-flow.md).
@@ -71,7 +71,7 @@ For detailed recipes and patterns, load these files when needed:
 - **[recipes/invoice-flow.md](recipes/invoice-flow.md)** — End-to-end invoice lifecycle: create → issue → send → pay
 - **[recipes/fiscal-context.md](recipes/fiscal-context.md)** — Spanish tax system concepts for non-Spanish developers
 - **[recipes/debugging.md](recipes/debugging.md)** — Common errors, causes, and solutions
-- **[recipes/cli.md](recipes/cli.md)** — `npx @beel_es/cli`: run real API calls (sandbox by default) to verify flows, inspect data, and debug — built for agent use
+- **[recipes/cli.md](recipes/cli.md)** — `npx @beel_es/cli`: run real API calls (Test by default) to verify flows, inspect data, and debug — built for agent use
 
 ## 🛠 Companion Skills
 

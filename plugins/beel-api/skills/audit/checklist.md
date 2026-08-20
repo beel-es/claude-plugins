@@ -1,6 +1,6 @@
 # BeeL Integration Audit — Checklist
 
-Each check lists what to look for and the pass criteria. Severities are defaults — escalate when production (live key) is involved.
+Each check lists what to look for and the pass criteria. Severities are defaults — escalate when Live (live key) is involved.
 
 ## 1. API Key Security
 
@@ -18,7 +18,7 @@ Each check lists what to look for and the pass criteria. Severities are defaults
 - [ ] **`Idempotency-Key` on every POST** (HIGH)
   Every raw POST to `app.beel.es` sends the header. SDK calls pass automatically (the SDK injects it) — mark as pass via SDK. **Only POST**: the API ignores `Idempotency-Key` on PUT/PATCH/DELETE unless that specific operation opts into it, so its absence there is not a finding. Check the operation's doc page before flagging a non-POST call.
 - [ ] **Current header names, not legacy ones** (HIGH)
-  The only auth header is `Authorization: Bearer <key>`; the only idempotency header is `Idempotency-Key`. The two legacy forms fail differently, so report them differently: a request sending `X-API-Key` carries **no authentication at all** — that header has never been part of BeeL's auth and the call will be rejected as unauthenticated. A request sending `X-Idempotency-Key` is accepted, but the header is **silently ignored**, so the call is simply not idempotent and a retry duplicates the resource. If a sandbox key is available, confirm either directly with the BeeL CLI (`npx @beel_es/cli request ...` — see the beel-api skill's `recipes/cli.md`).
+  The only auth header is `Authorization: Bearer <key>`; the only idempotency header is `Idempotency-Key`. The two legacy forms fail differently, so report them differently: a request sending `X-API-Key` carries **no authentication at all** — that header has never been part of BeeL's auth and the call will be rejected as unauthenticated. A request sending `X-Idempotency-Key` is accepted, but the header is **silently ignored**, so the call is simply not idempotent and a retry duplicates the resource. If a Test key is available, confirm either directly with the BeeL CLI (`npx @beel_es/cli request ...` — see the beel-api skill's `recipes/cli.md`).
 - [ ] **Key generated once per logical operation, reused across retries** (HIGH)
   The most common subtle bug: `uuid()` called *inside* the retry loop or inside the request helper for each attempt. The key must be created before the loop and reused; otherwise retries create duplicates (duplicate invoices = real money).
 - [ ] **Key is deterministic where it should be** (MEDIUM)

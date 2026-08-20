@@ -25,7 +25,7 @@ invent endpoints, fields or scopes; verify against the live docs.**
 | Concept | What it is |
 | --- | --- |
 | **Account** | The tenant you authenticate as. **One API key = one account.** Owns billing/auth and holds **1..N companies**. |
-| **Company** | One fiscal identity (NIF/CIF). Isolated space: its own invoices, customers, products, series — per environment (`TEST`/`PROD`). |
+| **Company** | One fiscal identity (NIF/CIF). Isolated space: its own invoices, customers, products, series — per environment (`TEST`/`LIVE`). |
 | **Member** | A person with access to the account. Account role `OWNER`/`ADMIN` (reach every company) or `MEMBER` (only companies granted to it, at access level `VIEW` or `OPERATE`). |
 | **Managed account** | Another account a **provisioner** (agency/fleet) creates and operates **on behalf of** its holder, at an access level it controls: `NONE`, `VIEW` or `OPERATE`. |
 
@@ -145,7 +145,7 @@ curl -s https://docs.beel.es/multi-nif/managed-accounts.mdx
   `../beel-api/recipes/invoice-flow.md`.
 - **Onboard a company (new NIF)** — `POST /v1/accounts/{account_id}/companies`
   (`companies:write`); then operate on it through the company-scoped routes. Fetch
-  `multi-nif/companies` for the fiscal profile fields and the TEST→PROD flow.
+  `multi-nif/companies` for the fiscal profile fields and the TEST→LIVE flow.
 - **Give a teammate access** — invitations + per-company grants (`members:write`),
   at access level `VIEW` or `OPERATE`. Fetch `multi-nif/members-and-grants` and
   `multi-nif/invitations`.
