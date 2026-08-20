@@ -50,7 +50,7 @@ For every endpoint you are about to call, fetch its doc page (discover via `http
 ### 5. Implement with the invariants baked in
 
 - `Authorization: Bearer <key>` auth; `Idempotency-Key` on every POST (SDK does this automatically) — generated once per logical operation, reused on retry. It is a POST mechanism: PUT/PATCH/DELETE ignore the header unless the operation explicitly opts in
-- Address resources under their NIF: `/v1/companies/{company_id}/…`. The flat routes (`/v1/invoices`, `/v1/customers`, `/v1/products`, …) are deprecated with a `Sunset` of **7 September 2026** and need the `BeeL-Active-Company` header once the account holds more than one NIF — without it they answer `403 ACTIVE_COMPANY_REQUIRED`. Never build a new integration on them
+- Address resources under their NIF: `/v1/companies/{company_id}/…`. The flat routes (`/v1/invoices`, `/v1/customers`, `/v1/products`, …) are deprecated with a `Sunset` of **10 September 2026** and need the `BeeL-Active-Company` header once the account holds more than one NIF — without it they answer `403 ACTIVE_COMPANY_REQUIRED`. Never build a new integration on them
 - Parse the `{success, data, error}` envelope; surface `error.code` and `error.details`
 - Handle 429 with `Retry-After` + backoff (SDK does this automatically); don't retry other 4xx
 - Paginate to `pagination.total_pages` on list endpoints
