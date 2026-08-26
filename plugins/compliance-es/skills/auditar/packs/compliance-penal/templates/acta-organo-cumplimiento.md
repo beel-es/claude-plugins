@@ -33,4 +33,4 @@ _______________________________
 [NOMBRE] — Administrador/a / Representante Legal, [RAZÓN SOCIAL]
 
 ---
-*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

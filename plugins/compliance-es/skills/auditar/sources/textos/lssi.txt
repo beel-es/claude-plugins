@@ -1,0 +1,345 @@
+# LSSI-CE (Ley 34/2002) — servicios de la sociedad de la información y comercio electrónico
+# Fuente oficial: https://www.boe.es/buscar/pdf/2002/BOE-A-2002-13758-consolidado.pdf
+# idBOE: BOE-A-2002-13758 · Descargado: 2026-08-26 · Artículos: 10, 21, 22, 23, 27, 28, 38, 39
+# Extracto literal del consolidado; ante cualquier duda, abrir la URL.
+
+Artículo 10. Información general.
+    1. Sin perjuicio de los requisitos que en materia de información se establecen en la
+normativa vigente, el prestador de servicios de la sociedad de la información estará obligado
+a disponer de los medios que permitan, tanto a los destinatarios del servicio como a los
+órganos competentes, acceder por medios electrónicos, de forma permanente, fácil, directa y
+gratuita, a la siguiente información:
+    a) Su nombre o denominación social; su residencia o domicilio o, en su defecto, la
+dirección de uno de sus establecimientos permanentes en España; su dirección de correo
+electrónico y cualquier otro dato que permita establecer con él una comunicación directa y
+efectiva.
+    b) Los datos de su inscripción en el Registro Mercantil en el que, en su caso, se
+encuentren inscritos o de aquel otro registro público en el que lo estuvieran para la
+adquisición de personalidad jurídica o a los solos efectos de publicidad.
+    c) En el caso de que su actividad estuviese sujeta a un régimen de autorización
+administrativa previa, los datos relativos a dicha autorización y los identificativos del órgano
+competente encargado de su supervisión.
+    d) Si ejerce una profesión regulada deberá indicar:
+    1.º Los datos del Colegio profesional al que, en su caso, pertenezca y número de
+colegiado.
+    2.º El título académico oficial o profesional con el que cuente.
+    3.º El Estado de la Unión Europea o del Espacio Económico Europeo en el que se
+expidió dicho título y, en su caso, la correspondiente homologación o reconocimiento.
+    4.º Las normas profesionales aplicables al ejercicio de su profesión y los medios a través
+de los cuales se puedan conocer, incluidos los electrónicos.
+     e) El número de identificación fiscal que le corresponda.
+     f) Cuando el servicio de la sociedad de la información haga referencia a precios, se
+facilitará información clara y exacta sobre el precio del producto o servicio, indicando si
+incluye o no los impuestos aplicables y, en su caso, sobre los gastos de envío.
+
+   g) Los códigos de conducta a los que, en su caso, esté adherido y la manera de
+consultarlos electrónicamente.
+    2. La obligación de facilitar esta información se dará por cumplida si el prestador la
+incluye en su página o sitio de Internet en las condiciones señaladas en el apartado 1.
+    3. Cuando se haya atribuido un rango de numeración telefónica a servicios de tarificación
+adicional en el que se permita el acceso a servicios de la sociedad de la información y se
+requiera su utilización por parte del prestador de servicios, esta utilización y la descarga de
+programas informáticos que efectúen funciones de marcación, deberán realizarse con el
+consentimiento previo, informado y expreso del usuario.
+    A tal efecto, el prestador del servicio deberá proporcionar al menos la siguiente
+información:
+    a) Las características del servicio que se va a proporcionar.
+    b) Las funciones que efectuarán los programas informáticos que se descarguen,
+incluyendo el número telefónico que se marcará.
+    c) El procedimiento para dar fin a la conexión de tarificación adicional, incluyendo una
+explicación del momento concreto en que se producirá dicho fin, y
+    d) El procedimiento necesario para restablecer el número de conexión previo a la
+conexión de tarificación adicional.
+    La información anterior deberá estar disponible de manera claramente visible e
+identificable.
+    Lo dispuesto en este apartado se entiende sin perjuicio de lo establecido en la normativa
+de telecomunicaciones, en especial, en relación con los requisitos aplicables para el acceso
+por parte de los usuarios a los rangos de numeración telefónica, en su caso, atribuidos a los
+servicios de tarificación adicional.
+
+Artículo 21. Prohibición de comunicaciones comerciales realizadas a través de correo
+electrónico o medios de comunicación electrónica equivalentes.
+     1. Queda prohibido el envío de comunicaciones publicitarias o promocionales por correo
+electrónico u otro medio de comunicación electrónica equivalente que previamente no
+hubieran sido solicitadas o expresamente autorizadas por los destinatarios de las mismas.
+     2. Lo dispuesto en el apartado anterior no será de aplicación cuando exista una relación
+contractual previa, siempre que el prestador hubiera obtenido de forma lícita los datos de
+contacto del destinatario y los empleara para el envío de comunicaciones comerciales
+referentes a productos o servicios de su propia empresa que sean similares a los que
+inicialmente fueron objeto de contratación con el cliente.
+     En todo caso, el prestador deberá ofrecer al destinatario la posibilidad de oponerse al
+tratamiento de sus datos con fines promocionales mediante un procedimiento sencillo y
+
+gratuito, tanto en el momento de recogida de los datos como en cada una de las
+comunicaciones comerciales que le dirija.
+    Cuando las comunicaciones hubieran sido remitidas por correo electrónico, dicho medio
+deberá consistir necesariamente en la inclusión de una dirección de correo electrónico u otra
+dirección electrónica válida donde pueda ejercitarse este derecho, quedando prohibido el
+envío de comunicaciones que no incluyan dicha dirección.
+
+Artículo 22. Derechos de los destinatarios de servicios.
+    1. El destinatario podrá revocar en cualquier momento el consentimiento prestado a la
+recepción de comunicaciones comerciales con la simple notificación de su voluntad al
+remitente.
+    A tal efecto, los prestadores de servicios deberán habilitar procedimientos sencillos y
+gratuitos para que los destinatarios de servicios puedan revocar el consentimiento que
+hubieran prestado. Cuando las comunicaciones hubieran sido remitidas por correo
+electrónico dicho medio deberá consistir necesariamente en la inclusión de una dirección de
+correo electrónico u otra dirección electrónica válida donde pueda ejercitarse este derecho
+quedando prohibido el envío de comunicaciones que no incluyan dicha dirección.
+    Asimismo, deberán facilitar información accesible por medios electrónicos sobre dichos
+procedimientos.
+    2. Los prestadores de servicios podrán utilizar dispositivos de almacenamiento y
+recuperación de datos en equipos terminales de los destinatarios, a condición de que los
+mismos hayan dado su consentimiento después de que se les haya facilitado información
+clara y completa sobre su utilización, en particular, sobre los fines del tratamiento de los
+datos, con arreglo a lo dispuesto en la Ley Orgánica 15/1999, de 13 de diciembre, de
+protección de datos de carácter personal.
+    Cuando sea técnicamente posible y eficaz, el consentimiento del destinatario para
+aceptar el tratamiento de los datos podrá facilitarse mediante el uso de los parámetros
+adecuados del navegador o de otras aplicaciones.
+    Lo anterior no impedirá el posible almacenamiento o acceso de índole técnica al solo fin
+de efectuar la transmisión de una comunicación por una red de comunicaciones electrónicas
+o, en la medida que resulte estrictamente necesario, para la prestación de un servicio de la
+sociedad de la información expresamente solicitado por el destinatario.
+
+                                         TÍTULO IV
+                             Contratación por vía electrónica
+
+Artículo 23. Validez y eficacia de los contratos celebrados por vía electrónica.
+    1. Los contratos celebrados por vía electrónica producirán todos los efectos previstos por
+el ordenamiento jurídico, cuando concurran el consentimiento y los demás requisitos
+necesarios para su validez.
+    Los contratos electrónicos se regirán por lo dispuesto en este Título, por los Códigos
+Civil y de Comercio y por las restantes normas civiles o mercantiles sobre contratos, en
+especial, las normas de protección de los consumidores y usuarios y de ordenación de la
+actividad comercial.
+    2. Para que sea válida la celebración de contratos por vía electrónica no será necesario
+el previo acuerdo de las partes sobre la utilización de medios electrónicos.
+    3. Siempre que la Ley exija que el contrato o cualquier información relacionada con el
+mismo conste por escrito, este requisito se entenderá satisfecho si el contrato o la
+información se contiene en un soporte electrónico.
+    4. No será de aplicación lo dispuesto en el presente Título a los contratos relativos al
+Derecho de familia y sucesiones.
+    Los contratos, negocios o actos jurídicos en los que la Ley determine para su validez o
+para la producción de determinados efectos la forma documental pública, o que requieran
+por Ley la intervención de órganos jurisdiccionales, notarios, registradores de la propiedad y
+mercantiles o autoridades públicas, se regirán por su legislación específica.
+
+
+
+Artículo 27. Obligaciones previas a la contratación.
+    1. Además del cumplimiento de los requisitos en materia de información que se
+establecen en la normativa vigente, el prestador de servicios de la sociedad de la
+información que realice actividades de contratación electrónica tendrá la obligación de poner
+a disposición del destinatario, antes de iniciar el procedimiento de contratación y mediante
+técnicas adecuadas al medio de comunicación utilizado, de forma permanente, fácil y
+gratuita, información clara, comprensible e inequívoca sobre los siguientes extremos:
+     a) Los distintos trámites que deben seguirse para celebrar el contrato.
+     b) Si el prestador va a archivar el documento electrónico en que se formalice el contrato
+y si éste va a ser accesible.
+     c) Los medios técnicos que pone a su disposición para identificar y corregir errores en la
+introducción de los datos, y
+     d) La lengua o lenguas en que podrá formalizarse el contrato.
+    La obligación de poner a disposición del destinatario la información referida en el párrafo
+anterior se dará por cumplida si el prestador la incluye en su página o sitio de Internet en las
+condiciones señaladas en dicho párrafo.
+    Cuando el prestador diseñe específicamente sus servicios de contratación electrónica
+para ser accedidos mediante dispositivos que cuenten con pantallas de formato reducido, se
+entenderá cumplida la obligación establecida en este apartado cuando facilite de manera
+permanente, fácil, directa y exacta la dirección de Internet en que dicha información es
+puesta a disposición del destinatario.
+    2. El prestador no tendrá la obligación de facilitar la información señalada en el apartado
+anterior cuando:
+    a) Ambos contratantes así lo acuerden y ninguno de ellos tenga la consideración de
+consumidor, o
+    b) El contrato se haya celebrado exclusivamente mediante intercambio de correo
+electrónico u otro tipo de comunicación electrónica equivalente.
+    3. Sin perjuicio de lo dispuesto en la legislación específica, las ofertas o propuestas de
+contratación realizadas por vía electrónica serán válidas durante el período que fije el
+oferente o, en su defecto, durante todo el tiempo que permanezcan accesibles a los
+destinatarios del servicio.
+    4. Con carácter previo al inicio del procedimiento de contratación, el prestador de
+servicios deberá poner a disposición del destinatario las condiciones generales a que, en su
+caso, deba sujetarse el contrato, de manera que éstas puedan ser almacenadas y
+reproducidas por el destinatario.
+
+
+
+Artículo 28. Información posterior a la celebración del contrato.
+    1. El oferente está obligado a confirmar la recepción de la aceptación al que la hizo por
+alguno de los siguientes medios:
+    a) El envío de un acuse de recibo por correo electrónico u otro medio de comunicación
+electrónica equivalente a la dirección que el aceptante haya señalado, en el plazo de las
+veinticuatro horas siguientes a la recepción de la aceptación, o
+    b) La confirmación, por un medio equivalente al utilizado en el procedimiento de
+contratación, de la aceptación recibida, tan pronto como el aceptante haya completado dicho
+procedimiento, siempre que la confirmación pueda ser archivada por su destinatario.
+    En los casos en que la obligación de confirmación corresponda a un destinatario de
+servicios, el prestador facilitará el cumplimiento de dicha obligación, poniendo a disposición
+del destinatario alguno de los medios indicados en este apartado. Esta obligación será
+exigible tanto si la confirmación debiera dirigirse al propio prestador o a otro destinatario.
+    2. Se entenderá que se ha recibido la aceptación y su confirmación cuando las partes a
+que se dirijan puedan tener constancia de ello.
+    En el caso de que la recepción de la aceptación se confirme mediante acuse de recibo,
+se presumirá que su destinatario puede tener la referida constancia desde que aquél haya
+sido almacenado en el servidor en que esté dada de alta su cuenta de correo electrónico, o
+en el dispositivo utilizado para la recepción de comunicaciones.
+    3. No será necesario confirmar la recepción de la aceptación de una oferta cuando:
+    a) Ambos contratantes así lo acuerden y ninguno de ellos tenga la consideración de
+consumidor, o
+    b) El contrato se haya celebrado exclusivamente mediante intercambio de correo
+electrónico u otro tipo de comunicación electrónica equivalente, cuando estos medios no
+sean empleados con el exclusivo propósito de eludir el cumplimiento de tal obligación.
+
+Artículo 38. Infracciones.
+    1. Las infracciones de los preceptos de esta Ley se calificarán como muy graves, graves
+y leves.
+    2. Son infracciones muy graves:
+    a) (Sin contenido)
+    b) El incumplimiento de la obligación de suspender la transmisión, el alojamiento de
+datos, el acceso a la red o la prestación de cualquier otro servicio equivalente de
+intermediación, cuando un órgano administrativo competente lo ordene, en virtud de lo
+dispuesto en el artículo 11.
+
+    c) (Derogado)
+    d) (Derogado)
+    3. Son infracciones graves:
+     a) (Derogado)
+     b) El incumplimiento significativo de lo establecido en los párrafos a) y f) del artículo 10.1.
+     c) El envío masivo de comunicaciones comerciales por correo electrónico u otro medio
+de comunicación electrónica equivalente, o su envío insistente o sistemático a un mismo
+destinatario del servicio cuando en dichos envíos no se cumplan los requisitos establecidos
+en el artículo 21.
+     d) El incumplimiento significativo de la obligación del prestador de servicios establecida
+en el apartado 1 del artículo 22, en relación con los procedimientos para revocar el
+consentimiento prestado por los destinatarios.
+     e) No poner a disposición del destinatario del servicio las condiciones generales a que,
+en su caso, se sujete el contrato, en la forma prevista en el artículo 27.
+     f) El incumplimiento habitual de la obligación de confirmar la recepción de una
+aceptación, cuando no se haya pactado su exclusión o el contrato se haya celebrado con un
+consumidor.
+     g) La resistencia, excusa o negativa a la actuación inspectora de los órganos facultados
+para llevarla a cabo con arreglo a esta ley.
+     h) El incumplimiento significativo de lo establecido en el apartado 3 del artículo 10.
+     i) La reincidencia en la comisión de la infracción leve prevista en el apartado 4 g) cuando
+así se hubiera declarado por resolución firme dictada en los tres años inmediatamente
+anteriores a la apertura del procedimiento sancionador.
+     j) La exigencia del pago de un canon por atender la obligación prevista en el artículo 12
+ter, fuera de los supuestos establecidos en el artículo 12.5 del Reglamento (UE) 2016/679.
+     k) El incumplimiento habitual de la obligación prevista en el artículo 12 ter.
+     l) El incumplimiento significativo o reiterado por parte de los proveedores de servicios de
+intermediación en línea de cualquiera de las obligaciones establecidas en los artículos 3 a 12
+del Reglamento (UE) 2019/1150.
+     m) El incumplimiento significativo o reiterado por parte de los proveedores de motores de
+búsqueda en línea de cualquiera de las obligaciones establecidas en los artículos 5 y 7 del
+Reglamento (UE) 2019/1150.
+     n) El incumplimiento significativo o reiterado por parte de los proveedores de servicios de
+intermediación de datos de cualquiera de las obligaciones previstas en el artículo 11 del
+Reglamento (UE) 2022/868.
+     ñ) El incumplimiento significativo o reiterado por parte de los proveedores de servicios de
+intermediación de datos de cualquiera de las condiciones para la prestación de servicios de
+intermediación de datos establecidas en el artículo 12 del Reglamento (UE) 2022/868.
+     o) Actuar en el mercado como proveedor de servicios de intermediación de datos
+utilizando el logotipo común y la denominación «proveedor de servicios de intermediación de
+datos reconocido en la Unión» sin que la autoridad competente haya confirmado que cumple
+los requisitos necesarios según lo previsto en el artículo 11.9 del Reglamento (UE) 2022/868.
+     p) El incumplimiento significativo o reiterado por parte de las organizaciones reconocidas
+de gestión de datos con fines altruistas de cualquiera de los requisitos exigidos en virtud de
+los artículos 18, 19, 20, 21 y 22 del Reglamento (UE) 2022/868.
+     q) Actuar en el mercado como organización reconocida de gestión de datos con fines
+altruistas utilizando el logotipo común y la denominación «organización de gestión de datos
+con fines altruistas reconocida en la Unión» sin que la autoridad competente haya
+confirmado que cumple los requisitos necesarios previstos en el artículo 18 del Reglamento
+(UE) 2022/868.
+     r) El incumplimiento significativo o reiterado por parte de proveedores de servicios de
+intermediación de datos y de organizaciones reconocidas de gestión de datos con fines
+altruistas de las obligaciones establecidas en el artículo 31 del Reglamento (UE) 2022/868
+en materia de transferencias de datos no personales a terceros países.
+    4. Son infracciones leves:
+    a) El incumplimiento de lo previsto en el artículo 12 bis.
+
+     b) No informar en la forma prescrita por el artículo 10.1 sobre los aspectos señalados en
+los párrafos b), c), d), e) y g) del mismo, o en los párrafos a) y f) cuando no constituya
+infracción grave.
+     c) El incumplimiento de lo previsto en el artículo 20 para las comunicaciones
+comerciales, ofertas promocionales y concursos.
+     d) El envío de comunicaciones comerciales por correo electrónico u otro medio de
+comunicación electrónica equivalente cuando en dichos envíos no se cumplan los requisitos
+establecidos en el artículo 21 y no constituya infracción grave.
+     e) No facilitar la información a que se refiere el artículo 27.1, cuando las partes no hayan
+pactado su exclusión o el destinatario sea un consumidor.
+     f) El incumplimiento de la obligación de confirmar la recepción de una petición en los
+términos establecidos en el artículo 28, cuando no se haya pactado su exclusión o el
+contrato se haya celebrado con un consumidor, salvo que constituya infracción grave.
+     g) Utilizar dispositivos de almacenamiento y recuperación de datos cuando no se hubiera
+facilitado la información u obtenido el consentimiento del destinatario del servicio en los
+términos exigidos por el artículo 22.2.
+     h) El incumplimiento de la obligación del prestador de servicios establecida en el
+apartado 1 del artículo 22, en relación con los procedimientos para revocar el consentimiento
+prestado por los destinatarios cuando no constituya infracción grave.
+     i) El incumplimiento de lo establecido en el apartado 3 del artículo 10, cuando no
+constituya infracción grave.
+     j) La exigencia del pago de un canon por atender la obligación prevista en el artículo 12
+ter, cuando así lo permita el artículo 12.5 del Reglamento (UE) 2016/679, si su cuantía
+excediese el importe de los costes afrontados.
+     k) El incumplimiento de la obligación prevista en el artículo 12 ter, cuando no constituya
+infracción grave.
+     l) El incumplimiento por parte de los proveedores de servicios de intermediación en línea
+de cualquiera de las obligaciones establecidas en los artículos 3 a 12 del Reglamento (UE)
+2019/1150, cuando no constituya infracción grave.
+     m) El incumplimiento por parte de los proveedores de motores de búsqueda en línea de
+cualquiera de las obligaciones establecidas en los artículos 5 y 7 del Reglamento (UE)
+2019/1150, cuando no constituya infracción grave.
+     n) El incumplimiento por parte de los proveedores de servicios de intermediación de
+datos de cualquiera de las obligaciones previstas en el artículo 11 del Reglamento (UE)
+2022/868, cuando no constituya infracción grave.
+     ñ) El incumplimiento por parte de los proveedores de servicios de intermediación de
+datos de cualquiera de las condiciones establecidas en el artículo 12 del Reglamento (UE)
+2022/868, cuando no constituya infracción grave.
+     o) El incumplimiento por parte de las organizaciones reconocidas de gestión de datos
+con fines altruistas de cualquiera de los requisitos exigidos en virtud de los artículos 18, 19,
+20, 21 y 22 del Reglamento (UE) 2022/868, cuando no constituya infracción grave.
+     p) El incumplimiento por parte de proveedores de servicios de intermediación de datos y
+de organizaciones reconocidas de gestión de datos con fines altruistas de las obligaciones
+establecidas en el artículo 31 del Reglamento (UE) 2022/868 en materia de transferencias de
+datos no personales a terceros países, cuando no constituya infracción grave.
+
+Artículo 39. Sanciones.
+    1. Por la comisión de las infracciones recogidas en el artículo anterior, se impondrán las
+siguientes sanciones:
+    a) Por la comisión de infracciones muy graves, multa de 150.001 hasta 600.000 euros.
+La reiteración en el plazo de tres años de dos o más infracciones muy graves, sancionadas
+con carácter firme, podrá dar lugar, en función de sus circunstancias, a la sanción de
+prohibición de actuación en España, durante un plazo máximo de dos años.
+    b) comisión de infracciones graves, multa de 30.001 hasta 150.000 euros.
+    c) Por la comisión de infracciones leves, multa de hasta 30.000 euros.
+
+     2. Cuando las infracciones sancionables con arreglo a lo previsto en esta Ley hubieran
+sido cometidas por prestadores de servicios establecidos en Estados que no sean miembros
+de la Unión Europea o del Espacio Económico Europeo, el órgano que hubiera impuesto la
+correspondiente sanción podrá ordenar a los prestadores de servicios de intermediación que
+tomen las medidas necesarias para impedir el acceso desde España a los servicios
+ofrecidos por aquéllos por un período máximo de dos años en el caso de infracciones muy
+graves, un año en el de infracciones graves y seis meses en el de infracciones leves.
+     3. Sin perjuicio de las sanciones económicas que pudieran imponerse con arreglo a esta
+ley, por la comisión de la infracción prevista en la letra p) del apartado 3 del artículo 38, o la
+letra o) del apartado 4 del artículo 38, se cancelará la inscripción en los registros públicos
+nacional y de la Unión de organizaciones reconocidas de gestión de datos con fines
+altruistas, así como se revocará el derecho a utilizar la denominación organización de
+gestión de datos con fines altruistas reconocida en la Unión.
+     4. Las infracciones podrán llevar aparejada alguna o algunas de las siguientes sanciones
+accesorias:
+     a) Las infracciones graves y muy graves podrán llevar aparejada la publicación, a costa
+del sancionado, de la resolución sancionadora en el "Boletín Oficial del Estado", o en el
+diario oficial de la administración pública que, en su caso, hubiera impuesto la sanción; en
+dos periódicos cuyo ámbito de difusión coincida con el de actuación de la citada
+administración pública o en la página de inicio del sitio de Internet del prestador, una vez que
+aquélla tenga carácter firme.
+     Para la imposición de esta sanción, se considerará la repercusión social de la infracción
+cometida, por el número de usuarios o de contratos afectados, y la gravedad del ilícito.
+     b) Sin perjuicio de las sanciones económicas a las que se refiere el artículo 39.1 b), a los
+prestadores de servicios de intermediación de datos que hayan cometido alguna de las
+infracciones graves previstas en las letras n), ñ) y o) del artículo 38.3, se les podrá imponer
+como sanción accesoria el cese definitivo de la actividad de prestación en los términos
+establecidos en el artículo 14.4 del Reglamento (UE) 2022/868.

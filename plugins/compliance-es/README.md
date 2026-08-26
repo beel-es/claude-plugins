@@ -55,6 +55,11 @@ Corres `/compliance-es:auditar` sobre tu repo y:
 | `rgpd-lopdgdd` | RGPD + LOPDGDD | **vigente** | consentimiento, derechos, RAT, DPA, seguridad, brechas (72 h), transferencias, EIPD |
 | `compliance-penal` | Art. 31 bis CP + Ley 2/2023 | **vigente** | modelo de organización, código ético, matriz de riesgos penales, canal de denuncias |
 | `verifactu` | RD 1007/2023 (Veri*Factu) | **Sociedades 1-ene-2027 · resto 1-jul-2027** | conformidad del SIF, declaración responsable, conservación de registros |
+| `lssi-cookies` | Ley 34/2002 (LSSI-CE) | **vigente** | aviso legal, cookies (guía AEPD), comunicaciones comerciales, contratación electrónica, registro versionado de aceptaciones |
+
+Además, un **radar** de marcos emergentes (`skills/auditar/references/radar-normativo.md`): Data Act
+(aplicable desde sep-2025), accesibilidad (Ley 11/2023, en vigor), AI Act (art. 50 desde ago-2026) y NIS2
+(transposición pendiente) — la auditoría resuelve si te aplican y qué vigilar.
 
 ## Instalación
 
@@ -109,7 +114,7 @@ No reemplaza a un abogado: te deja listo para cumplir y te dice qué falta. Ver
 
 ## Aviso
 
-Esto no es asesoramiento jurídico: un software no asume tu responsabilidad legal, la decisión final es tuya.
+Esto no es asesoramiento jurídico y no garantiza el 100 % de cumplimiento: un software no asume tu responsabilidad legal, la decisión final es tuya y se recomienda que un abogado revise el resultado en casos de riesgo.
 Ver [`NOTICE.md`](NOTICE.md).
 
 ## Créditos

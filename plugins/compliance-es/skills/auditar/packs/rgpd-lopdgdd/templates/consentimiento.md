@@ -36,4 +36,4 @@ Guarda por cada interesado: qué aceptó, cuándo, cómo (IP/timestamp/user-agen
 política aceptada. Ver la receta `references/build/derechos-y-datos.md` (§3).
 
 ---
-*Borrador generado con compliance-es (pack rgpd-lopdgdd). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack rgpd-lopdgdd). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

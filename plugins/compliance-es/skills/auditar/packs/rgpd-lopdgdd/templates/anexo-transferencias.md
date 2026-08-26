@@ -32,4 +32,4 @@ transferir a terceros sin garantías, y colaborar ante solicitudes de los intere
 Esta transferencia y su mecanismo se declaran en la política de privacidad ("Con quién compartimos los datos").
 
 ---
-*Borrador generado con compliance-es (pack rgpd-lopdgdd). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack rgpd-lopdgdd). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

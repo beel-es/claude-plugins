@@ -31,4 +31,4 @@
 Informa el motivo y del derecho a reclamar ante la **AEPD** y a la tutela judicial.
 
 ---
-*Borrador generado con compliance-es (pack rgpd-lopdgdd). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack rgpd-lopdgdd). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

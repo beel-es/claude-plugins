@@ -44,9 +44,17 @@
 - **EIPD (art. 35):** obligatoria ante probable **alto riesgo** (perfilado con efectos significativos,
   categorías especiales a gran escala, observación sistemática a gran escala; + listas de la AEPD).
 - **Transferencias internacionales (arts. 44-49):** lícitas con **decisión de adecuación** (art. 45; incluye
-  el **EU-US Data Privacy Framework** para empresas de EE. UU. autocertificadas, en vigor en 2026),
-  **garantías adecuadas** (art. 46: **Cláusulas Contractuales Tipo** de la Decisión (UE) 2021/914, BCR), o
-  excepciones del art. 49.
+  el **EU-US Data Privacy Framework** para empresas de EE. UU. autocertificadas — validado en primera
+  instancia por el Tribunal General el 3-sep-2025 (asunto T-553/23, Latombe) y **en vigor** en 2026, con
+  recurso **C-703/25 P** pendiente ante el TJUE sin efecto suspensivo; comprobar la autocertificación del
+  proveedor concreto en el registro del DPF), **garantías adecuadas** (art. 46: **Cláusulas Contractuales
+  Tipo** de la Decisión (UE) 2021/914, BCR), o excepciones del art. 49. **No olvidar la observabilidad:**
+  logs/APM/analítica (Datadog, Sentry, New Relic, Axiom, Better Stack…) tratan IPs e identificadores → son
+  transferencia si la región configurada es EE. UU.; si el proveedor ofrece **región UE, moverla es la
+  remediación preferente** (minimización + menos riesgo que descansar solo en DPF/SCC).
+- **Prueba del consentimiento y de la aceptación (arts. 5.2 y 7.1):** registro por usuario de qué aceptó,
+  cuándo, cómo y **qué versión exacta** del texto — ver el pack `lssi-cookies`
+  (`templates/registro-aceptaciones.md`), que lo desarrolla junto al archivo del contrato (art. 27.1.b LSSI).
 
 ## Sanciones (RGPD art. 83 + LOPDGDD arts. 72-74 — verificado)
 Dos tramos: **hasta 10 M€ o 2 %** del volumen de negocio anual mundial (art. 83.4) · **hasta 20 M€ o 4 %**

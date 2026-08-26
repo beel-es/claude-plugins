@@ -1,6 +1,6 @@
 # Aviso importante
 
-**Este software NO constituye asesoramiento jurídico ni fiscal.** `compliance-es` genera borradores y
+**Este software NO constituye asesoramiento jurídico ni fiscal, y NO garantiza el cumplimiento de la normativa.** `compliance-es` genera borradores y
 diagnósticos de cumplimiento basados en la normativa española y de la UE para que un founder o autónomo pueda
 cumplir **solo**. Un software no asume tu responsabilidad legal: la decisión final es tuya. Un abogado o
 asesor es un plus opcional si quieres una revisión, y solo es imprescindible para representarte si te

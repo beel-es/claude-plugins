@@ -7,7 +7,7 @@ puede verificar, se marca `[verificar contra fuente oficial]`.
 > Los consolidados del BOE/EUR-Lex son documentos enormes y vivos. En vez de adjuntar las leyes enteras,
 > guardamos en **`textos/`** los **extractos literales de los artículos que la skill cita** (grepeables y
 > verificables **offline**), y referenciamos las **URLs oficiales** para el resto y para re-verificar online.
-> Descargado/verificado: **2026-06-21**. Reproducible con `python3 descargar-fuentes.py`.
+> Descargado/verificado: **2026-06-21** (LSSI: **2026-08-26**). Reproducible con `python3 descargar-fuentes.py`.
 
 ## Corpus local (`textos/`) — extractos literales con SHA-256
 La skill puede grepear estos archivos para contrastar un literal sin conexión. Si cambia la norma,
@@ -20,6 +20,7 @@ re-generar con el script y actualizar los hashes.
 | `lopdgdd.txt` | LOPDGDD (LO 3/2018) · BOE-A-2018-16673 | 7, 32, 34, 72, 73, 74, 78 | `52887f62…` |
 | `ley-2-2023-canal.txt` | Ley 2/2023 · BOE-A-2023-4513 | 7, 9, 10, 65 | `9d606b1a…` |
 | `rd-1007-2023-verifactu.txt` | RD 1007/2023 · BOE-A-2023-24840 | 9, 10, 11, 12, 13, 15, 16 | `df737c28…` |
+| `lssi.txt` | LSSI-CE (Ley 34/2002) · BOE-A-2002-13758 | 10, 21, 22, 23, 27, 28, 38, 39 | `4b3bed48…` |
 
 > El **RGPD** (consolidado de EUR-Lex) y normas más pequeñas (Orden HAC/1177/2024, RD-ley 15/2025, RD
 > 1619/2012, "Crea y Crece") se verifican por **URL** (abajo); no se extraen a `textos/` para no duplicar
@@ -36,6 +37,21 @@ re-generar con el script y actualizar los hashes.
 | AEPD — **Facilita RGPD** (PYMES/autónomos, bajo riesgo) | — | https://www.aepd.es/guias-y-herramientas/herramientas/facilita-rgpd |
 | AEPD — Listas de tratamientos que requieren EIPD (art. 35.4) | — | https://www.aepd.es/documento/listas-dpia-es-35-4.pdf |
 | AEPD — Notificación de brechas (sede) | — | https://sede.aepd.gob.es |
+
+## LSSI + cookies + contratación electrónica
+| Norma | Referencia | URL oficial |
+|---|---|---|
+| **LSSI-CE** — Ley 34/2002 (consolidada) | BOE-A-2002-13758 | https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758 |
+| AEPD — **Guía sobre el uso de las cookies** (ed. 2023, exigible desde ene-2024) | — | https://www.aepd.es/guias/guia-cookies.pdf |
+
+## Marcos emergentes (radar — ver `references/radar-normativo.md`)
+| Norma | Referencia | URL oficial |
+|---|---|---|
+| **Data Act** — Reglamento (UE) 2023/2854 (aplicable 12-sep-2025) | CELEX 32023R2854 | https://eur-lex.europa.eu/eli/reg/2023/2854/oj |
+| **Ley 11/2023** (accesibilidad, EAA; Título I en vigor 28-jun-2025) | BOE-A-2023-11022 | https://www.boe.es/buscar/act.php?id=BOE-A-2023-11022 |
+| **AI Act** — Reglamento (UE) 2024/1689 | CELEX 32024R1689 | https://eur-lex.europa.eu/eli/reg/2024/1689/oj |
+| **Directiva NIS2** (UE) 2022/2555 (transposición española pendiente) | CELEX 32022L2555 | https://eur-lex.europa.eu/eli/dir/2022/2555/oj |
+| TJUE — asunto **C-703/25 P** (recurso contra la validación del DPF) | curia | https://curia.europa.eu/juris/liste.jsf?num=C-703/25 |
 
 ## Compliance penal (art. 31 bis CP + Ley 2/2023)
 | Norma | Referencia | URL oficial |
@@ -64,12 +80,17 @@ re-generar con el script y actualizar los hashes.
 ## Notas de validez (IMPORTANTE)
 - **Veri*Factu se prorrogó a 2027** (RD-ley 15/2025): software 29-jul-2025 (vencido), Sociedades 1-ene-2027,
   resto 1-jul-2027. Las fechas de 2025/2026 que aún circulan están **derogadas**.
-- **EU-US DPF en vigor** en 2026; recurso C-703/25 P pendiente ante el TJUE **sin efecto suspensivo**.
+- **EU-US DPF en vigor** en 2026: validado en primera instancia el 3-sep-2025 (T-553/23, Latombe); recurso
+  C-703/25 P pendiente ante el TJUE **sin efecto suspensivo** (a ago-2026, sin fecha de vista). Si el TJUE
+  lo anulara, las transferencias a EE. UU. tendrían que apoyarse en SCC + medidas suplementarias.
+- **Factura-e B2B:** RD 238/2026 en vigor (20-abr-2026); plazos pendientes de la Orden de la solución pública.
+- **AEAT (26-mar-2026):** nota que confirma el calendario Veri*Factu 2027.
 - **Prescripción de infracciones LOPDGDD** en arts. 72-74 (no en el 78, que es prescripción de sanciones).
 - **Cotejo literal completado (junio 2026)** contra los PDF consolidados del BOE: art. 31 bis CP y todos los
   artículos de imputación del catálogo penal (251 bis, 264 quater, 197 quinquies, 310 bis, 302.2, 288,
   427 bis); art. 201 bis LGT (cuantías en el ap. 4; conductas en aps. 1, 2 y 1.f); arts. 9-16 del RD 1007/2023;
-  arts. 7, 32, 34, 72-74, 78 LOPDGDD; arts. 7, 9, 10, 65 y DT 2ª de la Ley 2/2023. El QR/leyenda Veri*Factu
+  arts. 7, 32, 34, 72-74, 78 LOPDGDD; arts. 7, 9, 10, 65 y DT 2ª de la Ley 2/2023; y (ago-2026) los arts.
+  10, 21, 22, 23, 27, 28, 38 y 39 de la **LSSI** (extracto en `textos/lssi.txt`). El QR/leyenda Veri*Factu
   proviene de la **Disp. final 1ª del RD 1007/2023** (art. 6.5/7.5 del RD 1619/2012), no del cuerpo del RD.
 
 ## Regla de uso para la skill

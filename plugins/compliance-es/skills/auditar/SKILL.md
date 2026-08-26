@@ -5,11 +5,15 @@ description: >-
   "preparar la protección de datos", "auditar datos personales", "generar política de privacidad /
   contrato de encargado (DPA) / registro de actividades (RAT) / EIPD / consentimiento", "cumplir la
   ley de datos en España", "montar el compliance penal / modelo de prevención de delitos (art. 31 bis
-  CP)", "el canal de denuncias (Ley 2/2023)" o "cumplir Veri*Factu / la ley antifraude de facturación".
-  Audita un repo y genera, SIN abogado, toda la documentación de cumplimiento para un SaaS o empresa en
-  España, contrastada contra el texto oficial de la norma (BOE/EUR-Lex/AEPD/AEAT). Cubre RGPD + LOPDGDD
-  (protección de datos), el art. 31 bis del Código Penal + Ley 2/2023 (compliance penal y canal de
-  denuncias) y el RD 1007/2023 Veri*Factu (facturación antifraude), y es extensible a más marcos (packs).
+  CP)", "el canal de denuncias (Ley 2/2023)", "cumplir Veri*Factu / la ley antifraude de facturación",
+  "la LSSI / el aviso legal / la política de cookies", "los términos y condiciones / la contratación
+  electrónica / el registro de aceptaciones" o pregunta por Data Act, accesibilidad (Ley 11/2023), AI Act
+  o NIS2. Audita un repo y genera, SIN abogado, toda la documentación de cumplimiento para un SaaS o
+  empresa en España, contrastada contra el texto oficial de la norma (BOE/EUR-Lex/AEPD/AEAT). Cubre RGPD +
+  LOPDGDD (protección de datos), LSSI-CE (aviso legal, cookies, comunicaciones comerciales y contratación
+  electrónica), el art. 31 bis del Código Penal + Ley 2/2023 (compliance penal y canal de denuncias) y el
+  RD 1007/2023 Veri*Factu (facturación antifraude), más un radar de marcos emergentes (Data Act,
+  accesibilidad, AI Act, NIS2), y es extensible a más marcos (packs).
 license: MIT
 allowed-tools:
   - Read
@@ -29,15 +33,19 @@ de la norma y **generar toda la documentación rellenada** (sin dejar tarea), de
 en el repo que se re-corre en el tiempo. Objetivo: que un founder/autónomo cumpla **solo**; el abogado es
 opcional (ver `references/cuando-acudir-a-abogado.md`).
 
-> **DISCLAIMER OBLIGATORIO** — No constituye asesoramiento jurídico (un software no asume la responsabilidad
-> legal del usuario). Genera borradores fundados en la normativa española y de la UE para cumplir sin
-> abogado. Incluir este disclaimer al pie de cada documento legal generado.
+> **DISCLAIMER OBLIGATORIO** — No constituye asesoramiento jurídico ni **garantiza el cumplimiento** de la
+> normativa (un software no asume la responsabilidad legal del usuario; la interpretación de las autoridades
+> y de los tribunales puede diferir, y la norma cambia). Genera borradores fundados en la normativa española
+> y de la UE para cumplir sin abogado; **se recomienda que un abogado revise el resultado**, especialmente
+> ante alto riesgo, categorías especiales de datos o un procedimiento en curso. Incluir este disclaimer al
+> pie de cada documento legal generado.
 
 ## Modelo mental
 - **Controles** = unidades reutilizables que satisfacen varios marcos a la vez. Catálogo + crosswalk:
   `references/controls.md`.
 - **Packs** = una norma cada uno (`packs/<id>/pack.md`): obligaciones, controles que exige y documentos a
-  generar. Hoy: `rgpd-lopdgdd`, `compliance-penal`, `verifactu`.
+  generar. Hoy: `rgpd-lopdgdd`, `lssi-cookies`, `compliance-penal`, `verifactu`. Los marcos emergentes sin
+  pack (Data Act, accesibilidad, AI Act, NIS2) se evalúan con `references/radar-normativo.md`.
 - **Estado** = el output vive en `<repo>/.compliance/` versionado por git. Formato: `references/output-model.md`.
 - **Fuentes (verdad)** = textos OFICIALES (BOE, EUR-Lex, AEPD, AEAT). Extractos literales grepeables en
   `sources/textos/` (offline, con SHA-256 en `sources/FUENTES.md`) y URLs oficiales para re-verificar online
@@ -52,8 +60,9 @@ Mostrar el disclaimer. Luego preguntar al usuario (con `AskUserQuestion` cuando 
 respuestas para rellenar los documentos**. No dejar placeholders salvo que el dato sea genuinamente
 desconocido; en ese caso, proponer un **default sensato** y marcarlo.
 Recoger:
-1. Repo a auditar y **packs** a activar (default: `rgpd-lopdgdd` + `compliance-penal`; añadir `verifactu`
-   si la empresa emite facturas con software propio o un SaaS).
+1. Repo a auditar y **packs** a activar (default: `rgpd-lopdgdd` + `lssi-cookies` + `compliance-penal` —
+   toda web/SaaS con actividad económica cae bajo la LSSI; añadir `verifactu` si la empresa emite facturas
+   con software propio o un SaaS).
 2. **Empresa:** razón social, **NIF/CIF**, domicilio, correo de contacto, **forma jurídica** (autónomo /
    SL / SA…), **nº de trabajadores**, administrador/representante legal.
 3. **Responsable de protección de datos / órgano de cumplimiento penal** designado (en micro suele ser el
@@ -63,12 +72,16 @@ Recoger:
    los plazos fiscales/mercantiles: ~4 años AEAT, 6 años Código de Comercio).
 6. ¿Tratan **categorías especiales** de datos (salud, etc., art. 9 RGPD)? ¿Tienen **DPO** obligatorio
    (art. 37 RGPD / art. 34 LOPDGDD)? ¿Emiten facturas (gatilla Veri*Factu)?
+7. ¿Venden a **consumidores** o solo B2B (autónomos/empresas)? Afecta a LSSI (arts. 27-28 pactables en
+   B2B), accesibilidad (EAA protege al consumidor) y consumo. ¿Usan o exponen **IA** en el producto
+   (gatilla AI Act art. 50)?
 Si ya existe `<repo>/.compliance/state.json`, leerlo: esta corrida es una re-evaluación.
 
 ### Fase 1 — Descubrimiento (leer el código, no asumir)
 Recorrer el repo con Grep/Glob para levantar evidencia de cada control:
 - Datos personales (esquemas/migraciones/modelos/formularios): `email|phone|telefono|movil|nif|dni|cif|address|direccion|nombre|name|apellidos|ip|lat|lng|password|iban|tarjeta`; marcar **categorías especiales** (salud, biométricos, menores).
-- Proveedores externos y transferencias internacionales (`.env*`, `package.json`, configs): AWS, Google, Meta, OpenAI, etc.; marcar los que procesan **fuera del EEE** (gatilla arts. 44-49 RGPD).
+- Proveedores externos y transferencias internacionales (`.env*`, `package.json`, configs): AWS, Google, Meta, OpenAI, etc.; marcar los que procesan **fuera del EEE** (gatilla arts. 44-49 RGPD). **Incluir SIEMPRE la observabilidad**: logs, APM, errores y analítica (Datadog, Sentry, New Relic, Axiom, Better Stack, PostHog, Google Analytics…) — los logs llevan IPs, emails e IDs de usuario, son tratamiento; **verificar la REGIÓN configurada** (endpoint/dataset EU vs US en la config real, no en el folleto del proveedor) y que cada uno tenga DPA + mecanismo (adecuación/DPF/SCC) en el anexo de transferencias.
+- **LSSI** (si aplica `lssi-cookies`): ¿aviso legal completo (art. 10)?, cookies y scripts de terceros REALES (tags de analítica/píxeles en el frontend) vs banner y bloqueo previo, emails comerciales con baja (art. 21), flujo de contratación (resumen editable, confirmación en 24 h), y **versionado de términos + registro de aceptaciones** (¿tabla `consent_records`? ¿los términos son una página que se sobrescribe sin histórico?).
 - Medidas técnicas: TLS, cifrado en reposo, hashing de password, MFA, logs/auditoría, segregación por tenant, secretos fuera del código, seudonimización, privacy-by-default.
 - **Facturación** (si aplica `verifactu`): módulo de facturas, numeración, generación de PDF, ¿hash/encadenamiento?, ¿QR?, ¿integración con un proveedor Veri*Factu (p. ej. BeeL.)?, ¿uso de SII?
 - Gobernanza (no está en el código): tomarla del cuestionario; marcar `❓` lo no verificable por código.
@@ -84,8 +97,17 @@ se propaga a todos los marcos que lo exigen.
   si aplica un supuesto, es obligatoria.
 - **RAT** (RGPD art. 30): obligatorio; la excepción de <250 empleados casi nunca aplica a un SaaS (trata
   datos de forma no ocasional) → en la práctica, hay que llevarlo.
-- **Base de licitud** por flujo (art. 6) y **mecanismo de transferencia** (art. 46: Cláusulas Contractuales
-  Tipo / decisión de adecuación / EU-US DPF).
+- **Base de licitud** por flujo (art. 6) y **mecanismo de transferencia** (art. 45 adecuación / EU-US DPF —
+  verificar que el proveedor concreto esté autocertificado y el estado del DPF, recurso C-703/25 P
+  pendiente — / art. 46 Cláusulas Contractuales Tipo). Si un proveedor de logs/analítica procesa en EE. UU.
+  pudiendo configurarse región UE, la remediación preferente es **mover la región**, no solo papeles.
+- **Cookies** (art. 22.2 LSSI + guía AEPD): ¿banner necesario o solo cookies técnicas? → resolver con el
+  inventario real de Fase 1.
+- **Evidencia contractual** (`data-consent-records`): ¿puede la empresa probar qué versión de términos/
+  privacidad aceptó cada usuario y cuándo? Si no → remediación prioritaria (art. 7.1 RGPD + 27.1.b LSSI).
+- **Radar** (`references/radar-normativo.md`): resolver si aplican Data Act (SaaS = casi siempre sí),
+  accesibilidad Ley 11/2023 (¿consumidores? ¿microempresa exenta?), AI Act (¿hay IA en el producto?) y
+  NIS2 (tamaño/sector; transposición pendiente).
 - **Canal de denuncias** (Ley 2/2023): obligatorio desde 50 trabajadores (y otros supuestos) → resolver si
   aplica y, si no, dejarlo como buena práctica del modelo penal.
 - **Veri*Factu** (RD 1007/2023): resolver si la empresa está obligada y desde qué fecha, o si queda cubierta
@@ -95,7 +117,8 @@ se propaga a todos los marcos que lo exigen.
 Por cada pack activo, leer su `pack.md` y generar **todos** sus `templates/`, **rellenados con las
 respuestas de Fase 0 y los hallazgos de Fase 1**. Para `rgpd-lopdgdd`: rat, política, consentimiento,
 canal-derechos, dpa, anexo-transferencias, plan-respuesta-brechas, registro-brechas, y eipd (si el test la
-hace obligatoria). Para `compliance-penal`: politica-compliance-penal, codigo-etico, matriz-riesgos-penales,
+hace obligatoria). Para `lssi-cookies`: aviso-legal, politica-cookies (con el inventario real),
+terminos-contratacion, registro-aceptaciones. Para `compliance-penal`: politica-compliance-penal, codigo-etico, matriz-riesgos-penales,
 acta-organo-cumplimiento, politica-canal-denuncias. Para `verifactu`: checklist-verifactu,
 declaracion-responsable, politica-conservacion-registros. Reemplazar todos los placeholders; usar
 `[COMPLETAR: ...]` solo para lo realmente desconocido.
@@ -103,7 +126,8 @@ declaracion-responsable, politica-conservacion-registros. Reemplazar todos los p
 ### Fase 4 — Escribir el estado versionado
 Escribir en `<repo>/.compliance/` según `references/output-model.md`: `state.json` (controles + score por
 marco), `docs/` (todo lo generado), `INSTRUCTIVO.md` (runbooks desde `references/instructivo-situaciones.md`)
-y `RESUMEN.md` (postura, brechas priorizadas, **diff vs la corrida anterior**, y qué quedó resuelto solo +
+y `RESUMEN.md` (postura, brechas priorizadas, sección **Radar** con el veredicto de los marcos emergentes,
+**diff vs la corrida anterior**, y qué quedó resuelto solo +
 los insumos externos: certificación opcional UNE 19601, supervisión del modelo, etc.). Sugerir commitear
 `.compliance/`.
 
@@ -136,7 +160,9 @@ Cerrar con UN siguiente paso.
 ## Recursos
 - `references/controls.md` — catálogo de controles + crosswalk.
 - `references/output-model.md` — formato del estado `.compliance/`.
-- `references/mapa-articulos.md` — artículos verificados contra el texto oficial (RGPD/LOPDGDD/CP/Veri*Factu).
+- `references/mapa-articulos.md` — artículos verificados contra el texto oficial (RGPD/LOPDGDD/LSSI/CP/Veri*Factu).
+- `references/radar-normativo.md` — marcos emergentes sin pack (Data Act, accesibilidad Ley 11/2023,
+  AI Act, NIS2, factura-e B2B): a quién aplican y qué re-verificar en cada corrida.
 - `references/cuando-acudir-a-abogado.md` — por qué el abogado es opcional.
 - `references/instructivo-situaciones.md` — runbooks (derechos, brecha, inspección AEPD, calendario).
 - `references/build/` — **recetas de construcción** (cómo implementar cada remediación: MFA, cifrado,
@@ -144,6 +170,6 @@ Cerrar con UN siguiente paso.
   Ver `references/build/index.md`.
 - `references/revisiones-periodicas.md` — automatizar la re-corrida (`/loop`, cron headless `claude -p`,
   `/schedule`) para detectar drift entre corridas.
-- `packs/rgpd-lopdgdd/`, `packs/compliance-penal/`, `packs/verifactu/` — obligaciones + plantillas por marco.
+- `packs/rgpd-lopdgdd/`, `packs/lssi-cookies/`, `packs/compliance-penal/`, `packs/verifactu/` — obligaciones + plantillas por marco.
 - `sources/textos/` — extractos literales grepeables de los artículos citados (offline). `sources/FUENTES.md`
   — índice con SHA-256 + URLs oficiales; `sources/descargar-fuentes.py` re-genera el corpus.

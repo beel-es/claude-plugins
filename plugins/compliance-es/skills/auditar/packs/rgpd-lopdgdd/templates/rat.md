@@ -20,4 +20,4 @@
 - La AEPD publica modelos de RAT y la herramienta **Facilita RGPD** para tratamientos de bajo riesgo.
 
 ---
-*Borrador generado con compliance-es (pack rgpd-lopdgdd). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack rgpd-lopdgdd). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

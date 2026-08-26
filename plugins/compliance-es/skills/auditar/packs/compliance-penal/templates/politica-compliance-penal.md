@@ -54,4 +54,4 @@ La empresa podrá certificar el sistema conforme a la **UNE 19601** (AENOR) como
 idoneidad. No es obligatorio y no exime automáticamente de responsabilidad.
 
 ---
-*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*
