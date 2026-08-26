@@ -12,8 +12,9 @@ La **2ª prórroga** (Real Decreto-ley 15/2025, de 2 de diciembre) desplazó las
 | Productores/comercializadores de software (SIF ya conforme) | **29 de julio de 2025** (vencido) |
 | Contribuyentes del **Impuesto sobre Sociedades** | **1 de enero de 2027** |
 | Resto (autónomos en IRPF, IRNR con EP, atribución de rentas) | **1 de julio de 2027** |
-> Las fechas de 2025/2026 que circulan en muchas guías están **derogadas**. Confirmar la vigente antes de
-> afirmar nada: `[verificar contra sede AEAT]`.
+> Las fechas de 2025/2026 que circulan en muchas guías están **derogadas** (la 1ª prórroga fue el RD
+> 254/2025). La AEAT confirmó el calendario 2027 en nota informativa de **26-mar-2026**. Confirmar la
+> vigente antes de afirmar nada: `[verificar contra sede AEAT]`.
 
 ## Controles que exige (ver `references/controls.md`)
 `fact-integridad`, `fact-encadenamiento`, `fact-qr`, `fact-remision`, y de apoyo `sec-logs` (registro de
@@ -72,10 +73,12 @@ de 50.000 €/ejercicio es por uso de sistema no conforme o alterado) y (3) **co
 registros a requerimiento. Ver la receta `references/build/facturacion.md` y la skill `/beel-api`.
 
 ## Factura electrónica B2B ("Crea y Crece", vía distinta)
-La **Ley 18/2022** y su desarrollo (**RD 238/2026**) imponen la **factura electrónica obligatoria entre
-empresas y autónomos**. Es un marco **independiente** de Veri*Factu y aún no exigible: sus plazos (12 meses
-para facturación >8 M€; 24 meses para el resto) **se cuentan desde una Orden técnica pendiente de publicar**
-`[verificar]`. Tenerlo en el radar, no confundir con Veri*Factu.
+La **Ley 18/2022** y su desarrollo (**RD 238/2026**, publicado el 31-mar-2026 y **en vigor desde el
+20-abr-2026**) imponen la **factura electrónica obligatoria entre empresas y autónomos**. Es un marco
+**independiente** de Veri*Factu y aún no exigible: sus plazos (12 meses para facturación >8 M€; 24 meses
+para el resto) **se cuentan desde la Orden Ministerial de la solución pública, pendiente de publicar**
+(prevista para la 2ª mitad de 2026 → estimación: >8 M€ hacia oct-2027, resto hacia oct-2028 `[verificar]`).
+Tenerlo en el radar (ver `references/radar-normativo.md`), no confundir con Veri*Factu.
 
 ## Documentos a generar (templates/ → `<repo>/.compliance/docs/` con prefijo `verifactu-`)
 `checklist.md` (estado de conformidad del sistema de facturación), `declaracion-responsable.md` (plantilla/

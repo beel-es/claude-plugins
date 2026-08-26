@@ -37,6 +37,9 @@ JOBS=[
   "https://www.boe.es/buscar/pdf/2023/BOE-A-2023-4513-consolidado.pdf","BOE-A-2023-4513",["7","9","10","65"]),
  ("rd-1007-2023-verifactu.txt","RD 1007/2023 (Veri*Factu) — extractos",
   "https://www.boe.es/buscar/pdf/2023/BOE-A-2023-24840-consolidado.pdf","BOE-A-2023-24840",["9","10","11","12","13","15","16"]),
+ ("lssi.txt","LSSI-CE (Ley 34/2002) — servicios de la sociedad de la información y comercio electrónico",
+  "https://www.boe.es/buscar/pdf/2002/BOE-A-2002-13758-consolidado.pdf","BOE-A-2002-13758",
+  ["10","21","22","23","27","28","38","39"]),
 ]
 for fn,title,url,idb,arts in JOBS:
     body=blocks(dl(url, fn+".pdf"), arts)

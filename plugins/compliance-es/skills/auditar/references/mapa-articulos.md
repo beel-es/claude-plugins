@@ -1,6 +1,6 @@
 # Mapa de artículos — VERIFICADO contra fuente oficial
 
-> Verificado en **junio de 2026** contra EUR-Lex (consolidado RGPD), BOE (texto consolidado) y las sedes de
+> Verificado en **junio de 2026** (LSSI y actualizaciones: **agosto de 2026**) contra EUR-Lex (consolidado RGPD), BOE (texto consolidado) y las sedes de
 > la AEPD y la AEAT. Antes de incrustar un literal en un documento formal, **copiar el texto exacto desde la
 > fuente oficial**. Lo no confirmado carácter a carácter va marcado `[verificar contra fuente oficial]`.
 
@@ -35,6 +35,18 @@
 | Infracciones graves | **Art. 73** (**2 años**) | falta de seguridad (32), encargo sin contrato (28.3), no llevar RAT (30) |
 | Infracciones leves | **Art. 74** (**1 año**) | fallos de información/transparencia (13-14) |
 | Prescripción de **sanciones** | **Art. 78** | ≤40.000 € → 1 año; 40.001-300.000 € → 2 años; >300.000 € → 3 años |
+
+## LSSI-CE — Ley 34/2002 (BOE-A-2002-13758, consolidado últ. mod. 23-ene-2025; extractos en `sources/textos/lssi.txt`)
+| Tema | Artículo | Qué dice |
+|---|---|---|
+| **Aviso legal** (información general) | **Art. 10** | identidad, NIF, domicilio, email, datos registrales, autorización/profesión regulada, **precios con impuestos**, códigos de conducta — acceso permanente, fácil y gratuito |
+| Comunicaciones comerciales | **Art. 21** | prohibido el email/SMS publicitario sin consentimiento previo; excepción: relación contractual previa + productos **similares** propios; siempre con vía de baja |
+| Revocación + **cookies** | **Art. 22** | 22.1: baja sencilla y gratuita (email válido en cada envío); **22.2**: consentimiento tras información clara y completa; exentas solo las **estrictamente necesarias** para transmitir o prestar lo solicitado |
+| Validez del contrato electrónico | **Art. 23** | plenos efectos sin acuerdo previo sobre el medio |
+| Obligaciones **previas** a contratar | **Art. 27** | trámites, **si se archivará el documento electrónico** y su accesibilidad (27.1.b), corrección de errores, idiomas; condiciones generales almacenables y reproducibles (27.4); **pactable en B2B** (27.2) |
+| Confirmación **posterior** | **Art. 28** | acuse de recibo por email en **24 h** o confirmación equivalente inmediata; pactable en B2B (28.3.b) |
+| Infracciones | **Art. 38** | catálogo de muy graves / graves (p. ej. spam masivo 38.3.c; sin vía de baja 38.3.d; cookies con reincidencia significativa 38.3.i) / leves (cookies 38.4.g) |
+| Sanciones | **Art. 39** | leves hasta **30.000 €** · graves **30.001-150.000 €** · muy graves **150.001-600.000 €**; reiteración de muy graves → posible prohibición de actuar en España (máx. 2 años) |
 
 ## Código Penal — LO 10/1995 (BOE-A-1995-25444), responsabilidad penal PJ
 | Tema | Artículo | Qué dice |
@@ -75,11 +87,18 @@
   Muchas guías siguen citando fechas derogadas.
 - **Prescripción de infracciones LOPDGDD** está en los **arts. 72-74**, no en el 78 (el 78 es la prescripción
   de **sanciones**).
-- **EU-US Data Privacy Framework**: **en vigor** en 2026 (Decisión 2023/1795); el recurso C-703/25 P ante el
-  TJUE está pendiente **sin efecto suspensivo**.
+- **EU-US Data Privacy Framework**: **en vigor** en 2026 (Decisión 2023/1795); validado en primera instancia
+  el 3-sep-2025 (T-553/23, Latombe); el recurso C-703/25 P ante el TJUE está pendiente **sin efecto
+  suspensivo** (a ago-2026, sin fecha de vista).
+- **Factura electrónica B2B**: el RD 238/2026 está **en vigor desde el 20-abr-2026**, pero los plazos NO
+  corren aún — cuentan desde la Orden Ministerial de la solución pública, pendiente de publicar.
+- **Cookies**: la sanción típica del art. 22.2 LSSI es **leve** (38.4.g, hasta 30.000 €), no grave — grave
+  solo con "reincidencia significativa" (38.3.i). Muchas guías citan solo el tramo alto.
 
 > **Cotejo literal completado (junio 2026)** contra los PDF consolidados del BOE (CP últ. mod. 9-abr-2026;
 > LGT y RD 1007/2023 últ. mod. 3-dic-2025; LOPDGDD; Ley 2/2023): confirmados el art. 31 bis y todos los
 > artículos de imputación penal, el art. 201 bis LGT (cuantías en el ap. 4) y la fuente real del QR/leyenda
 > Veri*Factu (Disp. final 1ª del RD 1007/2023 → art. 6.5/7.5 del RD 1619/2012). Único corregido frente a la
 > primera redacción: la cita del 201 bis (cuantías en el ap. 4, no en los aps. 1/2) y la del QR.
+> **Ampliación (agosto 2026):** cotejados además los arts. 10, 21, 22, 23, 27, 28, 38 y 39 de la **LSSI**
+> contra el consolidado del BOE (extracto literal en `sources/textos/lssi.txt`).
