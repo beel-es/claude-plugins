@@ -114,7 +114,7 @@ No reemplaza a un abogado: te deja listo para cumplir y te dice qué falta. Ver
 
 ## Aviso
 
-Esto no es asesoramiento jurídico: un software no asume tu responsabilidad legal, la decisión final es tuya.
+Esto no es asesoramiento jurídico y no garantiza el 100 % de cumplimiento: un software no asume tu responsabilidad legal, la decisión final es tuya y se recomienda que un abogado revise el resultado en casos de riesgo.
 Ver [`NOTICE.md`](NOTICE.md).
 
 ## Créditos

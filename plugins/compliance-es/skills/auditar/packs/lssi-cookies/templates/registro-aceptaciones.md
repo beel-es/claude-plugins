@@ -32,4 +32,4 @@ Receta en `references/build/derechos-y-datos.md` (§consentimiento): tabla `cons
 `document_versions`, sin UPDATE/DELETE (constraint o trigger), y snapshot/hash en el momento de aceptar.
 
 ---
-*Borrador generado con compliance-es (pack lssi-cookies). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack lssi-cookies). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

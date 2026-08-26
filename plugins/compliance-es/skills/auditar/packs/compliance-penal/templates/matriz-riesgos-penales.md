@@ -24,4 +24,4 @@
   (BOE-A-1995-25444) antes de usar la matriz en un expediente formal.
 
 ---
-*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

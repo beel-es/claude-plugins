@@ -39,4 +39,4 @@ perjuicio de las acciones legales que correspondan (art. 31 bis.5.5ª CP).
 [RAZÓN SOCIAL] difunde este código, forma sobre él y deja constancia de su aceptación por el personal.
 
 ---
-*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

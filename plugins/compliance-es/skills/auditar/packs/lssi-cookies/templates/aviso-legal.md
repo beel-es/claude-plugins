@@ -32,4 +32,4 @@ No se ceden derechos de explotación más allá de lo estrictamente necesario pa
 Legislación española. [Fuero: los juzgados del domicilio del usuario cuando sea consumidor.]
 
 ---
-*Borrador generado con compliance-es (pack lssi-cookies). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack lssi-cookies). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

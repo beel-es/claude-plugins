@@ -32,4 +32,4 @@ Dispositivos de almacenamiento y recuperación de datos en tu equipo terminal. U
 Versión [x.y], vigente desde [FECHA]. Las versiones anteriores se archivan y están disponibles en [URL].
 
 ---
-*Borrador generado con compliance-es (pack lssi-cookies). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack lssi-cookies). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

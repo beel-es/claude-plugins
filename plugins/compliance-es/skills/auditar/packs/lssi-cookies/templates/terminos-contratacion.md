@@ -32,4 +32,4 @@ El email del cliente solo se usa para publicidad de servicios **propios y simila
 con **baja sencilla y gratuita** en cada envío; para todo lo demás, consentimiento separado (opt-in).
 
 ---
-*Borrador generado con compliance-es (pack lssi-cookies). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack lssi-cookies). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

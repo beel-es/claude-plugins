@@ -49,4 +49,4 @@ El incumplimiento de la Ley 2/2023 puede acarrear sanciones de hasta **1.000.000
 jurídica (infracción muy grave, art. 65).
 
 ---
-*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico; revisar con un abogado.*
+*Borrador generado con compliance-es (pack compliance-penal). No constituye asesoramiento jurídico ni garantiza el cumplimiento; se recomienda revisión por un abogado.*

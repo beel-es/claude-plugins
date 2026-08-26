@@ -33,9 +33,12 @@ de la norma y **generar toda la documentación rellenada** (sin dejar tarea), de
 en el repo que se re-corre en el tiempo. Objetivo: que un founder/autónomo cumpla **solo**; el abogado es
 opcional (ver `references/cuando-acudir-a-abogado.md`).
 
-> **DISCLAIMER OBLIGATORIO** — No constituye asesoramiento jurídico (un software no asume la responsabilidad
-> legal del usuario). Genera borradores fundados en la normativa española y de la UE para cumplir sin
-> abogado. Incluir este disclaimer al pie de cada documento legal generado.
+> **DISCLAIMER OBLIGATORIO** — No constituye asesoramiento jurídico ni **garantiza el cumplimiento** de la
+> normativa (un software no asume la responsabilidad legal del usuario; la interpretación de las autoridades
+> y de los tribunales puede diferir, y la norma cambia). Genera borradores fundados en la normativa española
+> y de la UE para cumplir sin abogado; **se recomienda que un abogado revise el resultado**, especialmente
+> ante alto riesgo, categorías especiales de datos o un procedimiento en curso. Incluir este disclaimer al
+> pie de cada documento legal generado.
 
 ## Modelo mental
 - **Controles** = unidades reutilizables que satisfacen varios marcos a la vez. Catálogo + crosswalk:
