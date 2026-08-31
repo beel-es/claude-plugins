@@ -44,7 +44,7 @@ For every endpoint you are about to call, fetch its doc page (discover via `http
 ### 4. Environment setup
 
 - API key in `BEEL_API_KEY` env var; add to `.env.example` (placeholder only), never to committed files
-- Start against **sandbox** (`beel_sk_test_`); make the production switch a deployment concern, not a code change
+- Start against **Test** (`beel_sk_test_`); make the switch to Live a deployment concern, not a code change
 - Base URL is always `https://app.beel.es/api` — the key prefix selects the environment, there is no separate test URL. **The `/v1/` belongs to the path, not to the base URL**: every documented path already starts with it, so configuring a generated client with `/api/v1` produces `/api/v1/v1/…` and a uniform 404
 
 ### 5. Implement with the invariants baked in
@@ -59,7 +59,7 @@ For every endpoint you are about to call, fetch its doc page (discover via `http
 
 ### 6. Verify
 
-If a `beel_sk_test_` key is available in the environment, exercise the flow against the sandbox and show the result. Prefer the **BeeL CLI** for this (see `../beel-api/recipes/cli.md`) — it runs real calls without writing throwaway scripts, defaults to sandbox, and returns JSON + semantic exit codes:
+If a `beel_sk_test_` key is available in the environment, exercise the flow against Test and show the result. Prefer the **BeeL CLI** for this (see `../beel-api/recipes/cli.md`) — it runs real calls without writing throwaway scripts, defaults to Test, and returns JSON + semantic exit codes:
 
 ```bash
 npx @beel_es/cli invoices create --data @test-invoice.json

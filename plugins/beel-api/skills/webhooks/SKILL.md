@@ -66,7 +66,7 @@ There is also a test endpoint, `POST /v1/accounts/{account_id}/webhooks/{webhook
 
 ### 6. Verify end-to-end
 
-If a sandbox key is available: create a subscription pointing at the dev endpoint (use a tunnel like `ngrok`/`cloudflared` for localhost), then either fire the test endpoint above — enough to prove reachability and signature — or trigger a real event when the payload shape matters, and confirm: signature passes, duplicate delivery is ignored, handler completes. The **BeeL CLI** (see `../beel-api/recipes/cli.md`) does all of this without throwaway scripts — discover the exact commands with `npx @beel_es/cli --help`:
+If a Test key is available: create a subscription pointing at the dev endpoint (use a tunnel like `ngrok`/`cloudflared` for localhost), then either fire the test endpoint above — enough to prove reachability and signature — or trigger a real event when the payload shape matters, and confirm: signature passes, duplicate delivery is ignored, handler completes. The **BeeL CLI** (see `../beel-api/recipes/cli.md`) does all of this without throwaway scripts — discover the exact commands with `npx @beel_es/cli --help`:
 
 ```bash
 npx @beel_es/cli webhooks --help                          # subscription commands
