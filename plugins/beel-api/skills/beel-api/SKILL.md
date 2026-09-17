@@ -17,7 +17,7 @@ BeeL is a SaaS invoicing platform for Spanish autónomos with full VeriFactu com
 2. **NEVER hardcode API keys.** Always use environment variables (`process.env.BEEL_API_KEY`).
 3. **There is NO separate test URL.** Base URL is always `https://app.beel.es/api`, and every path starts with `/v1/`. The key prefix determines the environment: `beel_sk_test_*` = sandbox, `beel_sk_live_*` = production.
 4. **Company-scoped paths are the canonical form.** Build new code against `/v1/companies/{company_id}/…` (invoices, customers, products, series, tax and VeriFactu settings). The flat routes (`/v1/invoices`, `/v1/customers`, `/v1/products`, `/v1/configuration/*` and their sub-paths like `/issue` and `/void`) are `deprecated: true`, each carrying an `x-successor`; they keep working until the date in their `Sunset` response header.
-5. **Send `BeeL-Active-Company`** (the `company_id`) on any request touching company-owned data. Optional on an account with a single NIF, required on an account with several — otherwise `403 ACTIVE_COMPANY_REQUIRED`. See `/beel-api:multi-nif`.
+5. **`BeeL-Active-Company` is only for the flat routes.** A company-scoped path names its target, and the header is not read there at all. On a flat route it carries the `company_id`: optional on an account with a single NIF, required on an account with several — otherwise `403 ACTIVE_COMPANY_REQUIRED`. Following rule 4 means you never need it. See `/beel-api:multi-nif`.
 6. **`Idempotency-Key` on POST.** Ignored on PUT/PATCH/DELETE unless the operation opts in. Optional in general, required on bulk imports. See [recipes/invoice-flow.md](recipes/invoice-flow.md).
 7. **Issued invoices are immutable.** To correct → corrective invoice. To cancel → void it.
 8. **When in doubt, look up the docs** (see below).
@@ -81,4 +81,4 @@ For task-shaped work, this plugin ships dedicated skills:
 - `/beel-api:audit` — audit existing integration code against these rules
 - `/beel-api:webhooks` — build a correct webhook receiver end to end
 - `/beel-api:upgrade` — check an integration against the live API for drift
-- `/beel-api:multi-nif` — integrate the multi-NIF model (many companies per account, `BeeL-Active-Company`, managed accounts)
+- `/beel-api:multi-nif` — integrate the multi-NIF model (many companies per account, company-scoped paths, managed accounts)

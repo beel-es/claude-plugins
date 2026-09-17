@@ -48,11 +48,27 @@ require both scopes — an integration uses one model:
   *you onboard them by API and you pay* (fleets, mass onboarding, platform gestorías
   whose clients aren't on BeeL yet).
 
-## The one mechanic that matters: `BeeL-Active-Company`
+## The one mechanic that matters: the company in the path
 
-Company-scoped routes take the company in the path. On the flat legacy routes,
-send the company's UUID in the **`BeeL-Active-Company`** header — one master key
-covers every company you own:
+One master key covers every company you own, and the path says which one:
+
+```bash
+curl https://app.beel.es/api/v1/companies/550e8400-e29b-41d4-a716-446655440000/invoices \
+  -H "Authorization: Bearer beel_sk_live_xxx"
+```
+
+The `{company_id}` segment is the only source of context — the owning account is
+derived from it. Change the path to act on a different company. **On these routes
+the `BeeL-Active-Company` header is not read at all**: it neither switches the
+target nor fails the request, so one that disagrees with the path is ignored
+rather than rejected.
+
+### `BeeL-Active-Company`: only for the flat legacy routes
+
+The flat routes (`/v1/invoices`, `/v1/customers`, …) do not name a company, so
+they take its UUID from the **`BeeL-Active-Company`** header. They are deprecated
+and retire on the date in their `Sunset` response header, so you need this header
+only while migrating off them:
 
 ```bash
 curl https://app.beel.es/api/v1/invoices \
@@ -107,11 +123,16 @@ auto-generate VeriFactu invoices under that NIF. Per-company, under `/companies`
 - `POST /v1/companies/{company_id}/payment-connections/authorizations` — start OAuth,
   returns an `authorization_url` (`payment-connections:write`; white-label for
   **managed** NIFs)
-- `DELETE /v1/companies/{company_id}/payment-connections/{provider}` — disconnect
+- `PATCH /v1/companies/{company_id}/payment-connections/{connection_id}` — update one
+  (`payment-connections:write`)
+- `DELETE /v1/companies/{company_id}/payment-connections/{connection_id}` — disconnect
   (`payment-connections:write`)
 
-`{provider}` is a **lowercase slug**. Only **`stripe`** is operative today; any
-other value → `422`. Works for a NIF you **own or manage**; starting the
+**An existing connection is addressed by its own UUID, not by the provider slug.**
+A NIF can hold several connections of the same provider, so the slug alone does not
+name one; take `{connection_id}` from the list response. The `provider` slug — only
+**`stripe`** is operative today, any other value → `422` — is what you send when
+**starting** an authorization. Works for a NIF you **own or manage**; starting the
 authorization requires you **manage** it. Fetch `multi-nif/payment-connections`
 for the flow; `/stripe` for what a payment produces.
 
