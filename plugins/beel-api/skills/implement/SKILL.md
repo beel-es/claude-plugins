@@ -20,7 +20,7 @@ Inspect the project (`package.json`, `pyproject.toml`/`requirements.txt`, `go.mo
 
 | Stack | Path |
 |-------|------|
-| Node.js / TypeScript | **Official SDK** `@beel_es/sdk` — fetch the live SDK docs (find via `curl -s https://docs.beel.es/llms.txt \| grep -i sdk`) for the current API surface before writing SDK code |
+| Node.js / TypeScript | **Official SDK** `@beel_es/sdk` — fetch the live SDK docs (`curl -s https://docs.beel.es/sdks/node.md`) for the current API surface before writing SDK code |
 | Python | Typed client generated from the OpenAPI spec — see `../beel-api/recipes/typed-client.md` |
 | Anything else | Raw HTTP following the invariants in the `beel-api` skill |
 
@@ -39,7 +39,9 @@ If the user named a flow (e.g. "invoice my Stripe payments", "monthly recurring 
 
 ### 3. Fetch the live reference for each flow
 
-For every endpoint you are about to call, fetch its doc page (discover via `https://docs.beel.es/llms.txt`) or its OpenAPI definition. Field names, required fields and enums must come from the live spec — never invented.
+For every endpoint you are about to call, fetch its doc page as Markdown (find it in `https://docs.beel.es/api-reference/llms.txt`, e.g. `https://docs.beel.es/invoices/createCompanyInvoice.md`) or its OpenAPI definition. Field names, required fields and enums must come from the live spec — never invented.
+
+Then load the fiscal rules for the flows in scope with `/beel-api:rules`: the domains the flow touches, and especially the rules enforced by the integrator or the issuing business, which BeeL. does not check. Every one of them needs a place in the code or a question to the user.
 
 ### 4. Environment setup
 
@@ -49,12 +51,12 @@ For every endpoint you are about to call, fetch its doc page (discover via `http
 
 ### 5. Implement with the invariants baked in
 
-- `Authorization: Bearer <key>` auth; `Idempotency-Key` on every POST (SDK does this automatically) — generated once per logical operation, reused on retry. It is a POST mechanism: PUT/PATCH/DELETE ignore the header unless the operation explicitly opts in
-- Address resources under their NIF: `/v1/companies/{company_id}/…`. The flat routes (`/v1/invoices`, `/v1/customers`, `/v1/products`, …) are deprecated with a `Sunset` of **10 September 2026** and need the `BeeL-Active-Company` header once the account holds more than one NIF — without it they answer `403 ACTIVE_COMPANY_REQUIRED`. Never build a new integration on them
+- `Authorization: Bearer <key>` auth; `Idempotency-Key` on every POST that creates, issues, corrects or voids (the SDK does this automatically), generated once per logical operation and reused on retry (LIF-004). `2xx` and `5xx` are replayed and a `4xx` frees the key, so after a `5xx` check whether the operation happened before retrying with a new key. Some PUT/PATCH/DELETE operations honour the header too, only where their reference lists it
+- Put the company in the path: `/v1/companies/{company_id}/…`, and account-level resources under `/v1/accounts/{account_id}/…`. Never send `BeeL-Active-Company` and never call the flat routes (`/v1/invoices`, `/v1/customers`, …): they are deprecated and stop answering on their `Sunset` date
 - Parse the `{success, data, error}` envelope; surface `error.code` and `error.details`
 - Handle 429 with `Retry-After` + backoff (SDK does this automatically); don't retry other 4xx
 - Paginate to `pagination.total_pages` on list endpoints
-- Respect the invoice lifecycle: validate before issuing (draft PDF preview exists for this); corrective invoices for anything already issued
+- Respect the invoice lifecycle: validate before issuing (the draft PDF preview exists for this); never edit or delete an issued invoice (LIF-001); correct what happened (COR-001) and void only what should never have been issued (VOI-001); distribute the PDF once it has the QR (QRC-002) and follow `submission_status` (REC-008)
 - Prefer bulk endpoints when the flow processes many resources
 
 ### 6. Verify
@@ -70,4 +72,4 @@ Use it to confirm the data your integration created looks right. If no key is av
 
 ## Quality bar
 
-Match the project's existing conventions (error handling style, HTTP layer, config loading). The integration should pass `/beel-api:audit` with zero CRITICAL/HIGH findings — run it mentally against the audit checklist before declaring done.
+Match the project's existing conventions (error handling style, HTTP layer, config loading). The integration should pass `/beel-api:audit` with zero CRITICAL/HIGH findings — run it against the audit checklist, fix, and repeat until it does. Offer to add BeeL.'s rules block to the project's `AGENTS.md`/`CLAUDE.md` (`../beel-api/recipes/agents-md.md`).

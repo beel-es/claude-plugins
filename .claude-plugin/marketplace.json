@@ -11,13 +11,13 @@
     {
       "name": "beel-api",
       "source": "./plugins/beel-api",
-      "description": "BeeL. invoicing API toolkit: docs-first integration guide plus skills to implement, audit, upgrade, webhook-enable and integrate the multi-NIF model of a BeeL integration. Activates automatically when working with the BeeL. API.",
+      "description": "BeeL. invoicing API toolkit: docs-first integration guide, the fiscal rules catalogue by rule ID, and skills to implement, audit, upgrade, webhook-enable and integrate the multi-NIF model of a BeeL. integration. Activates automatically when working with the BeeL. API.",
       "version": "1.4.1",
       "author": {
         "name": "BeeL",
         "email": "hola@beel.es"
       },
-      "homepage": "https://docs.beel.es/docs/claude-code",
+      "homepage": "https://docs.beel.es/claude-code",
       "repository": "https://github.com/beel-es/claude-plugins"
     },
     {

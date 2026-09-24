@@ -1,6 +1,6 @@
-# Recipe: BeeL CLI (`@beel_es/cli`)
+# Recipe: BeeL. CLI (`@beel_es/cli`)
 
-Agent-first CLI for the BeeL API. Two jobs: **search the docs cheaply** (no API key) and **run real API calls** (verify a flow against sandbox, inspect live data, test an endpoint before writing code). No install needed:
+Agent-first CLI for the BeeL. API. Two jobs: **search the docs cheaply** (no API key) and **run real API calls** (verify a flow against sandbox, inspect live data, test an endpoint before writing code). No install needed:
 
 ```bash
 npx @beel_es/cli --help
@@ -8,7 +8,7 @@ npx @beel_es/cli --help
 
 ## Docs search — the token-cheap way to verify against the docs
 
-Prefer this over fetching `llms.txt` / `llms-full.txt` over HTTP. It downloads `llms-full.txt` once (cached 15 min in tmpdir), filters locally (search terms never leave the machine), and prints only the matching sections (~2KB) as markdown. **No API key needed.**
+Prefer this over fetching `llms.txt` / `llms-full.txt` over HTTP. It downloads `llms-full.txt` once (cached 15 min in tmpdir), filters locally (search terms never leave the machine), and prints only the matching sections as markdown. **No API key needed.**
 
 ```bash
 npx @beel_es/cli docs search create invoice     # matching sections only
@@ -66,7 +66,7 @@ npx @beel_es/cli request GET /v1/companies/<company_id>/invoices --query status=
 npx @beel_es/cli request POST /v1/companies/<company_id>/customers --data @customer.json
 ```
 
-The company-scoped paths above are the canonical form. The flat equivalents (`/v1/invoices`, `/v1/customers`, …) are deprecated and live until their `Sunset` date.
+Always put the company in the path, as above. The flat equivalents (`/v1/invoices`, `/v1/customers`, …) are deprecated and stop answering on their `Sunset` date.
 
 ## Output contract (built for agents)
 

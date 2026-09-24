@@ -1,11 +1,11 @@
 # Recipe: Webhook Handler
 
-When implementing a webhook receiver for BeeL events, always include these four things:
+When implementing a webhook receiver for BeeL. events, always include these four things:
 
 1. **Signature verification** — validate `BeeL-Signature` header
 2. **Deduplication** — track `BeeL-Event-Id` to avoid double-processing
 3. **Fast response** — return 200 immediately, process async
-4. **Retry awareness** — BeeL retries up to 5 times on failure
+4. **Retry awareness** — BeeL. retries failed deliveries on a published schedule, and only for `5xx`, `408`, `429` and network errors. Read the current schedule in [webhooks/retries](https://docs.beel.es/webhooks/retries.md) rather than hardcoding it
 
 ## Delivery headers
 
@@ -19,8 +19,8 @@ Every delivery carries:
 
 ⚠️ **Always verify the exact signature format and event types from the live docs:**
 ```bash
-curl https://docs.beel.es/llms.txt | grep -i webhook
-curl https://docs.beel.es/llms.txt | grep -i signature
+curl -s https://docs.beel.es/webhooks/signatures.md
+curl -s https://docs.beel.es/webhooks/events.md
 ```
 
 ## Express (Node.js) Example
@@ -76,8 +76,8 @@ function verifySignature(payload: Buffer, header: string, secret: string): boole
 }
 
 async function handleEvent(event: any) {
-  // Fetch docs for the full list of event types:
-  // curl https://docs.beel.es/llms.txt | grep -i events
+  // Full list of event types and payloads:
+  // curl -s https://docs.beel.es/webhooks/events.md
   switch (event.type) {
     case 'invoice.issued':
       break;

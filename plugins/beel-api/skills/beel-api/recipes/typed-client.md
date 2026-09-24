@@ -17,7 +17,7 @@ const beel = new BeeL({ apiKey: process.env.BEEL_API_KEY });
 The official SDK ships full TypeScript types plus automatic retries (429/5xx with backoff), automatic `Idempotency-Key` injection on POST, typed errors, and webhook signature verification. **Fetch the live SDK docs for the current method surface before writing code** — find them via:
 
 ```bash
-curl -s https://docs.beel.es/llms.txt | grep -i sdk
+curl -s https://docs.beel.es/sdks/node.md
 ```
 
 Verify the installed version is current: `npm view @beel_es/sdk version`.
@@ -54,7 +54,7 @@ const { data, error } = await beel.GET('/v1/companies/{company_id}/invoices', {
 });
 ```
 
-The flat `/v1/invoices` route still resolves but is deprecated, with an `x-successor` pointing at the company-scoped path.
+Build only on paths under `/v1/companies/{company_id}/…` or `/v1/accounts/{account_id}/…`. The flat `/v1/invoices`-style routes are deprecated (`x-successor` names their replacement) and stop answering on their `Sunset` date.
 
 Re-run codegen whenever the API updates:
 ```bash

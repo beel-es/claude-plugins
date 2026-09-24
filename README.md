@@ -38,17 +38,27 @@ That's it. Claude activates the relevant installed skills automatically, or you 
 
 ### `beel-api`
 
-A docs-first toolkit for building and maintaining BeeL integrations. It keeps only stable invariants locally (auth, idempotency, envelope, invoice lifecycle) and fetches everything else — endpoints, schemas, events — from the live docs, so it never goes stale.
+A docs-first toolkit for building and maintaining BeeL integrations. It keeps only stable invariants locally (auth, idempotency, envelope, invoice lifecycle) and fetches everything else — endpoints, schemas, events, fiscal rules — from the live docs, so it never goes stale. The fiscal rules skill also bundles a snapshot of the catalogue, used only when the docs are unreachable.
 
 | Skill | What it does |
 |-------|--------------|
 | `/beel-api:beel-api` | Integration guide: golden rules, auth, doc lookup strategy, plus recipes (typed client / official SDK, webhook handler, invoice flow, fiscal context, debugging, [`@beel_es/cli`](https://github.com/beel-es/beel-cli) for live sandbox verification) |
+| `/beel-api:rules` | The fiscal rules catalogue by rule ID (lifecycle, voiding, corrective and simplified invoices, numbering, taxes, dates, QR, VeriFactu records): who enforces each rule, the error codes that report it, the void-or-correct decision, and a lookup script by ID, domain or error code |
 | `/beel-api:implement` | Guided integration: detects your stack (official `@beel_es/sdk` for Node/TS, codegen for Python, raw HTTP otherwise) and implements the flows you need |
-| `/beel-api:audit` | Audits your integration code against the BeeL rules — idempotency, key security, error handling, rate limits, webhook verification, invoice lifecycle — and reports findings with severity and fixes |
+| `/beel-api:audit` | Audits your integration code against the BeeL rules — idempotency, key security, error handling, rate limits, webhook verification, deprecated routes, and the fiscal rules catalogue — and reports findings with rule IDs, severity and fixes |
 | `/beel-api:webhooks` | Builds a correct webhook receiver: HMAC-SHA256 signature verification, raw-body handling, deduplication, retry-aware processing |
-| `/beel-api:upgrade` | Checks your integration against the live OpenAPI spec and SDK releases: breaking changes, deprecated patterns, new features worth adopting |
+| `/beel-api:upgrade` | Checks your integration against the changelog, the live OpenAPI spec and SDK releases: breaking changes, deprecated patterns, new features worth adopting |
+| `/beel-api:multi-nif` | Integrates the multi-NIF model: many companies per account, the company in the path, members and grants, managed accounts |
 
-**Docs**: [docs.beel.es/docs/claude-code](https://docs.beel.es/docs/claude-code)
+**Docs**: [docs.beel.es/claude-code](https://docs.beel.es/claude-code)
+
+**Regenerating the rules skill** (maintainers): the index in `skills/rules/SKILL.md`, the `reference/*.md` files and the bundled snapshot are generated from the docs' rules catalogue. Rerun the generator after a docs release, then commit the result:
+
+```bash
+node scripts/build-rules-skill.mjs                                   # from https://docs.beel.es/api/rules.json
+node scripts/build-rules-skill.mjs --source path/or/url/rules.json   # from a local build or a preview
+node scripts/build-rules-skill.mjs --check                           # exit 1 if the generated files are stale
+```
 
 **Bundled MCP**: installing `beel-api` also connects the hosted **BeeL MCP** (`https://mcp.beel.es/mcp`, OAuth in the browser), so the same session gets live tools (create/issue invoices, manage NIFs…) and docs search alongside the skills. No API key needed.
 

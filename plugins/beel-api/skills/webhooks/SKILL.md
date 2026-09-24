@@ -22,10 +22,10 @@ The base pattern (Express example) lives in `../beel-api/recipes/webhook-handler
 Event types and payload schemas change — discover and fetch the webhook doc pages before writing handlers:
 
 ```bash
-curl -s https://docs.beel.es/llms.txt | grep -i webhook
+curl -s https://docs.beel.es/webhooks/events.md        # types + payloads
+curl -s https://docs.beel.es/webhooks/signatures.md    # if verification fails
+curl -s https://docs.beel.es/webhooks/retries.md       # retry schedule, health, automatic pause
 ```
-
-Fetch the events page (types + payloads) and, if anything below fails, the signatures/deduplication/retries pages.
 
 ### 2. Implement verification (non-negotiable, first middleware)
 
@@ -56,11 +56,13 @@ Deliveries can arrive more than once (retries, redeliveries). Key idempotent pro
 
 Return 2xx as soon as the event is verified, deduplicated and durably accepted (queued or stored). Slow handlers hit BeeL's delivery timeout and trigger retries, amplifying load.
 
-**Not every failure is retried.** Only 5xx responses, network errors and `408`/`429` are treated as transient and retried with backoff. Any other 4xx is a permanent client error — the delivery is dropped, not retried. A handler that answers `400` on a payload it does not recognise silently loses the event.
+**Not every failure is retried.** Only 5xx responses, network errors and `408`/`429` are treated as transient and retried, on the schedule published in `webhooks/retries`. Any other 4xx is a permanent client error — the delivery is dropped, not retried. A handler that answers `400` on a payload it does not recognise silently loses the event.
+
+Don't hardcode the number of attempts or the window: read them from `webhooks/retries`, which also covers what happens after an outage longer than the window (the subscription health fields, the automatic pause, and replaying failed deliveries by hand).
 
 ### 5. Subscription management
 
-Subscriptions are managed via the API (discover the `webhooks/*` endpoints via `llms.txt`): create (HTTPS URLs only; **10 subscriptions per user maximum, counting all of them, not only the active ones**), update, rotate secret (**the old secret invalidates immediately** — deploy the new secret first, then rotate), list deliveries and retry failed ones for debugging.
+Subscriptions are managed via the API under `/v1/accounts/{account_id}/webhooks` (the flat `/v1/webhooks` routes are deprecated): create (HTTPS URLs only; there is a cap on active subscriptions per account, stated in `webhooks`), update, rotate secret (**the old secret invalidates immediately** — deploy the new secret first, then rotate), list deliveries and retry failed ones for debugging.
 
 There is also a test endpoint, `POST /v1/accounts/{account_id}/webhooks/{webhook_id}/test`: it sends a synthetic, fully signed payload (`"test": true`) to the subscription URL immediately, outside the delivery queue. It is not retried and does not appear in the delivery history — it is the cheapest way to prove the endpoint is reachable and the signature check works.
 
