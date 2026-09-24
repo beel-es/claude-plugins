@@ -20,27 +20,30 @@ Tax rates, regime codes, and available tax types **change over time**. Always fe
 GET /v1/companies/{company_id}/tax-configuration
 
 # Full glossary of fiscal terms and API field mappings
-curl https://docs.beel.es/llms.txt | grep -i glossary
+curl -s https://docs.beel.es/guides/glossary.md
 
-# Tax regime codes, payment methods, reason codes
-curl https://docs.beel.es/llms.txt | grep -i glossary
+# Tax regime keys and tax classification
+curl -s https://docs.beel.es/verifactu/regime-keys.md
+curl -s https://docs.beel.es/verifactu/tax-classification.md
 ```
 
 ## Invoice Types
 
 - **STANDARD** → regular B2B/B2C invoices, full fiscal data required
-- **SIMPLIFIED** → consumer receipts (like restaurant tickets), NIF/address optional
+- **SIMPLIFIED** → consumer receipts (like restaurant tickets), at most 3,000 € VAT included (SIM-001). The recipient is optional; a `nif` is accepted but never reaches AEAT, so when the customer has to be identified, issue a STANDARD invoice instead (SIM-006)
 - **CORRECTIVE** → fixes or cancels a previously issued invoice
 - **PROFORMA** → commercial document (a formal quote) with no fiscal validity. Never enters VeriFactu: no QR, nothing sent to the AEAT
 
 For which type to use when, and required fields per type:
 ```bash
-curl https://docs.beel.es/api/openapi   # Check InvoiceType enum and required fields
+curl -s https://docs.beel.es/verifactu/simplified-vs-standard.md
+curl -s https://docs.beel.es/verifactu/invoice-types.md
 ```
 
 ## VeriFactu
 
-- Automatic — BeeL handles AEAT submission, hash chaining, and QR codes
-- Invoices are immutable once issued (this is a VeriFactu requirement)
-- Corrective invoices reference the original (the original is never modified)
-- Developers don't need to interact with VeriFactu directly — BeeL manages it
+- Automatic — BeeL builds and submits the records to AEAT, chains them and generates the QR
+- Submission is asynchronous: a `200` on issue means accepted, not registered. Follow `verifactu.submission_status` through the `verifactu.status.updated` webhook and fix what AEAT rejects (REC-008)
+- Wait for the QR before distributing the PDF (QRC-002)
+- Invoices are immutable once issued (LIF-001); corrective invoices reference the original, which is never modified
+- The rules behind all of this, by id: `/beel-api:rules`
