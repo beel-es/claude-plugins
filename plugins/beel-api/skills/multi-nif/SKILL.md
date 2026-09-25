@@ -67,8 +67,8 @@ rather than rejected.
 
 The flat routes (`/v1/invoices`, `/v1/customers`, …) do not name a company, so
 they take its UUID from the **`BeeL-Active-Company`** header. They are deprecated
-and retire on the date in their `Sunset` response header, so you need this header
-only while migrating off them:
+and retire on **9 December 2026** (the date their `Sunset` response header carries),
+so you need this header only while migrating off them:
 
 ```bash
 curl https://app.beel.es/api/v1/invoices \
@@ -78,12 +78,11 @@ curl https://app.beel.es/api/v1/invoices \
 
 Rules enforced by the API:
 
-- The key needs the **`companies:read`** scope, or the header is **silently
-  ignored** (no error).
+- Using the header requires the **`companies:read`** scope.
 - The target company must be **owned by the key owner** (or belong to an account
   you manage with `VIEW`/`OPERATE`), else **`403 Forbidden`**
   (`ACTIVE_COMPANY_NOT_ACCESSIBLE`).
-- A value that isn't a valid UUID is **rejected**, not ignored.
+- A value that isn't a valid UUID is **rejected** (`ACTIVE_COMPANY_HEADER_INVALID`), not ignored.
 - Without the header: an account holding **one** company uses that company. An
   account holding **several** gets **`403 ACTIVE_COMPANY_REQUIRED`** — there, the
   header is not optional.
@@ -143,7 +142,7 @@ the multi-NIF pages — **don't invent**. Preferred (token-efficient), propose t
 CLI to the user first, then run:
 
 ```bash
-npx @beel_es/cli docs search multi-nif           # matching sections only (~2KB)
+npx @beel_es/cli docs search multi-nif           # matching sections only
 npx @beel_es/cli docs search managed accounts
 npx @beel_es/cli docs list                        # discover pages
 ```
@@ -152,8 +151,9 @@ Fallback over HTTP (lightest first):
 
 ```bash
 curl -s https://docs.beel.es/llms.txt | grep -i "multi-nif\|companies\|managed"
-curl -s https://docs.beel.es/multi-nif/companies.mdx        # + members-and-grants, invitations, managed-accounts, payment-connections
-curl -s https://docs.beel.es/multi-nif/managed-accounts.mdx
+curl -s https://docs.beel.es/multi-nif.md                   # the model, identifiers, errors
+curl -s https://docs.beel.es/multi-nif/companies.md         # + members-and-grants, invitations, managed-accounts, payment-connections
+curl -s https://docs.beel.es/multi-nif/managed-accounts.md
 ```
 
 ## Common flows
@@ -161,8 +161,7 @@ curl -s https://docs.beel.es/multi-nif/managed-accounts.mdx
 - **Invoice across all your companies** — `GET /v1/accounts/{account_id}/companies`
   → for each `id`, call `/v1/companies/{id}/invoices`, the **canonical**
   company-scoped route. The flat `/v1/invoices` is a **deprecated alias**: it still
-  works with the `BeeL-Active-Company` header until the date in its `Sunset`
-  response header. Reuse the invoice lifecycle from
+  works with the `BeeL-Active-Company` header until 9 December 2026. Reuse the invoice lifecycle from
   `../beel-api/recipes/invoice-flow.md`.
 - **Onboard a company (new NIF)** — `POST /v1/accounts/{account_id}/companies`
   (`companies:write`); then operate on it through the company-scoped routes. Fetch
@@ -177,6 +176,6 @@ curl -s https://docs.beel.es/multi-nif/managed-accounts.mdx
 
 ## 🛠 Companion skills
 
-- `/beel-api:implement` — wire the flows into a project (add the header to the client)
+- `/beel-api:implement` — wire the flows into a project (the company goes in the path)
 - `/beel-api:webhooks` — react to events across companies
-- `/beel-api:audit` — check an existing integration (incl. correct scope/header use)
+- `/beel-api:audit` — check an existing integration (incl. scopes and flat routes still in use)

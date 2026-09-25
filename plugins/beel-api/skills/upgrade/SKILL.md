@@ -33,29 +33,23 @@ The response is `{ "entries": [ … ] }`. **Read the `note: true` ones first** �
 | `note` | `true` = big migration with its own page. Start here |
 | `breaking` | Whether this one can break the project at all |
 | `breakingChanges[]` | **Read every one.** Prose, one entry per thing that breaks — this is where semantic changes hide |
-| `endpoints[]` | `{method, path, description}` for the routes the entry adds or touches — carried by about half the current entries, and usually the fastest thing to grep the project for |
+| `endpoints[]` | `{method, path, description}` for the routes the entry adds or touches — when present, usually the fastest thing to grep the project for |
 | `routeMigration.groups[].rows[]` | The equivalence table: `methods`, `path` (old), `successor` (new — **absent, or `status: "removed"`, means no replacement**), `note` |
 | `timeline.phases[]`, `timeline.ifYouDoNotMigrate` | When the old way stops answering and what happens then |
 | `audience.checks[]` | Concrete checks BeeL. itself suggests — usually greps and headers. Run them |
 | `highlights[]`, `links[]` | Non-breaking additions, and where to read more |
 | `assistant` | Guidance BeeL. wrote for this exact job, when the entry carries it |
 
-**Do not assume the richer fields are there.** `routeMigration`, `timeline`, `audience` and `assistant` are part of the schema, but none of the 18 entries the feed serves today carries them, and almost every row of the one migration that exists (`resources-under-the-nif`, 82 deprecated routes) has a successor — the exceptions are the two full-replacement routes, `PUT /v1/customers/{customer_id}` and `PUT /v1/recurring-invoices/{recurring_invoice_id}`, which the contract marks `x-no-successor` because the canonical form only offers a merging `PATCH`. That migration keeps its route table on its own page, so read it there:
+**Do not assume the richer fields are there.** `routeMigration`, `timeline`, `audience` and `assistant` are part of the schema, but most entries carry none of them. A migration with a page of its own (`note: true`) keeps its full text — route tables included — in that page's Markdown twin:
 
 ```bash
-curl -s https://docs.beel.es/llms.mdx/changelog/resources-under-the-nif   # the prose
+curl -s https://docs.beel.es/changelog/<slug>.md          # one migration, as Markdown
+curl -s https://docs.beel.es/changelog/llms.txt           # the changelog index for agents
 ```
 
-and open `https://docs.beel.es/changelog/resources-under-the-nif` in HTML for the table itself.
+The migration most older integrations still need is `resources-under-the-nif`: the flat routes (`/v1/invoices`, `/v1/customers`, …) moved under `/v1/companies/{company_id}/…` and **retire on 9 December 2026**. Almost every row has a successor; the exceptions are the full-replacement `PUT` routes that the contract marks `x-no-successor`, because the canonical form only offers a merging `PATCH` (see step 4).
 
-If the feed 404s (older deployment), fall back in this order and say in the report which source you used:
-
-```bash
-curl -s https://docs.beel.es/llms.mdx/changelog/<slug>   # one migration's prose as markdown
-curl -s https://docs.beel.es/changelog                    # the index, HTML
-```
-
-Two caveats on `llms.mdx/changelog/<slug>`: it returns the **prose only** — the route migration table is a rendered component and does not appear there, so read it in the HTML page — and it only resolves for slugs that have an `.mdx` page of their own, not for short entries that live on the index.
+If the feed is unavailable, fall back to `https://docs.beel.es/changelog/llms.txt` and each entry's page, and say in the report which source you used.
 
 **Then the contract**, to catch anything unannounced:
 
@@ -73,6 +67,7 @@ Also record, because they carry their own migrations:
 - SDK version pinned in `package.json` / lockfile
 - Webhook events handled, and the payload fields read off them
 - Headers sent by hand (`Idempotency-Key`, `BeeL-Active-Company`, any legacy `X-` form)
+- Series created from code (`document_type` is now required), addresses sent without `country_code`, and error handling that matches on messages or expects a `422` where a missing scope now answers `403` first
 - Error codes branched on
 
 ### 3. What to look for

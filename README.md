@@ -38,7 +38,7 @@ That's it. Claude activates the relevant installed skills automatically, or you 
 
 ### `beel-api`
 
-A docs-first toolkit for building and maintaining BeeL integrations. It keeps only stable invariants locally (auth, idempotency, envelope, invoice lifecycle) and fetches everything else — endpoints, schemas, events — from the live docs, so it never goes stale.
+A docs-first toolkit for building and maintaining BeeL integrations. It keeps only stable invariants locally (auth, idempotency, envelope, invoice lifecycle) and fetches everything else — endpoints, schemas, events, fiscal rules — from the live docs, so it never goes stale.
 
 | Skill | What it does |
 |-------|--------------|
@@ -47,8 +47,18 @@ A docs-first toolkit for building and maintaining BeeL integrations. It keeps on
 | `/beel-api:audit` | Audits your integration code against the BeeL rules — idempotency, key security, error handling, rate limits, webhook verification, invoice lifecycle — and reports findings with severity and fixes |
 | `/beel-api:webhooks` | Builds a correct webhook receiver: HMAC-SHA256 signature verification, raw-body handling, deduplication, retry-aware processing |
 | `/beel-api:upgrade` | Checks your integration against the live OpenAPI spec and SDK releases: breaking changes, deprecated patterns, new features worth adopting |
+| `/beel-api:multi-nif` | Integrates the multi-NIF model: one account holding several companies, the company in the path, members and grants, managed accounts |
+| `/beel-api:rules` | The fiscal rules by id: how to look one up (MCP `beel_rules_list` / `beel_rules_get`, or `docs.beel.es/rules/<ID>.md` and `/api/rules.json`) and the block of critical rules to paste into `AGENTS.md` / `CLAUDE.md` |
 
-**Docs**: [docs.beel.es/docs/claude-code](https://docs.beel.es/docs/claude-code)
+**Docs**: [docs.beel.es/claude-code](https://docs.beel.es/claude-code)
+
+**The fiscal rules are not copied into the plugin.** The catalogue lives in the docs ([`/rules`](https://docs.beel.es/rules), [`/api/rules.json`](https://docs.beel.es/api/rules.json)) and the bundled MCP serves it. The plugin ships only the short AGENTS.md block of the `rules` skill, generated from the docs — never edit it by hand. After a docs release, regenerate it and commit the result:
+
+```bash
+node scripts/sync-agents-block.mjs            # from the published page, docs.beel.es/ai-agents
+node scripts/sync-agents-block.mjs --check    # exit 1 if the skill is out of date
+node scripts/sync-agents-block.mjs --docs <path to a docs checkout>   # before a docs release is deployed
+```
 
 **Bundled MCP**: installing `beel-api` also connects the hosted **BeeL MCP** (`https://mcp.beel.es/mcp`, OAuth in the browser), so the same session gets live tools (create/issue invoices, manage NIFs…) and docs search alongside the skills. No API key needed.
 

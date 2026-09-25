@@ -49,12 +49,14 @@ For every endpoint you are about to call, fetch its doc page (discover via `http
 
 ### 5. Implement with the invariants baked in
 
-- `Authorization: Bearer <key>` auth; `Idempotency-Key` on every POST (SDK does this automatically) — generated once per logical operation, reused on retry. It is a POST mechanism: PUT/PATCH/DELETE ignore the header unless the operation explicitly opts in
-- Address resources under their NIF: `/v1/companies/{company_id}/…`. The flat routes (`/v1/invoices`, `/v1/customers`, `/v1/products`, …) are deprecated with a `Sunset` of **10 September 2026** and need the `BeeL-Active-Company` header once the account holds more than one NIF — without it they answer `403 ACTIVE_COMPANY_REQUIRED`. Never build a new integration on them
+- `Authorization: Bearer <key>` auth; `Idempotency-Key` on every write that creates, issues, corrects or voids (the SDK adds it to POST automatically) — generated once per logical operation, reused on retry. `POST` always honours it; `PUT`/`PATCH`/`DELETE` only where the API reference lists the header
+- Address resources under their NIF: `/v1/companies/{company_id}/…`. The flat routes (`/v1/invoices`, `/v1/customers`, `/v1/products`, …) are deprecated and retire on **9 December 2026**. Never build a new integration on them
+- Give the key only the scopes the flows need: a missing scope answers `403 INSUFFICIENT_SCOPE` before the request is validated
 - Parse the `{success, data, error}` envelope; surface `error.code` and `error.details`
 - Handle 429 with `Retry-After` + backoff (SDK does this automatically); don't retry other 4xx
 - Paginate to `pagination.total_pages` on list endpoints
-- Respect the invoice lifecycle: validate before issuing (draft PDF preview exists for this); corrective invoices for anything already issued
+- Respect the invoice lifecycle and the critical fiscal rules in `../rules/SKILL.md`: validate before issuing (draft PDF preview exists for this); corrective invoices for anything already issued; never send an invoice number or issue date
+- If the flow creates series, send `document_type`; addresses carry `country_code`
 - Prefer bulk endpoints when the flow processes many resources
 
 ### 6. Verify
@@ -62,7 +64,7 @@ For every endpoint you are about to call, fetch its doc page (discover via `http
 If a `beel_sk_test_` key is available in the environment, exercise the flow against the sandbox and show the result. Prefer the **BeeL CLI** for this (see `../beel-api/recipes/cli.md`) — it runs real calls without writing throwaway scripts, defaults to sandbox, and returns JSON + semantic exit codes:
 
 ```bash
-npx @beel_es/cli invoices create --data @test-invoice.json
+npx @beel_es/cli invoices create --data @test-invoice.json   # company from --company / BEEL_COMPANY_ID
 npx @beel_es/cli invoices get <id>
 ```
 
@@ -71,3 +73,5 @@ Use it to confirm the data your integration created looks right. If no key is av
 ## Quality bar
 
 Match the project's existing conventions (error handling style, HTTP layer, config loading). The integration should pass `/beel-api:audit` with zero CRITICAL/HIGH findings — run it mentally against the audit checklist before declaring done.
+
+If the project has an `AGENTS.md` or `CLAUDE.md`, offer to add the BeeL. block from `../rules/SKILL.md`, so the next session starts from the same rules.

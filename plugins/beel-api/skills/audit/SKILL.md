@@ -16,11 +16,12 @@ Audit the project's BeeL API integration code against the current rules and repo
 
 ### 1. Refresh the rules from live docs
 
-The checklist in `checklist.md` (this folder) encodes the stable rules, but limits and details drift. Before auditing, fetch what's relevant to the code you find — discover pages via `curl -s https://docs.beel.es/llms.txt | grep -i <topic>`:
+The checklist in `checklist.md` (this folder) encodes the stable rules, but limits and details drift. Before auditing, fetch what's relevant to the code you find (every page has a `.md` twin; discover others via `curl -s https://docs.beel.es/llms.txt | grep -i <topic>`):
 
-- The idempotency guide — current header name and rules
-- The rate limits guide — current limits and headers
-- The webhook signature/deduplication pages — only if the project receives webhooks
+- `https://docs.beel.es/guides/idempotency.md` — header and replay rules
+- `https://docs.beel.es/guides/rate-limits.md` — current limits and headers
+- `https://docs.beel.es/webhooks/signatures.md` and `/webhooks/retries.md` — only if the project receives webhooks
+- The fiscal rules — `beel_rules_list` / `beel_rules_get` through the bundled MCP, or `https://docs.beel.es/api/rules.json`; start from the critical ones in the `rules` skill
 - The OpenAPI spec (`https://docs.beel.es/api/openapi`) — to confirm endpoints the project calls still exist
 
 ### 2. Locate the integration surface
@@ -54,6 +55,8 @@ Output a structured report:
    - The concrete fix (code-level, ready to apply)
 3. **Passed checks** — brief list, so the user knows what was verified, not just what failed
 4. **Not applicable** — e.g. "no webhook receiver found, webhook checks skipped"
+
+Cite the rule id (e.g. `LIF-001`) in every finding a fiscal rule backs, with its link `https://docs.beel.es/rules/<ID>.md`.
 
 Severity guide:
 

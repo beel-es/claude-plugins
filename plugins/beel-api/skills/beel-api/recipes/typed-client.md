@@ -54,7 +54,7 @@ const { data, error } = await beel.GET('/v1/companies/{company_id}/invoices', {
 });
 ```
 
-The flat `/v1/invoices` route still resolves but is deprecated, with an `x-successor` pointing at the company-scoped path.
+The flat `/v1/invoices` route still resolves but is deprecated, with an `x-successor` pointing at the company-scoped path, and retires on 9 December 2026. Generated types include the deprecated operations too: build only on the `/v1/companies/{company_id}/…` and `/v1/accounts/{account_id}/…` paths.
 
 Re-run codegen whenever the API updates:
 ```bash
