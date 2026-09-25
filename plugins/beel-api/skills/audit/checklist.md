@@ -77,6 +77,7 @@ Cite the rule id in each finding. Look rules up with the MCP (`beel_rules_get`, 
   The number is assigned on issue and read from the issue response; the date is the issue day, `operation_date` records when the sale happened.
 - [ ] **Amounts in euros, no zero or negative non-corrective invoices** (HIGH — TAX-013, CNT-019)
 - [ ] **Simplified invoices capped and not used for identified customers** (HIGH — SIM-001, SIM-006)
+  A SIMPLIFIED invoice whose recipient carries `nif` or `alternative_id` answers `422 SIMPLIFIED_INVOICE_FORBIDS_IDENTIFIED_RECIPIENT` on create, edit and issue, at any amount: code that picks the type has to send STANDARD whenever the customer is identified.
 - [ ] **QR before distribution; submission status followed** (HIGH — QRC-002, REC-008)
   The PDF is not sent before `invoice.pdf.generated` / `verifactu.qr_url`; `verifactu.status.updated` (or a reconciliation) is handled, and `REJECTED` is surfaced, not ignored.
 - [ ] **Series created with `document_type`** (HIGH if the code creates series)
