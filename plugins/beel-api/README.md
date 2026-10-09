@@ -1,4 +1,4 @@
-# BeeL API
+# BeeL.
 
 Skills and a hosted MCP server for building on the [BeeL](https://beel.es) invoicing API: Spanish e-invoicing with VeriFactu (AEAT), customers, products, series, recurring invoices and webhooks.
 
@@ -35,7 +35,7 @@ The plugin connects the hosted BeeL MCP server at `https://mcp.beel.es/mcp` (Str
 - **mcp.beel.es**: the MCP server receives the tool calls Claude makes, with the account you signed in to.
 - **app.beel.es**: shown only in code examples for your own integration; the plugin does not call it itself.
 
-The plugin runs no hooks, scripts or local servers, and reads no credentials from your machine.
+The plugin runs no hooks, scripts or local servers of its own. Some skills offer to run the BeeL CLI (`npx @beel_es/cli`) to search the docs or try a request in the Test environment; Claude asks before running it, and the CLI uses the BeeL credentials you signed it in with. The code examples read the API key from your project's environment variables, which is how your own integration should load it; the plugin does not read or send them.
 
 ## Requirements
 
