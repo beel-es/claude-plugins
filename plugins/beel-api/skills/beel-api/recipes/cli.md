@@ -1,6 +1,6 @@
 # Recipe: BeeL CLI (`@beel_es/cli`)
 
-Agent-first CLI for the BeeL API. Two jobs: **search the docs cheaply** (no API key) and **run real API calls** (verify a flow against sandbox, inspect live data, test an endpoint before writing code). No install needed:
+Agent-first CLI for the BeeL API. Two jobs: **search the docs cheaply** (no API key) and **run real API calls** (verify a flow against Test, inspect live data, test an endpoint before writing code). No install needed:
 
 ```bash
 npx @beel_es/cli --help
@@ -33,7 +33,7 @@ npx @beel_es/cli invoices create --help    # flags, enums, defaults (from the sp
 export BEEL_API_KEY=beel_sk_test_...   # recommended for agent/CI use
 ```
 
-**Sandbox is the default.** Every command uses the test key unless `--live` is passed explicitly. A live key without `--live` is an error, not a silent upgrade — so it's safe to experiment. Never pass `--live` unless the user explicitly asks for production.
+**Test is the default.** Every command uses the test key unless `--live` is passed explicitly. A live key without `--live` is an error, not a silent upgrade — so it's safe to experiment. Never pass `--live` unless the user explicitly asks for Live.
 
 `--live` is a global flag and goes before the resource:
 
@@ -79,7 +79,7 @@ The company-scoped paths above are the canonical form. The flat equivalents (`/v
 | Task | Tool |
 |------|------|
 | Look something up in the docs | CLI (`docs search`) — cheaper than fetching llms files |
-| Verify a flow works against sandbox | CLI |
+| Verify a flow works against Test | CLI |
 | Inspect existing data (invoices, customers) | CLI |
 | Reproduce/debug an API error | CLI (`request` + exit codes) |
 | One-off operations the user asks for | CLI |
