@@ -43,7 +43,7 @@ A BeeL account. Its Test environment (sandbox) is available, so you can try ever
 
 ## Support and privacy
 
-- Documentation: [docs.beel.es/docs/claude-code](https://docs.beel.es/docs/claude-code)
+- Documentation: [docs.beel.es/claude-code](https://docs.beel.es/claude-code)
 - Support: [hola@beel.es](mailto:hola@beel.es)
 - Privacy policy: [beel.es/privacidad](https://beel.es/privacidad)
 

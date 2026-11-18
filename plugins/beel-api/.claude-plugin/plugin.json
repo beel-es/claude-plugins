@@ -7,7 +7,7 @@
     "name": "BeeL",
     "email": "hola@beel.es"
   },
-  "homepage": "https://docs.beel.es/docs/claude-code",
+  "homepage": "https://docs.beel.es/claude-code",
   "repository": "https://github.com/beel-es/claude-plugins",
   "license": "MIT",
   "icon": "./assets/icon.svg",

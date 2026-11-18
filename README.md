@@ -48,7 +48,7 @@ A docs-first toolkit for building and maintaining BeeL integrations. It keeps on
 | `/beel-api:webhooks` | Builds a correct webhook receiver: HMAC-SHA256 signature verification, raw-body handling, deduplication, retry-aware processing |
 | `/beel-api:upgrade` | Checks your integration against the live OpenAPI spec and SDK releases: breaking changes, deprecated patterns, new features worth adopting |
 
-**Docs**: [docs.beel.es/docs/claude-code](https://docs.beel.es/docs/claude-code)
+**Docs**: [docs.beel.es/claude-code](https://docs.beel.es/claude-code)
 
 **Bundled MCP**: installing `beel-api` also connects the hosted **BeeL MCP** (`https://mcp.beel.es/mcp`, OAuth in the browser), so the same session gets live tools (create/issue invoices, manage NIFs…) and docs search alongside the skills. No API key needed.
 
